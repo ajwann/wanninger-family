@@ -1,0 +1,999 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>The Wanninger Family</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta name="description" content="The Wanninger Family: a family history from Bavaria to Cincinnati, with records, lifelines and sources.">
+</head><body>
+<style>
+/* Layout: a parish-register ledger. Ivory paper, a generational tree on the left, the open "entry" for the chosen person on the right; reference chapters below. */
+:root {
+  --bg: #F4F2EA;          /* paperweight ivory */
+  --paper: #FBFAF5;       /* raised sheet */
+  --ink: #1E1D1A;
+  --ink-2: #4B4A45;
+  --muted: #77756D;
+  --rule: #DAD6CA;
+  --slate: #34506B;       /* register ink blue: primary accent */
+  --slate-tint: #E4E9EE;
+  --sage: #55694F;        /* documented */
+  --sage-tint: #E5EBE1;
+  --line-hi: #34506B;
+  --serif: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --sans: "Instrument Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1B1A18; --paper: #24231F; --ink: #ECE9E0; --ink-2: #C9C6BC; --muted: #9C998F; --rule: #3A3832;
+    --slate: #9FB6CF; --slate-tint: #283340; --sage: #A6BB9F; --sage-tint: #2A3327; --line-hi: #9FB6CF;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1B1A18; --paper: #24231F; --ink: #ECE9E0; --ink-2: #C9C6BC; --muted: #9C998F; --rule: #3A3832;
+  --slate: #9FB6CF; --slate-tint: #283340; --sage: #A6BB9F; --sage-tint: #2A3327; --line-hi: #9FB6CF;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--sans); font-size: 16px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 64px;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1180px; margin: 0 auto; }
+a { color: var(--slate); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--slate); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+p { margin: 0; }
+.eyebrow { font-family: var(--sans); font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-weight: 600; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* Hero */
+.hero { padding-block: 56px 32px; display: grid; gap: 18px; border-bottom: 1px solid var(--rule); }
+.hero h1 { font-size: clamp(40px, 7vw, 76px); line-height: 1.02; font-weight: 400; }
+.hero h1 em { font-style: italic; color: var(--slate); }
+.hero .lede { font-family: var(--serif); font-size: clamp(18px, 2.2vw, 22px); line-height: 1.45; color: var(--ink-2); max-width: 46ch; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--muted); font-size: 14px; }
+.hero-meta span b { color: var(--ink); font-weight: 600; }
+
+nav.toc { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--rule); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+nav.toc ul { list-style: none; margin: 0; padding: 10px 0; display: flex; gap: 4px 18px; overflow-x: auto; scrollbar-width: none; }
+nav.toc a { font-size: 14px; color: var(--ink-2); text-decoration: none; white-space: nowrap; padding: 4px 0; display: inline-block; }
+nav.toc a:hover { color: var(--slate); }
+
+section.chapter { padding-block: 56px 8px; display: grid; gap: 24px; scroll-margin-top: 56px; }
+.chapter-head { display: grid; gap: 8px; max-width: 70ch; }
+.chapter-head h2 { font-size: clamp(28px, 4vw, 40px); }
+.chapter-head p { color: var(--ink-2); font-size: 17px; }
+
+/* Legend chips */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 12px; font-weight: 600; letter-spacing: 0.02em; padding: 3px 9px; border-radius: 999px; border: 1px solid transparent; line-height: 1.4; white-space: nowrap; }
+.chip.doc { background: var(--sage-tint); color: var(--sage); border-color: color-mix(in srgb, var(--sage) 30%, transparent); }
+.chip.likely { background: var(--slate-tint); color: var(--slate); border-color: color-mix(in srgb, var(--slate) 30%, transparent); }
+.chip.unproven { background: transparent; color: var(--muted); border: 1px dashed var(--muted); }
+.chip.line { background: var(--slate); color: var(--paper); }
+
+/* Tree + entry layout */
+.tree-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 28px; align-items: start; }
+@media (max-width: 900px) { .tree-layout { grid-template-columns: minmax(0, 1fr); } }
+.tree { display: grid; gap: 0; }
+.gen { display: grid; gap: 10px; padding-block: 18px; position: relative; }
+.gen + .gen { border-top: 1px dashed var(--rule); }
+.gen-label { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.gen-label .roman { font-family: var(--serif); font-style: italic; color: var(--slate); font-size: 20px; }
+.gen-label .desc { font-size: 13px; color: var(--muted); }
+.people { display: flex; flex-wrap: wrap; gap: 8px; }
+.couple { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.couple .amp { font-family: var(--serif); font-style: italic; color: var(--muted); font-size: 20px; }
+.person {
+  appearance: none; font: inherit; color: inherit; text-align: left; cursor: pointer;
+  background: var(--paper); border: 1px solid var(--rule); border-radius: var(--r);
+  padding: 10px 14px 10px 14px; display: grid; gap: 2px; min-width: 0; max-width: 100%;
+  transition: border-color .15s ease, background .15s ease, transform .15s ease;
+}
+.person:hover { border-color: var(--slate); }
+.person .nm { font-family: var(--serif); font-size: 17px; font-weight: 500; line-height: 1.2; }
+.person .yr { font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.person.direct .nm::after { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--slate); margin-left: 7px; vertical-align: 2px; }
+.person.tentative { border-style: dashed; }
+.person[aria-pressed="true"] { background: var(--slate); border-color: var(--slate); color: var(--paper); }
+.person[aria-pressed="true"] .yr { color: color-mix(in srgb, var(--paper) 75%, transparent); }
+.person[aria-pressed="true"].direct .nm::after { background: var(--paper); }
+.descent { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.descent::before { content: ""; width: 1px; height: 18px; background: var(--slate); display: inline-block; }
+.tree-note { font-size: 13px; color: var(--muted); padding-top: 12px; border-top: 1px solid var(--rule); display: grid; gap: 8px; }
+
+/* Entry panel */
+.entry { background: var(--paper); border: 1px solid var(--rule); border-radius: 14px; padding: 26px clamp(18px, 3vw, 32px) 30px; display: grid; gap: 24px; position: sticky; top: 64px; max-height: calc(100vh - 80px); overflow-y: auto; scroll-margin-top: 64px; }
+@media (max-width: 900px) { .entry { position: static; max-height: none; overflow: visible; } }
+.entry-head { display: grid; gap: 10px; padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
+.entry-head h3 { font-size: clamp(26px, 3.4vw, 34px); line-height: 1.1; }
+.entry-head .aka { color: var(--muted); font-size: 14px; }
+.vitals { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 4px 16px; font-size: 14px; }
+.vitals dt { color: var(--muted); }
+.vitals dd { margin: 0; min-width: 0; }
+.block { display: grid; gap: 10px; }
+.block h4 { font-family: var(--sans); font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-weight: 600; }
+.block p { font-family: var(--serif); font-size: 17px; line-height: 1.6; max-width: 65ch; }
+.interp { border-left: 2px solid var(--slate); padding-left: 16px; }
+.interp .tag { font-family: var(--sans); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); font-weight: 600; }
+ul.facts, ul.events { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+ul.facts li { font-size: 15px; display: grid; gap: 1px; }
+ul.facts li .src { font-size: 12.5px; color: var(--muted); }
+ul.events li { display: grid; grid-template-columns: 4.6em minmax(0,1fr); gap: 12px; font-size: 15px; align-items: baseline; }
+ul.events li .y { font-family: var(--mono); font-size: 13px; color: var(--slate); font-variant-numeric: tabular-nums; }
+ul.events li.here .y::after { content: " ●"; font-size: 9px; vertical-align: 2px; }
+.addr { display: grid; gap: 8px; }
+.addr-row { display: grid; grid-template-columns: 6.5em minmax(0,1fr) auto; gap: 4px 14px; align-items: baseline; padding: 10px 0; border-top: 1px solid var(--rule); }
+.addr-row:first-child { border-top: 0; padding-top: 0; }
+.addr-row .when { font-family: var(--mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.addr-row .where { font-family: var(--serif); font-size: 17px; line-height: 1.3; }
+.addr-row .where small { display: block; font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.addr-row a.map { font-size: 13px; font-weight: 600; white-space: nowrap; text-decoration: none; border: 1px solid var(--rule); border-radius: 999px; padding: 4px 10px; color: var(--slate); }
+.addr-row a.map:hover { border-color: var(--slate); }
+@media (max-width: 520px) { .addr-row { grid-template-columns: minmax(0,1fr) auto; } .addr-row .when { grid-column: 1 / -1; } }
+.empty { font-size: 14px; color: var(--muted); font-style: italic; }
+.jump { display: flex; flex-wrap: wrap; gap: 8px; }
+.jump a { font-size: 14px; font-weight: 500; }
+.fineprint { font-size: 12.5px; color: var(--muted); }
+
+/* Lifelines */
+.lifelines-scroll { overflow-x: auto; border: 1px solid var(--rule); border-radius: 14px; background: var(--paper); }
+.lifelines { min-width: 720px; padding: 18px 20px 14px; position: relative; display: grid; gap: 6px; }
+.ll-axis, .ll-row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 12px; align-items: center; }
+.ll-track { position: relative; height: 22px; }
+.ll-axis .ll-track { height: 54px; }
+.ll-tick { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--rule); }
+.ll-tick span { position: absolute; bottom: 0; left: 4px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.ll-ev { position: absolute; top: 0; bottom: -9999px; border-left: 1px dashed color-mix(in srgb, var(--slate) 45%, transparent); pointer-events: none; }
+.ll-ev span { position: absolute; top: 0; left: 4px; font-size: 11px; color: var(--slate); white-space: nowrap; font-weight: 600; }
+.ll-ev.alt span { top: 16px; }
+.lifelines-clip { position: relative; overflow: hidden; display: grid; gap: 6px; }
+.ll-name { font-family: var(--serif); font-size: 15px; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ll-bar { position: absolute; top: 5px; height: 12px; border-radius: 6px; background: var(--slate); opacity: .82; cursor: pointer; border: 0; padding: 0; }
+.ll-bar.open { background: repeating-linear-gradient(90deg, var(--slate) 0 6px, transparent 6px 10px); opacity: .7; }
+.ll-bar.other { background: var(--muted); opacity: .55; }
+.ll-bar:hover, .ll-bar:focus-visible { opacity: 1; }
+.ll-cross { position: absolute; top: 1px; width: 2px; height: 20px; background: var(--sage); }
+.ll-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--muted); padding: 10px 20px 4px; }
+.ll-legend i { display: inline-block; width: 18px; height: 8px; border-radius: 4px; vertical-align: 1px; margin-right: 6px; }
+
+/* Prose chapters */
+.two { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+@media (max-width: 900px) { .two { grid-template-columns: minmax(0, 1fr); } }
+.prose { display: grid; gap: 16px; }
+.prose p { font-family: var(--serif); font-size: 18px; line-height: 1.65; max-width: 66ch; }
+.prose h3 { font-size: 23px; margin-top: 10px; }
+.label-est { display: inline-block; font-family: var(--sans); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; font-weight: 600; color: var(--muted); border: 1px dashed var(--muted); border-radius: 999px; padding: 1px 8px; vertical-align: 3px; margin-left: 6px; }
+.sheet { background: var(--paper); border: 1px solid var(--rule); border-radius: 14px; padding: 22px; display: grid; gap: 14px; min-width: 0; }
+.sheet h3 { font-size: 21px; }
+dl.spec { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 7px 16px; margin: 0; font-size: 14.5px; }
+dl.spec dt { color: var(--muted); }
+dl.spec dd { margin: 0; }
+.manifest-wrap { overflow-x: auto; }
+table.manifest { border-collapse: collapse; width: 100%; min-width: 440px; font-size: 14px; }
+table.manifest th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--ink-2); }
+table.manifest td { padding: 7px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+table.manifest td.mono { font-size: 13px; }
+table.manifest td.hand { font-family: var(--serif); font-style: italic; font-size: 16px; }
+.route { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.route li { display: grid; grid-template-columns: 22px minmax(0,1fr); gap: 12px; padding-bottom: 16px; position: relative; }
+.route li::before { content: ""; width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--slate); background: var(--paper); margin-top: 6px; margin-left: 4px; }
+.route li::after { content: ""; position: absolute; left: 10px; top: 20px; bottom: 0; width: 1px; background: var(--rule); }
+.route li:last-child::after { display: none; }
+.route li.est::before { border-style: dashed; }
+.route b { font-weight: 600; }
+.route .rt { display: grid; gap: 2px; font-size: 15px; }
+.route .rt span { color: var(--muted); font-size: 13.5px; }
+.reasons { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.reasons li { display: grid; gap: 4px; padding: 14px 16px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--paper); }
+.reasons li b { font-family: var(--serif); font-size: 17px; font-weight: 500; }
+.reasons li span { font-size: 15px; color: var(--ink-2); }
+.timeline { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
+.timeline li { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.timeline .y { font-family: var(--mono); color: var(--slate); font-size: 14px; font-variant-numeric: tabular-nums; }
+.timeline .t { display: grid; gap: 3px; }
+.timeline .t b { font-family: var(--serif); font-weight: 500; font-size: 18px; }
+.timeline .t span { font-size: 15px; color: var(--ink-2); max-width: 70ch; }
+.timeline .t em { font-style: normal; font-size: 13px; color: var(--sage); font-weight: 600; }
+.sources { columns: 2 320px; column-gap: 32px; font-size: 14px; color: var(--ink-2); margin: 0; padding-left: 18px; }
+.sources li { break-inside: avoid; margin-bottom: 8px; }
+footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--muted); }
+
+/* Citations under each date */
+.vitals dd .cite { display: block; margin-top: 2px; font-size: 12.5px; line-height: 1.45; color: var(--muted); }
+.vitals dd .cite b { font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 10.5px; margin-right: 4px; color: var(--muted); }
+.vitals dd .cite a, .doc-links a, .credit a { color: var(--slate); }
+.vitals dd { padding-bottom: 6px; }
+
+/* Ship pictures */
+.ship-gallery { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; margin-bottom: 32px; }
+.ship-gallery figure:last-child { grid-column: 1 / -1; }
+@media (max-width: 760px) { .ship-gallery { grid-template-columns: minmax(0, 1fr); } }
+figure.plate { margin: 0; background: var(--paper); border: 1px solid var(--rule); border-radius: 14px; padding: 12px; display: grid; gap: 10px; min-width: 0; align-content: start; }
+figure.plate img { display: block; width: 100%; height: auto; border-radius: 8px; background: var(--rule); }
+figure.plate figcaption { display: grid; gap: 4px; font-size: 14px; color: var(--ink-2); padding: 0 4px 4px; }
+figure.plate figcaption b { font-family: var(--serif); font-weight: 500; font-size: 16px; color: var(--ink); }
+.credit { font-size: 12px; color: var(--muted); }
+
+/* Voyage dates */
+.dates { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--rule); }
+.dates li { display: grid; grid-template-columns: 8.5em minmax(0, 1fr); gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 14px; }
+.dates .d { font-family: var(--mono); font-size: 13px; color: var(--slate); font-variant-numeric: tabular-nums; }
+.dates li.est .d { color: var(--muted); }
+.dates .k { display: inline-block; font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border-radius: 999px; padding: 0 7px; margin-left: 6px; vertical-align: 1px; }
+.dates .k.exact { background: var(--sage-tint); color: var(--sage); }
+.dates .k.est { border: 1px dashed var(--muted); color: var(--muted); }
+.dates span small { display: block; color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+
+/* Documents */
+.docs { display: grid; gap: 28px; }
+.doc { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 24px; align-items: start; scroll-margin-top: 64px; }
+@media (max-width: 900px) { .doc { grid-template-columns: minmax(0, 1fr); } }
+.doc .imgs { display: grid; gap: 12px; min-width: 0; }
+.doc .imgs .frame { display: block; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; background: #fff; }
+.doc .imgs img { display: block; width: 100%; height: auto; }
+.doc .txt { display: grid; gap: 12px; min-width: 0; }
+.doc .txt h3 { font-size: 21px; }
+.doc .txt p { font-size: 15px; color: var(--ink-2); max-width: 62ch; }
+.transcript { font-family: var(--mono); font-size: 12.5px; line-height: 1.6; background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; color: var(--ink-2); white-space: pre-wrap; overflow-wrap: anywhere; }
+.doc-links { font-size: 13px; color: var(--muted); }
+.linked { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.linked li { background: var(--paper); border: 1px solid var(--rule); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 4px; font-size: 14px; color: var(--ink-2); }
+.linked li b { font-family: var(--serif); font-weight: 500; font-size: 16px; color: var(--ink); }
+.linked li em { font-style: normal; font-size: 12.5px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">A family history · Upper Palatinate to Cincinnati</div>
+    <h1>The <em>Wanninger</em> Family</h1>
+    <p class="lede">Four generations, from a smallholder’s cottage near Cham in Bavaria to the hillside streets of Price Hill: the line that leads to Lawrence W. Wanninger (1922–2020).</p>
+    <div class="hero-meta">
+      <span><b>13</b> people</span>
+      <span><b>30</b> recorded addresses</span>
+      <span>Crossed on the <b>Westernland</b>, arriving New York <b>11 June 1884</b></span>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Sections">
+    <ul>
+      <li><a href="#tree">Family tree</a></li>
+      <li><a href="#lifelines">Lifelines</a></li>
+      <li><a href="#crossing">The crossing</a></li>
+      <li><a href="#bavaria">Bavaria</a></li>
+      <li><a href="#cincinnati">Cincinnati</a></li>
+      <li><a href="#documents">Documents</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ul>
+  </nav>
+
+  <section class="chapter" id="tree">
+    <div class="chapter-head">
+      <div class="eyebrow">The family tree</div>
+      <h2>Choose a person to open their entry</h2>
+      <p>Each entry lists every address found for that person, the years they lived through, how their city changed, and how both probably shaped their life.</p>
+      <div class="chips" aria-label="How sure each fact is">
+        <span class="chip doc">Documented</span>
+        <span class="chip likely">Likely</span>
+        <span class="chip unproven">Unproven</span>
+        <span class="chip line">● Lawrence’s direct line</span>
+      </div>
+    </div>
+
+    <div class="tree-layout">
+      <div class="tree" id="treeEl">
+        <div class="gen">
+          <div class="gen-label"><span class="roman">I</span><span class="desc">Born in Bavaria · emigrated as parents, 1884</span></div>
+          <div class="couple">
+            <button class="person direct" data-id="johnSr"><span class="nm">John Wanninger</span><span class="yr">1836–1890</span></button>
+            <span class="amp">&amp;</span>
+            <button class="person direct" data-id="fanny"><span class="nm">Fanny (Mayer)</span><span class="yr">c.1833–1903</span></button>
+          </div>
+        </div>
+        <div class="gen">
+          <div class="gen-label"><span class="roman">II</span><span class="desc">Their children · crossed as teenagers and boys, 1884</span></div>
+          <div class="people">
+            <button class="person tentative" data-id="eleonora"><span class="nm">Eleonora</span><span class="yr">c.1864–?</span></button>
+            <button class="person" data-id="george"><span class="nm">George T.</span><span class="yr">1868–1930</span></button>
+            <button class="person" data-id="augusta"><span class="nm">Augusta</span><span class="yr">1869–1937</span></button>
+            <button class="person direct" data-id="william"><span class="nm">William</span><span class="yr">1871–1945</span></button>
+            <button class="person" data-id="johnJr"><span class="nm">John Jr.</span><span class="yr">1872–1950</span></button>
+            <button class="person" data-id="clement1875"><span class="nm">Clement</span><span class="yr">1875–?</span></button>
+          </div>
+        </div>
+        <div class="gen">
+          <div class="descent">Son of William &amp; Elizabeth (Zumbahlen)</div>
+          <div class="gen-label"><span class="roman">III</span><span class="desc">Born in Cincinnati</span></div>
+          <div class="people">
+            <button class="person direct" data-id="clementSr"><span class="nm">Clement W. Wanninger</span><span class="yr">1894–1969</span></button>
+          </div>
+        </div>
+        <div class="gen">
+          <div class="descent">Sons of Clement &amp; Gertrude (Mayleben)</div>
+          <div class="gen-label"><span class="roman">IV</span><span class="desc">The brothers</span></div>
+          <div class="people">
+            <button class="person direct" data-id="lawrence"><span class="nm">Lawrence W.</span><span class="yr">1922–2020</span></button>
+            <button class="person" data-id="eugene"><span class="nm">Eugene</span><span class="yr">1924–2008</span></button>
+            <button class="person" data-id="robert"><span class="nm">Robert J.</span><span class="yr">1925–2005</span></button>
+            <button class="person" data-id="clementE"><span class="nm">Clement E.</span><span class="yr">1933–2006</span></button>
+          </div>
+        </div>
+        <div class="tree-note">
+          <p>A dashed outline means the person’s place in the family rests on thin evidence. William’s other son, John F. (1897–1974), and the families of George and John Jr. are left out to keep the tree on Lawrence’s line.</p>
+          <p>Only historical addresses of people who have died are shown, from records dated 1884 to 1955.</p>
+        </div>
+      </div>
+
+      <article class="entry" id="entry" aria-live="polite"></article>
+    </div>
+  </section>
+
+  <section class="chapter" id="lifelines">
+    <div class="chapter-head">
+      <div class="eyebrow">Lifelines</div>
+      <h2>Who lived through what</h2>
+      <p>Each bar runs from birth to death. The green tick marks June 1884, when the Bavarian-born family landed in New York. Select a bar to open that person’s entry.</p>
+    </div>
+    <div class="lifelines-scroll"><div class="lifelines" id="llEl"></div>
+      <div class="ll-legend">
+        <span><i style="background:var(--slate)"></i>Lifespan</span>
+        <span><i style="background:repeating-linear-gradient(90deg,var(--slate) 0 6px,transparent 6px 10px)"></i>End date unknown (bar ends at last record)</span>
+        <span><i style="background:var(--sage);width:3px;height:14px"></i>Arrival, 1884</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="crossing">
+    <div class="chapter-head">
+      <div class="eyebrow">The crossing · spring 1884</div>
+      <h2>Antwerp to New York on the Westernland</h2>
+      <p>A National Archives index and the original manifest place Fanny and five children on the Red Star Line steamer Westernland, which reached New York on 11 June 1884. A gardener listed with them is almost certainly John.</p>
+    </div>
+
+    <div class="ship-gallery">
+      <figure class="plate">
+        <img src="img/westernland-photo.jpg" width="1100" height="688" alt="Black-and-white photo of the steamship Westernland at sea, with two funnels and four masts" loading="lazy">
+        <figcaption><b>The Westernland itself</b><span>A Red Star Line photo postcard of the ship the family sailed on. Its printed caption names the line’s New York office at 6 Bowling Green. The date of the photo is not known.</span><span class="credit">Museum aan de Stroom (MAS), Antwerp · CC0 public domain dedication · <a href="https://commons.wikimedia.org/wiki/File:Het_stoomschip_met_hulpzeilvermogen_Westernland,_asset_C2lRJXDVObRMcgtadgSi6SeY.tif" target="_blank" rel="noopener">Wikimedia Commons ↗</a></span></figcaption>
+      </figure>
+      <figure class="plate">
+        <img src="img/westernland-painting.jpg" width="903" height="542" alt="Oil painting of the Westernland under steam with sails set, flying the Red Star Line flag" loading="lazy">
+        <figcaption><b>Painted in 1887</b><span>Antonio Jacobsen, the New York marine painter, made this portrait three years after the family’s crossing. It shows the ship as she looked in their day.</span><span class="credit">Antonio Jacobsen, oil on canvas, 1887 · MAS, Antwerp · public domain · <a href="https://commons.wikimedia.org/wiki/File:Het_stoomschip_met_hulpzeilvermogen_%27Westernland%27,_asset_qdZlZXTYHkaSFJIcPhwOKQCk.tif" target="_blank" rel="noopener">Wikimedia Commons ↗</a></span></figcaption>
+      </figure>
+      <figure class="plate">
+        <img src="img/westernland-model.jpg" width="1100" height="206" alt="Wooden builder's half model of the Westernland's hull, mounted on a board" loading="lazy">
+        <figcaption><b>The builder’s half model, 1883</b><span>Shipbuilders shaped a half hull in wood before building the real thing. This one shows the long, narrow steel hull the Wanningers spent about eleven days inside.</span><span class="credit">Laird Brothers, Birkenhead · MAS, Antwerp · CC0 public domain dedication · <a href="https://commons.wikimedia.org/wiki/File:Halfmodel_op_plank_van_het_passagiersstoomschip_Westernland,_asset_A1wHWdrZB6OYOcYUPlytWhoa.tif" target="_blank" rel="noopener">Wikimedia Commons ↗</a></span></figcaption>
+      </figure>
+    </div>
+    <div class="two">
+      <div class="prose">
+        <h3>The ship</h3>
+        <p>The Westernland was barely seven months into service. Laird Brothers of Birkenhead launched her on 4 August 1883, and she left Antwerp on her maiden voyage that November. She was the Red Star Line’s first steel-hulled ship and its first with two funnels, and she still carried four masts with sails as a backup to her single compound steam engine. At about 14.5 knots she was a modern, middle-sized emigrant liner, built for exactly the kind of family travelling in her lower decks.</p>
+        <p>The Red Star Line was a Belgian-American company that ran from Antwerp. For Bavarians, Antwerp was a real alternative to Bremen and Hamburg, because it could be reached by rail through the Rhineland.</p>
+
+        <h3>Life in steerage <span class="label-est">Typical for the period</span></h3>
+        <p>No account of this particular voyage survives in the family records, so what follows is a description of steerage travel in the early 1880s, not a report of what the Wanningers saw. Their manifest shows they travelled in steerage, the cheapest class.</p>
+        <p>Steerage meant open compartments below the main deck, lined with two-tier bunks. Single men were usually berthed apart from families and single women. Passengers often had to bring their own mattress, blanket, plate, cup and spoon, and many bought them at the port. Air came through hatches and ventilators, and in rough weather the hatches were closed. Washing was mostly in cold salt water.</p>
+        <p>The line supplied the food, served at long tables or carried down in mess tins. A steerage passenger writing in July 1884 about another steamer listed coffee sweetened with molasses and bread or porridge in the morning, then soup, salt beef or salt pork and potatoes at midday, with a pudding on Sundays. That writer called the food the worst part of the trip. Seasickness flattened many people for the first days. In good weather, steerage passengers crowded onto their section of open deck, where there was singing, cards and talk in a dozen languages.</p>
+        <p>At the Westernland’s speed the crossing would have taken roughly ten to twelve days. For Fanny, 51, keeping five children aged 9 to 16 fed and together in a crowded compartment was likely the hardest part of the voyage.</p>
+
+        <h3>Arrival</h3>
+        <p>In 1884 New York had no Ellis Island. Immigrants landed at Castle Garden, the state’s station at the Battery on the tip of Manhattan, where names were taken, money could be changed and railroad tickets bought. From there, a family bound for Cincinnati would normally go by train, a trip of a day or more.</p>
+      </div>
+
+      <div style="display:grid; gap:20px; min-width:0">
+        <div class="sheet">
+          <div class="eyebrow">Ship’s particulars</div>
+          <h3>SS Westernland (1883)</h3>
+          <dl class="spec">
+            <dt>Line</dt><dd>Red Star Line, Antwerp–New York</dd>
+            <dt>Builder</dt><dd>Laird Brothers, Birkenhead</dd>
+            <dt>Launched</dt><dd>4 August 1883</dd>
+            <dt>Maiden voyage</dt><dd>3 November 1883</dd>
+            <dt>Size</dt><dd class="mono">5,708–5,736 gross tons · 440 × 47 ft</dd>
+            <dt>Power</dt><dd>One compound steam engine, single screw; four masts for sail</dd>
+            <dt>Speed</dt><dd class="mono">about 14.5 knots</dd>
+            <dt>Hull</dt><dd>Steel, the line’s first</dd>
+            <dt>Fate</dt><dd>American Line service from 1901, back with Red Star 1906; sold and scrapped in Italy around 1910–12</dd>
+          </dl>
+          <p class="fineprint">Sources disagree slightly on tonnage and on the scrapping date.</p>
+        </div>
+
+        <div class="sheet">
+          <div class="eyebrow">Manifest no. 80536 · arrived 11 June 1884</div>
+          <h3>The family as written</h3>
+          <div class="manifest-wrap">
+            <table class="manifest">
+              <thead><tr><th>As written</th><th>Age</th><th>Calling</th><th>Who it is</th></tr></thead>
+              <tbody>
+                <tr><td class="hand">Jos.(?) Wonninger</td><td class="mono">44</td><td>Gardener</td><td>Probably John (a gardener; first name hard to read, age off by four)</td></tr>
+                <tr><td class="hand">Franz. Wonninger</td><td class="mono">51</td><td>—</td><td>Fanny</td></tr>
+                <tr><td class="hand">Jg. Wonninger</td><td class="mono">16</td><td></td><td>George (Georg)</td></tr>
+                <tr><td class="hand">Aug. Wonninger</td><td class="mono">15</td><td></td><td>Augusta (indexed as male)</td></tr>
+                <tr><td class="hand">Wilh. Wonninger</td><td class="mono">13</td><td></td><td>William</td></tr>
+                <tr><td class="hand">Joh. Wonninger</td><td class="mono">12</td><td></td><td>John Jr.</td></tr>
+                <tr><td class="hand">Clem. Wonninger</td><td class="mono">9</td><td></td><td>Clement</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="fineprint">Country: Germany. Destination: New York. Class: steerage. The 1884 form has no column for a home town. Eleonora is not on this list.</p>
+        </div>
+
+        <div class="sheet">
+          <div class="eyebrow">Voyage dates</div>
+          <h3>Exact where a record says so, estimated where not</h3>
+          <ul class="dates">
+            <li class="est"><span class="d">mid–late May 1884</span><span><b>Leave home in Bavaria</b><span class="k est">Estimate</span><small>Home town not yet known. John was probably baptized at Untertraubenbach near Cham.</small></span></li>
+            <li class="est"><span class="d">late May 1884</span><span><b>By rail west to Antwerp</b><span class="k est">Estimate</span><small>Probably through the Rhineland, one to two days.</small></span></li>
+            <li class="est"><span class="d">c. 30 May–1 Jun 1884</span><span><b>Sail from Antwerp</b><span class="k est">Estimate</span><small>Worked back from the arrival: about 3,400 nautical miles at an average of 12 to 14 knots is 10 to 12 days. No departure record was found.</small></span></li>
+            <li><span class="d">11 Jun 1884</span><span><b>Arrive New York, land at Castle Garden</b><span class="k exact">Exact</span><small>Manifest no. 80536, National Archives index. <a href="#doc-1884">See the record ↓</a></small></span></li>
+            <li class="est"><span class="d">c. 13–15 Jun 1884</span><span><b>By rail to Cincinnati</b><span class="k est">Estimate</span><small>A day or two by train. John Jr.’s 1893 naturalization says he came to the United States “about 13 June 1884”.</small></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="bavaria">
+    <div class="chapter-head">
+      <div class="eyebrow">Bavaria · 1830s to 1884</div>
+      <h2>A smallholder’s son near Cham, and why the family left</h2>
+      <p>John’s baptism, if the link holds, puts the family’s roots in the Upper Palatinate, in eastern Bavaria close to the Bohemian border.</p>
+    </div>
+    <div class="two">
+      <div class="prose">
+        <h3>Where John probably came from <span class="chip likely" style="vertical-align:4px">Likely</span></h3>
+        <p>The parish register of Schorndorf records the baptism of Johann Baptist Wanninger on 2 February 1836 at Untertraubenbach, house no. 15. His father Leonhard was a <i>Söldner</i>, the holder of a <i>Sölde</i>: a cottage with a small piece of land, usually too little to feed a family without extra work. His mother was Theres Reil. An older brother, Michael, was born in 1831 and married at home in 1866. A family tree made by others links this Johann to the Cincinnati gardener of the same age, and the dates fit, but no record yet ties the two together.</p>
+        <p>The family’s children were not found in the baptism books of a dozen parishes around Cham or in Regensburg, so they were probably born somewhere else in Bavaria. George’s 1930 death certificate is the only family record that names Bavaria, and none names a town.</p>
+
+        <h3>Daily life <span class="label-est">Typical for the region</span></h3>
+        <p>Untertraubenbach sits in the Regen valley among small farming villages. In the decades John grew up, life followed the parish church and the farm year: rye, oats, potatoes and flax on small fields, a cow or a few goats, winter work spinning, weaving or cutting wood. Sons of cottagers like Leonhard often became farmhands, day labourers or craftsmen, because the family plot could not be split again. A trained gardener, as John was in Cincinnati, could find work on estates, in towns, or in market gardens supplying them.</p>
+        <p>The region changed around him. In 1848 Bavaria ended the old feudal dues peasants owed their lords. In 1861 a railway reached Cham, which made travel cheaper and opened the district to outside goods. In 1866 Bavaria fought on Austria’s side against Prussia and lost, and in January 1871 it joined the new German Empire. William, born on 18 January 1871, arrived the same day the empire was proclaimed at Versailles.</p>
+
+        <h3>Why they left <span class="label-est">Interpretation</span></h3>
+        <p>No letter or record gives the family’s own reason. The pattern of what is known, set against what drove the wider emigration of the 1880s, points to several likely causes.</p>
+      </div>
+      <ul class="reasons">
+        <li><b>A relative already in Cincinnati</b><span>Fanny’s brother August Mayer, a marble cutter, lived in Cincinnati and left her everything in his 1892 will. Most emigrants followed someone they knew, and this is the most likely reason they chose that city.</span></li>
+        <li><b>No land to inherit</b><span>A younger son of a cottager had little prospect of owning a farm. Contemporary reports put land hunger and low rural wages at the top of the reasons Germans left.</span></li>
+        <li><b>Falling farm prices</b><span>From the 1870s, cheap grain from America and Russia pushed prices down across Europe, squeezing small holders and the people who worked for them.</span></li>
+        <li><b>Sons near military age</b><span>George was 16 and William 13. Leaving before the boys were called up for three years’ service was a common motive in the 1880s. This is a general pattern, not something recorded for this family.</span></li>
+        <li><b>Part of the largest wave</b><span>German emigration surged after 1880 to its highest level ever. Almost three million Germans left between 1862 and 1890, most of them for the United States.</span></li>
+        <li><b>A mother willing to start over at 51</b><span>Fanny was past fifty when she left. Moving with five children that late in life suggests the family saw little future at home for the young ones.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="chapter" id="cincinnati">
+    <div class="chapter-head">
+      <div class="eyebrow">Cincinnati · 1884 to 1970</div>
+      <h2>The city they lived in, and how it changed</h2>
+      <p>The family arrived in one of the most German cities in America and watched it lose much of that character. A green note marks the change that touched them most.</p>
+    </div>
+    <ol class="timeline" id="cityEl"></ol>
+  </section>
+
+  <section class="chapter" id="documents">
+    <div class="chapter-head">
+      <div class="eyebrow">Documents</div>
+      <h2>The records behind the dates</h2>
+      <p>These are the records that can be shown here: a family upload, two public court and government records, and the archives’ own index. Others can only be linked, because they sit behind a sign-in or their terms don’t allow copying. They are listed at the end.</p>
+    </div>
+    <div class="docs">
+      <article class="doc" id="doc-1884">
+        <div class="imgs">
+          <div class="frame"><img src="img/record-1884-aad-header.png" width="1540" height="178" alt="National Archives index row: manifest 80536, ship Westernland, from Antwerp, arrived 06/11/1884, New York" loading="lazy"></div>
+          <div class="frame"><img src="img/record-1884-aad-index.png" width="1540" height="528" alt="National Archives index: six passengers named Wonminger on manifest 80536, all from Germany" loading="lazy"></div>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1884 · Arrival in New York</div>
+          <h3>Westernland passenger list, manifest no. 80536</h3>
+          <p>The National Archives’ index of German passengers lists the ship as the Westernland, from Antwerp, arriving in New York on 11 June 1884. Six family members are indexed under the misspelling Wonminger. The original handwritten list, read on FamilySearch, spells it Wonninger and adds Fanny, aged 51.</p>
+          <div class="transcript">Manifest 80536 · WESTERNLAND · ANTWERP · 06/11/1884 · NEW YORK
+Indexed: Jos. · G. · Aug. · Wilh. · Joh. · Clem.
+Original list: Jos.(?) 44 gardener · Franz. 51 · Jg. 16 · Aug. 15 · Wilh. 13 · Joh. 12 · Clem. 9</div>
+          <p class="doc-links">Screenshots of a U.S. National Archives database, a public domain record. Search it yourself: <a href="https://aad.archives.gov/aad/display-partial-records.jsp?dt=3279&amp;cat=GP44&amp;tf=F&amp;bc=%2Csl%2Cfd&amp;q=80536&amp;btnSearch=Search" target="_blank" rel="noopener">ship and date ↗</a> · <a href="https://aad.archives.gov/aad/display-partial-records.jsp?dt=3160&amp;sc=31072%2C31073%2C31074%2C31080%2C31109&amp;cat=GP44&amp;tf=F&amp;bc=%2Csl%2Cfd&amp;q=&amp;btnSearch=Search&amp;as_alq=&amp;as_anq=&amp;as_epq=&amp;as_woq=&amp;nfo_31072=V%2C8%2C1900&amp;op_31072=0&amp;txt_31072=80536&amp;nfo_31073=V%2C25%2C1900&amp;op_31073=0&amp;txt_31073=WONMINGER&amp;nfo_31074=V%2C25%2C1900&amp;op_31074=0&amp;txt_31074=&amp;nfo_31080=V%2C3%2C1900&amp;cl_31080=&amp;nfo_31109=V%2C3%2C1900&amp;cl_31109=" target="_blank" rel="noopener">the six passengers ↗</a>. The original list images (New York Passenger Lists, 1820–1891, images 645–646) need a free FamilySearch sign-in.</p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1894">
+        <div class="imgs">
+          <div class="frame"><img src="img/record-1894-marriage-william.jpg" alt="Handwritten Latin entry in a church marriage register for Gulielmus Wanninger and Elisabeth Zumbahlen, 9 January 1894" loading="lazy"></div>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1894 · William’s wedding</div>
+          <h3>Church marriage register, St. Francis Seraph</h3>
+          <p>The first marriage of 1894 in the parish book, written in Latin. It gives the date, both sets of parents and the witnesses, one of them Eleonora Wanninger. It gives no home town for either family. The image was sent to the family by the Archdiocese of Cincinnati archives.</p>
+          <div class="transcript">1894 · 9 Jan
+Gulielmum Wanninger, son of Joannes Wanninger and Francisca Meier
+Elisabeth Zumbahlen, daughter of Clemens Zumbahlen and Helena Deye
+After three banns · Witnesses: Joannes Zumbahlen, Eleonora Wanninger
+P. Vincent Trost, O.S.F.</div>
+          <p class="doc-links">Source: Archdiocese of Cincinnati archives, marriage register p. 124. The archdiocese named the church as St. Francis Seraph in its reply.</p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1899">
+        <div class="imgs">
+          <div class="frame"><img src="img/record-1899-license-john-jr.jpg" alt="Printed Hamilton County application for a marriage license, filled in by hand for John Wanninger and Clara Collas, 25 July 1899" loading="lazy"></div>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1899 · John Jr.’s wedding</div>
+          <h3>Marriage license application, Hamilton County Probate Court</h3>
+          <p>John Jr., 27, a conductor living at 1935 Central Ave, swore to this application on 25 July 1899. It names his parents as John Wanninger and Fannie Meyer and says only that he was born in Germany. The court’s record shows Rev. Emil K. Schmidt married the couple the same day. The note in the top margin looks like a later clerk’s certification, dated 16 July 1900.</p>
+          <div class="transcript">Marriage Record vol. 141, p. 443 · License No. 443
+John Wanninger, 27 · 1935 Central Ave · born Germany · conductor
+Father John Wanninger · mother Fannie Meyer · not previously married
+Clara Collas, 20 · 145 Peete St · born Cincinnati
+Father Robt Collas · mother Elizabeth Reuter
+Sworn 25 July 1899</div>
+          <p class="doc-links">A public court record. To view the original, open the court’s <a href="https://probatect.org/ArchiveSearchForms/bukmarriages.aspx" target="_blank" rel="noopener">volume and page search ↗</a>, choose Marriage Record and enter volume 141, page 443.</p>
+        </div>
+      </article>
+    </div>
+
+    <h3 style="margin:40px 0 14px">Linked, not copied</h3>
+    <ul class="linked">
+      <li><b>Ohio death certificates</b><span>George 1930 (record 1:1:X8RF-NVY), Augusta 1937 (1:1:XZ27-GWB), William 1945, John Jr. 1950. Births, deaths and parents’ names.</span><em>FamilySearch, “Ohio, Deaths, 1908–1953” · free sign-in required</em></li>
+      <li><b>Naturalizations, will and older licenses</b><span>George 1890, John Jr. 1893, August Mayer’s will 1892, Augusta’s license 1890, George’s license 1892.</span><em>FamilySearch, “Ohio, Hamilton County Records, 1791–1994” · free sign-in required</em></li>
+      <li><b>Johann Baptist’s baptism, 1836</b><span>Schorndorf parish, book Schorndorf011, image 58.</span><em>Matricula, Diocese of Regensburg · free to view, but its terms don’t allow republishing</em></li>
+      <li><b>Cincinnati city birth and death cards</b><span>John 1890, Franziska 1903, Clement’s birth 1894, August Mayer 1895.</span><em>University of Cincinnati Digital Resource Commons · free to view</em></li>
+      <li><b>Find a Grave memorials</b><span>Lawrence (memorial 220197390), Eugene, Robert J., Clement E.; George (135760965).</span><em>Find a Grave · photos belong to their contributors</em></li>
+      <li><b>City directories and the 1940 census</b><span>Every street address on this page from 1919 on, and Clement Sr.’s household in 1940.</span><em>Public Library of Cincinnati digital library · FamilySearch</em></li>
+    </ul>
+  </section>
+
+  <section class="chapter" id="sources">
+    <div class="chapter-head">
+      <div class="eyebrow">Sources and confidence</div>
+      <h2>Where these facts come from</h2>
+      <p>Most family facts come from original records read during the family research. Each birth, marriage and death on a person’s card names its source, and the records that can be shown are in <a href="#documents">Documents</a>. The historical background comes from published histories, summarised in my own words.</p>
+    </div>
+    <ul class="sources">
+      <li>Passenger manifest no. 80536, Westernland, Antwerp to New York, arrived 11 June 1884 (National Archives Castle Garden index and the original list image on FamilySearch).</li>
+      <li>Schorndorf parish register (Diocese of Regensburg, on Matricula): baptism of Johann Bapt. Wanninger, 2 Feb 1836; marriage of Michael Wanninger, 1866.</li>
+      <li>Ohio death certificates, 1908–1953: George (1930), Augusta Jordan (1937), William (1945), John Jr. (1950).</li>
+      <li>University of Cincinnati city birth and death records: John (1890), Franziska (1903), Clement’s birth (1894), August Mayer (1895).</li>
+      <li>Hamilton County Probate Court: naturalizations of George (1890) and John Jr. (1893); marriage license of John Jr. and Clara Collas (1899); will of August Mayer (1892, probated 1895).</li>
+      <li>Archdiocese of Cincinnati archives: marriage of William Wanninger and Elisabeth Zumbahlen, 9 Jan 1894, with Eleonora Wanninger as witness.</li>
+      <li>Williams’ Cincinnati directories, 1919–1955 (Public Library of Cincinnati digital library).</li>
+      <li>1940 U.S. census, Cincinnati Ward 25; Find a Grave memorials for Lawrence, Eugene, Robert J. and Clement E.; Lawrence’s 2020 obituary.</li>
+      <li>Ship pictures: Museum aan de Stroom (MAS), Antwerp, via Wikimedia Commons, all public domain or CC0.</li>
+      <li>Background: <a href="https://en.wikipedia.org/wiki/SS_Westernland_(1883)" target="_blank" rel="noopener">SS Westernland (1883)</a>, <a href="https://en.wikipedia.org/wiki/History_of_Over-the-Rhine" target="_blank" rel="noopener">History of Over-the-Rhine</a>, <a href="https://en.wikipedia.org/wiki/West_End,_Cincinnati" target="_blank" rel="noopener">West End, Cincinnati</a>, <a href="https://en.wikipedia.org/wiki/Price_Hill,_Cincinnati" target="_blank" rel="noopener">Price Hill, Cincinnati</a>, the 1893 British report on German emigration (German History in Documents and Images), and Cincinnati Magazine’s history of the 1917–18 anti-German campaign.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Map links search today’s Google Maps for the address as written in the old record. Some Cincinnati streets were renumbered or renamed, and many old buildings, especially in the West End, have been demolished, so a pin shows where that number is today, which may not be the original house.
+  </footer>
+</div>
+
+<script>
+const MAPS = a => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(a);
+const CIN = ", Cincinnati, OH";
+
+const PEOPLE = {
+  johnSr: {
+    name: "John Wanninger", aka: "Johann Baptist Wanninger · “Jos.(?) Wonninger” on the 1884 manifest",
+    born: 1836, died: 1890, line: true, conf: ["likely", "Bavarian origin likely"],
+    vitals: [["Born", "c. 1836, Bavaria. Probably baptized 2 Feb 1836 at Untertraubenbach near Cham"], ["Parents", "Probably Leonhard Wanninger, a smallholder, and Theres Reil"], ["Married", "Fanny (Franziska) Mayer, date and place not found"], ["Arrived", "11 June 1884, New York, on the Westernland"], ["Died", "2 May 1890, Cincinnati, aged 54. Gardener"], ["Buried", "St. Mary’s Cemetery, St. Bernard"]],
+    facts: [["Gardener by trade, both on the ship and at his death", "1884 manifest; 1890 city death record"], ["His sons’ papers name him as John Wanninger, born in Germany", "Ohio death certificates of George, William and John Jr."], ["Baptism in Untertraubenbach matches his name and age, but the link rests on a family tree", "Schorndorf parish register; FamilySearch and Geneanet trees"]],
+    addresses: [{ when: "1890", a: "839 Central Ave", note: "Home at his death · West End, near downtown" }],
+    places: ["bavaria", "westend"], crossed: true, bavarian: true,
+    impact: "John left Bavaria at about 48, an age when most emigrants were long settled. The 1880s squeeze on small farms and the pull of Fanny’s brother in Cincinnati probably decided it. In America he kept his trade, and a German-speaking city meant he could find work, shop and attend Mass without English. He arrived three months after the courthouse riot and four after the record flood of February 1884, into a city that was crowded, industrial and noisy. He had only six years there, all on Central Avenue in the West End, a district later almost entirely cleared for highways and industry."
+  },
+  fanny: {
+    name: "Fanny Wanninger", aka: "Franziska, née Mayer (also written Meier, Meyer, Maier)",
+    born: 1833, died: 1903, line: true, conf: ["doc", "Documented"],
+    vitals: [["Born", "About 25 April 1833, Bavaria (worked out from her age at death)"], ["Married", "John Wanninger"], ["Arrived", "11 June 1884, New York, on the Westernland, aged 51"], ["Widowed", "2 May 1890"], ["Died", "13 April 1903, Cincinnati, at 1927 Central Ave"], ["Buried", "St. Mary’s Cemetery, St. Bernard"]],
+    facts: [["Her brother August Mayer, a marble cutter in Cincinnati, named her sole heir and executrix", "Will dated 1 Nov 1892, probated 9 Sep 1895"], ["August was killed in a railroad accident on 28 August 1895, aged 68", "University of Cincinnati death record; coroner’s record"], ["Every child’s record gives her maiden name as Mayer, Meier or Meyer", "Ohio death certificates; 1894 church marriage; 1899 marriage license"]],
+    addresses: [{ when: "1903", a: "1927 Central Ave", note: "Home at her death · upper Central Avenue" }],
+    places: ["bavaria", "westend"], crossed: true, bavarian: true,
+    impact: "Fanny crossed the Atlantic at 51 with five children and was a widow six years later. Her brother August was very likely the reason the family chose Cincinnati, and his death in 1895 took away her last sibling there. She lived through the hard depression that began with the Panic of 1893. In 1899 her son John was living at 1935 Central Avenue, a few doors from where she died, which suggests she stayed close to him in her last years. She died in 1903, before the anti-German campaign of the First World War touched the city she had moved to."
+  },
+  eleonora: {
+    name: "Eleonora Wanninger", aka: "Possibly the daughter born about 1864",
+    born: 1864, died: null, last: 1894, tentative: true, conf: ["unproven", "Unproven"],
+    vitals: [["Born", "About 1864, if she is the daughter a family tree lists"], ["Recorded", "9 January 1894, witness at William’s wedding, St. Francis Seraph"], ["Died", "Not found"]],
+    facts: [["Signed as witness, with Joannes Zumbahlen, at William’s church wedding", "Archdiocese of Cincinnati marriage register, 1894"], ["Not on the Westernland manifest with the rest of the family", "Manifest no. 80536"]],
+    addresses: [],
+    places: ["westend"], crossed: false, bavarian: true,
+    impact: "Eleonora is known from a single signature. If she is the eldest daughter, she was about 20 in 1884 and may have crossed before or after the others, perhaps to work as a servant, which was the most common path for young German women in American cities. Her absence from the manifest and from the death records found so far leaves her story open."
+  },
+  george: {
+    name: "George Theodore Wanninger Sr.", aka: "Georg · “Jg. Wonninger, 16” on the manifest",
+    born: 1868, died: 1930, conf: ["doc", "Documented"],
+    vitals: [["Born", "18 April 1868, Bavaria (death certificate). A tree says Regensburg; not confirmed"], ["Arrived", "11 June 1884, aged 16"], ["Naturalized", "20 October 1890, Hamilton County"], ["Married", "1) Elizabeth Runge, 1892; she died 1906. 2) Dora (Hauck or Roegner; records differ), 1909"], ["Died", "29 January 1930, Cincinnati. Sheet metal worker at a galvanizing company"], ["Buried", "St. Mary’s Cemetery"]],
+    facts: [["His 1892 wedding was performed by the pastor of St. Peter’s United Evangelical Church, a Protestant congregation", "Hamilton County marriage record; archdiocese reply"], ["Sons Johann Eduard (1894–1896) and Wilhelm (b. 1899)", "Philippus Church baptism index; city death record"], ["His widow Dora lived on at 3041 McHenry Ave until at least 1955", "Cincinnati directories"]],
+    addresses: [
+      { when: "1919", a: "1624 Dudley St", note: "Directory, listed with son William, metalworker" },
+      { when: "1923–1930", a: "3041 McHenry Ave", note: "Directories and 1930 death certificate · Westwood" }
+    ],
+    places: ["westend", "westwood"], crossed: true, bavarian: true,
+    impact: "George came at 16 and became a citizen at 22, so he was a naturalized American long before the war with Germany. That spared him the 1918 registration forced on German-born men who were not citizens, but not the suspicion aimed at anyone with a German name. His trade, sheet metal and galvanizing, grew with the city’s new roofs, gutters, stoves and ductwork. He lost his first son in 1896 and his first wife in 1906. His Protestant wedding shows he moved partly outside the Catholic world of his parents. By the 1920s he had followed the city’s spread west to Westwood, a streetcar suburb of new houses. He died three months after the 1929 crash, at the start of the Great Depression."
+  },
+  augusta: {
+    name: "Augusta Wanninger Jordan", aka: "“Aug. Wonninger, 15” on the manifest",
+    born: 1869, died: 1937, conf: ["doc", "Documented"],
+    vitals: [["Born", "2 June 1869, Germany"], ["Arrived", "11 June 1884, aged 15"], ["Married", "Henry W. Jordan, license 1890"], ["Died", "5 January 1937, Cincinnati, a widow"], ["Buried", "Wesleyan Cemetery"]],
+    facts: [["Her death certificate names her parents as John Wanninger and Francis Meier, both of Germany", "Ohio death certificate, 1937"], ["Indexed as a boy on the 1884 passenger list", "National Archives index"]],
+    addresses: [{ when: "1937", a: "1401 Chase Ave", note: "Home at her death · Northside" }],
+    places: ["westend", "northside"], crossed: true, bavarian: true,
+    impact: "Augusta married young, five years after landing, to a man with an English name, and she was buried in a Protestant cemetery, so she seems to have made her life outside the German Catholic parishes. She gained the vote in 1920 at the age of 51. She died a widow during the Depression, on 5 January 1937, three weeks before the Ohio River crested at nearly 80 feet in the worst flood in the city’s history."
+  },
+  william: {
+    name: "William Wanninger", aka: "Wilhelm · “Wilh. Wonninger, 13” on the manifest",
+    born: 1871, died: 1945, line: true, conf: ["doc", "Documented"],
+    vitals: [["Born", "18 January 1871, Germany"], ["Arrived", "11 June 1884, aged 13"], ["Married", "Elizabeth Zumbahlen (1867–1947), 9 January 1894, St. Francis Seraph Church"], ["Children", "Clement (b. 1894) and John F. (1897–1974)"], ["Work", "Shoemaker for decades; hospital orderly at General Hospital by 1938"], ["Died", "3 March 1945, Cincinnati"]],
+    facts: [["Church marriage entry names his parents as Joannes Wanninger and Francisca Meier", "Archdiocese of Cincinnati register, 1894"], ["Elizabeth was the daughter of Clemens Zumbahlen and Helena Deye, which is probably where the name Clement entered the family", "Same record; the naming link is an inference"], ["In 1929, as a shoemaker of 1266 Manss Ave, he witnessed a later Wanninger immigrant’s citizenship petition", "Federal naturalization petition, 1929"]],
+    addresses: [
+      { when: "1894", a: "438 Walnut St", note: "Son Clement’s birth record · downtown, near the river" },
+      { when: "1919–1929", a: "1266 Manss Ave", note: "Directories and a 1929 court paper · East Price Hill" },
+      { when: "1938", a: "2443 Ohio Ave", note: "Directory · Clifton Heights, near the hospital" },
+      { when: "1942–1944", a: "2299 Colerain Ave", note: "Directories · Camp Washington" }
+    ],
+    places: ["downtown", "pricehill", "clifton", "campwash"], crossed: true, bavarian: true,
+    impact: "William was born the week the German Empire was founded and spent most of his working life as a shoemaker, a trade that factories steadily took over during his lifetime. He married in the heart of the German Catholic city and moved up the hill to Price Hill, a German and Irish Catholic neighbourhood reached by incline. By 1938, in his late sixties and in the Depression, he was working as an orderly at General Hospital and had moved close to it, which suggests the shoe trade no longer paid. He lived through both world wars against his birth country, saw his son and grandsons raise families in Price Hill, and died two months before the war in Europe ended."
+  },
+  johnJr: {
+    name: "John Wanninger Jr.", aka: "“Joh. Wonninger, 12” on the manifest",
+    born: 1872, died: 1950, conf: ["doc", "Documented"],
+    vitals: [["Born", "2 February 1872, Germany"], ["Arrived", "11 June 1884, aged 12"], ["Naturalized", "26 October 1893; William signed as witness"], ["Married", "Clara Collas, 25 July 1899"], ["Work", "Conductor (1899), then clerk and salesman, later insurance and real estate"], ["Died", "8 May 1950, North College Hill"], ["Buried", "Arlington Memorial Park, Mount Healthy"]],
+    facts: [["His 1899 marriage license gives his parents as John Wanninger and Fannie Meyer", "Hamilton County marriage records"], ["Applied for Social Security in 1938, giving his birthplace only as Germany", "Social Security application index"], ["Bought property in North College Hill with Clara by 1916", "Newspaper deed notice, 1916"]],
+    addresses: [
+      { when: "1899", a: "1935 Central Ave", note: "Marriage license · a few doors from his mother", q: "1935 Central Ave" + CIN },
+      { when: "1916–1950", a: "North College Hill", note: "Directories list only the suburb, not a street", q: "North College Hill, OH" },
+      { when: "1955", a: "608 Foulke St", note: "His widow Clara’s home", q: "608 Foulke St" + CIN }
+    ],
+    places: ["westend", "suburbs"], crossed: true, bavarian: true,
+    impact: "John was a conductor at 27, most likely on the streetcars that were then being electrified and were reshaping where people could live. He used that mobility himself: by 1916 he and Clara owned property in North College Hill, a young suburb north of the city, and they stayed there for over thirty years. He moved from manual work into sales, insurance and real estate, a path many second-generation families followed. He was 66 when he signed up for Social Security in 1938, one of the first generation covered by the new program."
+  },
+  clement1875: {
+    name: "Clement Wanninger", aka: "“Clem. Wonninger, 9” on the manifest",
+    born: 1875, died: null, last: 1927, conf: ["doc", "Arrival documented"],
+    vitals: [["Born", "About 1875, Germany"], ["Arrived", "11 June 1884, aged 9, the youngest"], ["Later life", "Not traced"]],
+    facts: [["No entry under his name found in Cincinnati directories 1919–1955, unless the 1926–27 “Clement, shopman” is him", "Cincinnati directories"]],
+    addresses: [{ when: "1926–1927", a: "3544 Warsaw Ave", note: "A “Clement, shopman” here may be him or his nephew Clement W. · Price Hill" }],
+    places: ["pricehill"], crossed: true, bavarian: true,
+    impact: "Clement was a boy of nine on the Westernland, young enough to grow up almost entirely American. He went to school in a city where German was still taught in public schools, and he would have been in his early forties when the language was banned from them in 1918. His later life is the biggest gap in this generation."
+  },
+  clementSr: {
+    name: "Clement William Wanninger", aka: "Clemens · Lawrence’s father",
+    born: 1894, died: 1969, line: true, conf: ["doc", "Documented"],
+    vitals: [["Born", "1 December 1894 at 438 Walnut St, Cincinnati (city birth record; some later records say 1895)"], ["Parents", "William Wanninger and Elizabeth Zumbahlen"], ["Married", "Gertrude Mayleben (born 1895 in Covington, Kentucky; died 1983)"], ["Children", "Lawrence, Eugene, Robert J., Clement E."], ["Work", "Tinner (1919), later shopman"], ["Died", "31 August 1969"]],
+    facts: [["In the 1940 census, aged 45, with Gertrude and four sons, in Ward 25", "1940 U.S. census"], ["Lived at 1272 Manss Ave for at least twenty years, next door to his parents’ old home at 1266", "Directories, 1935–1955"]],
+    addresses: [
+      { when: "1894", a: "438 Walnut St", note: "Birthplace · downtown" },
+      { when: "1919", a: "1266 Manss Ave", note: "Parents’ home · East Price Hill" },
+      { when: "1926–1927", a: "3544 Warsaw Ave", note: "“Clement, shopman”: probably him, possibly his uncle · Price Hill" },
+      { when: "1935–1955", a: "1272 Manss Ave", note: "Family home in the 1940 census · East Price Hill" }
+    ],
+    places: ["downtown", "pricehill"], crossed: false, bavarian: false,
+    impact: "Clement was the first in the line born in America. He was 22 when the United States declared war on Germany, the age at which young men of German families felt the anti-German campaign most sharply. He worked with his hands, as a tinner and shopman, and raised four sons through the Depression on the same Price Hill street where he grew up. That steadiness, two houses on Manss Avenue across forty years, was typical of Price Hill’s Catholic parish neighbourhoods. He saw the incline that once carried his family up the hill shut down in 1943, three of his sons reach military age during the Second World War, and the old West End of his grandparents cleared for the expressway. He died weeks after the first Moon landing."
+  },
+  lawrence: {
+    name: "Lawrence William Wanninger", aka: "“Lawerence” in the 1940 census",
+    born: 1922, died: 2020, line: true, conf: ["doc", "Documented"],
+    vitals: [["Born", "25 June 1922, Cincinnati"], ["Parents", "Clement W. Wanninger and Gertrude Mayleben"], ["Service", "U.S. Army veteran; listed as in the Army in 1944"], ["Married", "Mary Louise Liegibel (1923–2013) in 1946; married 67 years"], ["Died", "22 December 2020, aged 98"], ["Buried", "St. Joseph New Cemetery, Cincinnati"]],
+    facts: [["Clerk at Interstate Dispatch in 1942", "Cincinnati directory, 1942"], ["A family tree connects him to Holy Family Church, the parish of East Price Hill", "Geneanet family tree (unverified)"], ["Survived by none of his brothers, who all died 2005–2008", "2020 obituary"]],
+    addresses: [
+      { when: "1942–1944", a: "1272 Manss Ave", note: "Parents’ home · East Price Hill" },
+      { when: "1949", a: "457 Elberon Ave", note: "First home after marriage · East Price Hill" },
+      { when: "1955", a: "1038 Delhi Ave", note: "Directory" }
+    ],
+    places: ["pricehill"], crossed: false, bavarian: false,
+    impact: "Lawrence grew up in the Depression in a household of four boys, and was 19 when Pearl Harbor was attacked. He left a clerk’s job for the Army, came home, and married in 1946 at the start of the postwar boom, when the GI Bill, steady factory and office work and new houses changed what ordinary families could expect. He and Mary Louise began married life a few blocks from his parents, in the same parish world his grandparents had joined. Over 98 years he saw the city of streetcars and inclines become one of expressways and suburbs, and he lived to see the 2020 pandemic in his final year."
+  },
+  eugene: {
+    name: "Eugene Wanninger", aka: "Lawrence’s brother",
+    born: 1924, died: 2008, conf: ["doc", "Documented"],
+    vitals: [["Born", "1924, Cincinnati"], ["Died", "2008"], ["Buried", "Gate of Heaven Cemetery"]],
+    facts: [["Listed with his parents and brothers in the 1940 census", "1940 U.S. census"]],
+    addresses: [
+      { when: "1949", a: "26 Glenwood Ave", note: "Directory" },
+      { when: "1955", a: "3145 Gloss Ave", note: "Directory" }
+    ],
+    places: ["pricehill"], crossed: false, bavarian: false,
+    impact: "Eugene came of age during the Second World War and set up his own household in the postwar years, moving twice in six years as young families did when housing was short after the war. His generation was the first in the family for whom German was a heritage rather than a home language."
+  },
+  robert: {
+    name: "Robert J. Wanninger", aka: "Lawrence’s brother",
+    born: 1925, died: 2005, conf: ["doc", "Documented"],
+    vitals: [["Born", "1925, Cincinnati"], ["Died", "2005"], ["Buried", "St. Joseph Cemetery"]],
+    facts: [["Listed with his parents and brothers in the 1940 census", "1940 U.S. census"]],
+    addresses: [
+      { when: "1949", a: "303 Virginia Ave", note: "Directory" },
+      { when: "1955", a: "4232 Virginia Ave", note: "Directory, same street, another house" }
+    ],
+    places: ["pricehill"], crossed: false, bavarian: false,
+    impact: "Robert was 16 when the United States entered the Second World War, and he reached adulthood in the boom that followed. Moving along the same street between 1949 and 1955 suggests a growing family trading up within a neighbourhood they knew, a common pattern in the city’s west side in the 1950s."
+  },
+  clementE: {
+    name: "Clement E. Wanninger", aka: "Lawrence’s youngest brother",
+    born: 1933, died: 2006, conf: ["doc", "Documented"],
+    vitals: [["Born", "1933, Cincinnati"], ["Died", "2006"], ["Buried", "St. Joseph New Cemetery"]],
+    facts: [["Listed as Clement Jr. in the 1940 census, aged about 7", "1940 U.S. census"]],
+    addresses: [],
+    places: ["pricehill"], crossed: false, bavarian: false,
+    impact: "Clement was born in the worst year of the Depression and was too young for the Second World War, so his youth belonged to the 1950s: television, cars and the spread of the suburbs. He is not in the 1955 directory, perhaps because he was in military service or living with family, so no address of his own was found."
+  }
+};
+
+const WORLD = [
+  [1848, "Revolutions across the German states. Bavaria abolishes the remaining feudal dues owed by peasants."],
+  [1866, "Bavaria sides with Austria in the war against Prussia and loses."],
+  [1868, "Bavaria eases the laws that let towns stop poor people from marrying or settling."],
+  [1871, "Bavaria joins the new German Empire, proclaimed on 18 January."],
+  [1873, "A financial panic starts two decades of falling prices for farmers on both sides of the Atlantic."],
+  [1880, "German emigration rises to its largest wave, about to peak in the mid-1880s."],
+  [1884, "The family crosses from Antwerp to New York on the Westernland."],
+  [1893, "The Panic of 1893 starts one of the worst depressions in American history."],
+  [1908, "The Model T goes on sale, beginning mass car ownership."],
+  [1914, "The First World War begins in Europe."],
+  [1917, "The United States declares war on Germany in April; German-Americans come under suspicion."],
+  [1918, "Influenza pandemic; German-born non-citizens must register as enemy aliens."],
+  [1920, "Prohibition takes effect in January; women win the vote in August."],
+  [1929, "The stock market crashes; the Great Depression follows."],
+  [1935, "The Social Security Act becomes law."],
+  [1941, "The United States enters the Second World War after Pearl Harbor."],
+  [1944, "The GI Bill offers veterans college, training and home loans."],
+  [1956, "The Interstate Highway Act funds expressways through American cities."],
+  [1964, "The Civil Rights Act outlaws segregation in public places and discrimination in jobs."],
+  [1969, "Apollo 11 lands on the Moon in July."],
+  [1990, "Germany is reunified."],
+  [2001, "The September 11 attacks."],
+  [2020, "The COVID-19 pandemic."]
+];
+
+/* place keys: bavaria, westend, downtown, pricehill, westwood, northside, clifton, campwash, suburbs, all */
+const CITY = [
+  [1848, ["bavaria"], "The Cham district", "Peasants are freed from old feudal dues, but holdings stay small and are split among heirs.", "bavaria"],
+  [1861, ["bavaria"], "The railway reaches Cham", "A line through Cham to the Bohemian border links the district to Regensburg and beyond, bringing in cheaper goods and making it easier to leave.", ""],
+  [1874, ["pricehill"], "Price Hill incline opens", "A cable railway lifts passengers 350 feet from the river bottoms to Price Hill, opening the hilltop to settlement.", "pricehill"],
+  [1877, ["all"], "The canal is abandoned", "The city gives up the Miami and Erie Canal, the boundary between downtown and the German neighbourhood called Over-the-Rhine.", ""],
+  [1880, ["all"], "“Beer capital of the world”", "Cincinnati’s German breweries are at their height. Over-the-Rhine is about three-quarters German.", ""],
+  [1884, ["all"], "Flood and riot", "In February the Ohio River crests at a record 71 feet. In March a mob burns the courthouse after an unpopular verdict, and dozens die. The family arrives in June.", "arrival"],
+  [1890, ["all"], "Electric streetcars", "Horse cars give way to electric lines in the late 1880s and 1890s, and the city starts to spread up the hills and into suburbs.", "suburbs"],
+  [1918, ["all"], "The anti-German campaign", "German is removed from public schools, the library pulls German books, and streets are renamed: Bremen becomes Republic, Berlin becomes Woodrow.", "all"],
+  [1920, ["all"], "Prohibition closes the breweries", "About thirty breweries in Over-the-Rhine shut almost overnight, taking jobs and the German beer-garden culture with them.", ""],
+  [1928, ["all"], "Central Parkway", "The drained canal bed becomes Central Parkway, built over a subway that was started and never finished.", ""],
+  [1933, ["all"], "Union Terminal opens", "The city’s great Art Deco railway station opens during the Depression.", ""],
+  [1937, ["all"], "The Great Flood", "On 26 January the Ohio crests at nearly 80 feet, the highest ever. Low-lying neighbourhoods, including Camp Washington, flood.", "campwash"],
+  [1943, ["pricehill"], "The incline closes", "Buses and cars have replaced it; Price Hill is now reached by road.", "pricehill"],
+  [1959, ["westend", "downtown"], "The West End is cleared", "From 1959 to 1973 the Kenyon-Barr renewal and the I-75 expressway raze nearly 3,700 buildings and displace about 27,000 people, almost all of them Black. The stretch of Central Avenue where John and Fanny lived is transformed.", "westend"],
+  [1960, ["pricehill"], "Price Hill at its peak", "Price Hill reaches its highest population, about 49,000, before families move further out.", "pricehill"]
+];
+
+const $ = s => document.querySelector(s);
+const entry = $("#entry");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+
+/* Source for each birth, marriage and death */
+const R = { m1884: "doc-1884", m1894: "doc-1894", m1899: "doc-1899" };
+const CITES = {
+  johnSr: {
+    Born: ["Schorndorf parish baptisms, 2 Feb 1836 (Matricula, Schorndorf011, image 58). The link to the Cincinnati John rests on a family tree; his age of 54 at death fits"],
+    Married: ["No marriage record found. The children’s records name John Wanninger and Fanny Mayer as their parents, for example William’s 1894 church wedding", R.m1894],
+    Arrived: ["Manifest no. 80536", R.m1884],
+    Died: ["City of Cincinnati death record, 2 May 1890 (University of Cincinnati city cards); death notice in the Cincinnati Volksblatt, 1890 (county genealogical society index)"],
+  },
+  fanny: {
+    Born: ["Worked out from her age at death, 69 years 11 months 18 days, on her city death record"],
+    Married: ["No marriage record found; named as mother on all the children’s records", R.m1899],
+    Arrived: ["Original manifest, image 646: “Franz. Wonninger, 51”", R.m1884],
+    Died: ["City of Cincinnati death record, 13 Apr 1903 (University of Cincinnati city cards); notice in the Cincinnati Volksblatt, 1903"],
+  },
+  eleonora: {
+    Born: ["FamilySearch Family Tree lists an unnamed daughter born 1864, without a source"],
+    Recorded: ["Church marriage register, 1894", R.m1894],
+    Died: ["Nothing found"],
+  },
+  george: {
+    Born: ["Ohio death certificate, 1930 (FamilySearch record 1:1:X8RF-NVY). The only family record that says Bavaria"],
+    Arrived: ["Manifest no. 80536", R.m1884],
+    Married: ["1892: Hamilton County marriage record, book 119 (FamilySearch); the archdiocese confirmed a Protestant officiant. 1909: Ohio county marriages index, 25 Jan 1909"],
+    Died: ["Ohio death certificate, 1930 (FamilySearch record 1:1:X8RF-NVY)"],
+  },
+  augusta: {
+    Born: ["Ohio death certificate, 1937 (FamilySearch record 1:1:XZ27-GWB)"],
+    Arrived: ["Manifest no. 80536, indexed as “Aug.”", R.m1884],
+    Married: ["Hamilton County marriage license, 1890, vol. 113, no. 960 (FamilySearch)"],
+    Died: ["Ohio death certificate, 1937 (FamilySearch record 1:1:XZ27-GWB)"],
+  },
+  william: {
+    Born: ["Ohio death certificate, 1945 (FamilySearch, Ohio Deaths 1908–1953)"],
+    Arrived: ["Manifest no. 80536; the original list gives his age as 13", R.m1884],
+    Married: ["Church marriage register, p. 124, first entry of 1894", R.m1894],
+    Died: ["Ohio death certificate, 1945 (FamilySearch, Ohio Deaths 1908–1953)"],
+  },
+  johnJr: {
+    Born: ["Ohio death certificate, 1950, state file 31215 (FamilySearch); his 1938 Social Security application agrees"],
+    Arrived: ["Manifest no. 80536", R.m1884],
+    Married: ["Hamilton County Probate Court, Marriage Record vol. 141, p. 443", R.m1899],
+    Died: ["Ohio death certificate, 1950, state file 31215 (FamilySearch)"],
+  },
+  clement1875: {
+    Born: ["Worked out from his age, 9, on the original manifest", R.m1884],
+  },
+  clementSr: {
+    Born: ["City of Cincinnati birth record, 1 Dec 1894, 438 Walnut St (University of Cincinnati city cards). FamilySearch Family Tree gives 1895"],
+    Married: ["Family trees on Geneanet; the 1940 census shows Gertrude as his wife. No marriage record seen"],
+    Died: ["FamilySearch Family Tree, 31 Aug 1969. No death record seen"],
+  },
+  lawrence: {
+    Born: ["Find a Grave memorial 220197390; his 2020 obituary"],
+    Married: ["The year 1946 comes from a Geneanet family tree; “married 67 years” from Find a Grave. The license, in the county’s 1943–47 index, was not read"],
+    Died: ["Find a Grave memorial 220197390; his 2020 obituary in the Cincinnati Enquirer"],
+  },
+  eugene: {
+    Born: ["Find a Grave memorial (years only); 1940 census"],
+    Died: ["Find a Grave memorial (years only)"],
+  },
+  robert: {
+    Born: ["Find a Grave memorial (years only); 1940 census"],
+    Died: ["Find a Grave memorial (years only)"],
+  },
+  clementE: {
+    Born: ["Find a Grave memorial (years only); 1940 census, aged about 7"],
+    Died: ["Find a Grave memorial (years only)"],
+  },
+};
+function cite(id, k) {
+  const c = (CITES[id] || {})[k];
+  if (!c) return "";
+  const link = c[1] ? ` · <a href="#${c[1]}" class="doc-jump">See the record ↓</a>` : "";
+  return `<span class="cite"><b>Source</b>${esc(c[0])}${link}</span>`;
+}
+
+function chip(conf) {
+  const cls = conf[0];
+  return `<span class="chip ${cls}">${esc(conf[1])}</span>`;
+}
+
+function render(id) {
+  const p = PEOPLE[id];
+  if (!p) return;
+  const end = p.died || p.last || p.born + 30;
+  const range = `${p.born}${p.died ? "–" + p.died : "–?"}`;
+  const chips = [chip(p.conf)];
+  if (p.line) chips.push(`<span class="chip line">● Lawrence’s direct line</span>`);
+  if (p.crossed) chips.push(`<span class="chip doc">Westernland, 1884</span>`);
+
+  const vit = p.vitals.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}${cite(id, k)}</dd>`).join("");
+  const facts = p.facts.map(([f, s]) => `<li><span>${esc(f)}</span><span class="src">${esc(s)}</span></li>`).join("");
+
+  const addr = p.addresses.length
+    ? `<div class="addr">${p.addresses.map(a => `
+        <div class="addr-row">
+          <span class="when">${esc(a.when)}</span>
+          <span class="where">${esc(a.a)}<small>${esc(a.note)}</small></span>
+          <a class="map" href="${MAPS(a.q || a.a + CIN)}" target="_blank" rel="noopener" aria-label="Open ${esc(a.a)} in Google Maps">Map ↗</a>
+        </div>`).join("")}</div>
+       <p class="fineprint">Numbers may have changed since; see the note at the foot of the page.</p>`
+    : `<p class="empty">No address has been found for this person yet.</p>`;
+
+  const world = WORLD.filter(([y]) => y >= p.born && y <= end)
+    .map(([y, t]) => `<li><span class="y">${y}</span><span>${esc(t)}</span></li>`).join("");
+
+  const places = p.places;
+  const city = CITY.filter(([y, pl]) => y >= p.born && y <= end && (pl.includes("all") ? !(places.length === 1 && places[0] === "bavaria") : pl.some(x => places.includes(x))))
+    .map(([y, pl, title, t, hit]) => {
+      const here = hit && (hit === "all" || hit === "arrival" ? p.crossed || hit === "all" : places.includes(hit));
+      return `<li class="${here ? "here" : ""}"><span class="y">${y}</span><span><b>${esc(title)}.</b> ${esc(t)}</span></li>`;
+    }).join("");
+
+  const jumps = [];
+  if (p.crossed) jumps.push(`<a href="#crossing">The Westernland crossing →</a>`);
+  if (p.bavarian) jumps.push(`<a href="#bavaria">Life in Bavaria and why they left →</a>`);
+  jumps.push(`<a href="#cincinnati">Cincinnati timeline →</a>`);
+
+  entry.innerHTML = `
+    <header class="entry-head">
+      <div class="chips">${chips.join("")}</div>
+      <h3>${esc(p.name)}</h3>
+      <div class="aka">${esc(p.aka)} · <span class="mono">${range}</span></div>
+      <dl class="vitals">${vit}</dl>
+    </header>
+    <div class="block">
+      <h4>Known addresses</h4>
+      ${addr}
+    </div>
+    <div class="block">
+      <h4>What the records say</h4>
+      <ul class="facts">${facts}</ul>
+    </div>
+    <div class="block interp">
+      <span class="tag">How the times likely shaped this life · interpretation</span>
+      <p>${esc(p.impact)}</p>
+    </div>
+    <div class="block">
+      <h4>The world in their lifetime</h4>
+      <ul class="events">${world}</ul>
+    </div>
+    <div class="block">
+      <h4>Their city, changing</h4>
+      <ul class="events">${city || `<li><span class="y">—</span><span>No city changes recorded for these years.</span></li>`}</ul>
+      <p class="fineprint">● marks a change that reached a place where this person lived.</p>
+    </div>
+    <div class="jump">${jumps.join("")}</div>`;
+
+  document.querySelectorAll(".person").forEach(b => b.setAttribute("aria-pressed", b.dataset.id === id ? "true" : "false"));
+  entry.scrollTop = 0;
+}
+
+function select(id, scroll) {
+  render(id);
+  try { history.replaceState(null, "", "#" + id); } catch (e) {}
+  if (scroll && window.matchMedia("(max-width: 900px)").matches) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    entry.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+}
+
+document.querySelectorAll(".person").forEach(b => b.addEventListener("click", () => select(b.dataset.id, true)));
+
+/* Lifelines */
+(function buildLifelines() {
+  const el = $("#llEl");
+  const Y0 = 1830, Y1 = 2022;
+  const pct = y => ((y - Y0) / (Y1 - Y0) * 100).toFixed(2) + "%";
+  const ticks = [1840, 1860, 1880, 1900, 1920, 1940, 1960, 1980, 2000, 2020]
+    .map(y => `<div class="ll-tick" style="left:${pct(y)}"><span>${y}</span></div>`).join("");
+  const evs = [[1871, "Empire"], [1884, "Crossing"], [1917, "War with Germany", true], [1929, "Crash"], [1941, "WWII", true], [1959, "West End cleared"]];
+  const evHtml = evs.map(([y, l, alt]) => `<div class="ll-ev ${alt ? "alt" : ""}" style="left:${pct(y)}"><span>${l}</span></div>`).join("");
+  const order = ["fanny", "johnSr", "eleonora", "george", "augusta", "william", "johnJr", "clement1875", "clementSr", "lawrence", "eugene", "robert", "clementE"];
+  const rows = order.map(id => {
+    const p = PEOPLE[id];
+    const end = p.died || p.last;
+    const short = p.name.replace("Wanninger ", "").replace(" Wanninger", "").replace("Theodore ", "").replace(" Sr.", "");
+    const cls = p.died ? "" : "open";
+    const cross = p.crossed ? `<span class="ll-cross" style="left:${pct(1884.45)}" aria-hidden="true"></span>` : "";
+    return `<div class="ll-row"><div class="ll-name">${esc(short)}</div><div class="ll-track">
+      <button class="ll-bar ${cls}" style="left:${pct(p.born)};width:calc(${pct(end)} - ${pct(p.born)})" data-id="${id}" aria-label="${esc(p.name)}, ${p.born} to ${p.died || "unknown"}"></button>${cross}</div></div>`;
+  }).join("");
+  el.innerHTML = `<div class="lifelines-clip">
+      <div class="ll-axis"><div></div><div class="ll-track">${ticks}${evHtml}</div></div>
+      ${rows}
+    </div>`;
+  el.querySelectorAll(".ll-bar").forEach(b => b.addEventListener("click", () => {
+    select(b.dataset.id, false);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    $("#tree").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+  }));
+})();
+
+/* City timeline */
+(function buildCity() {
+  const touched = {
+    1884: "The family lands in June, months after the flood and riot.",
+    1874: "William, Clement and Lawrence later live on Price Hill.",
+    1890: "John Jr. works as a conductor in 1899 and moves to a suburb.",
+    1918: "Touches every member of the family with a German name.",
+    1937: "Augusta dies three weeks before the crest; William lives in Camp Washington a few years later.",
+    1943: "Clement’s family has lived on Price Hill for over twenty years.",
+    1959: "John and Fanny’s Central Avenue homes are in the cleared area or close to it."
+  };
+  $("#cityEl").innerHTML = CITY.map(([y, pl, title, t]) => `
+    <li><span class="y">${y}</span><span class="t"><b>${esc(title)}</b><span>${esc(t)}</span>${touched[y] ? `<em>${esc(touched[y])}</em>` : ""}</span></li>`).join("");
+})();
+
+function fromHash() {
+  const h = (location.hash || "").slice(1);
+  if (PEOPLE[h]) { render(h); return true; }
+  return false;
+}
+if (!fromHash()) render("lawrence");
+window.addEventListener("hashchange", fromHash);
+</script>
+
+</body></html>
