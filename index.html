@@ -1,3 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
 <title>The Wanninger Family</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -366,9 +377,91 @@ nav.toc a[aria-current="true"] { color: var(--slate); box-shadow: inset 0 -2px 0
 .doc-index a { color: var(--ink); }
 .to-index { font-size: 13px; }
 
+
+/* ---------- Phones first ----------
+   On a phone the tree fills the screen; choosing a person opens their entry as a full-screen sheet
+   with a back bar. Text is larger and every control is at least 44px tall. */
+.sheet-bar { display: none; }
+@media (max-width: 900px) {
+  body { font-size: 17px; }
+  .hero { padding-block: 36px 26px; }
+  section.chapter { padding-block: 44px 8px; }
+  .chapter-head p { font-size: 17px; }
+
+  nav.toc ul { padding: 2px 0; gap: 2px 20px; }
+  nav.toc a { font-size: 15px; padding: 12px 0; }
+
+  .person { min-height: 52px; padding: 9px 14px; }
+  .person .nm { font-size: 18px; }
+  .person .yr { font-size: 13px; }
+  .tree-note { font-size: 15px; }
+
+  .entry { display: none; }
+  .entry.is-open {
+    display: grid; position: fixed; inset: 0; z-index: 40; border: 0; border-radius: 0;
+    max-height: none; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+    align-content: start; gap: 22px;
+    padding: 0 max(18px, env(safe-area-inset-right, 0px)) calc(40px + env(safe-area-inset-bottom, 0px)) max(18px, env(safe-area-inset-left, 0px));
+  }
+  .sheet-bar {
+    display: flex; align-items: center; gap: 12px; position: sticky; top: 0; z-index: 3;
+    margin-left: calc(-1 * max(18px, env(safe-area-inset-left, 0px)));
+    margin-right: calc(-1 * max(18px, env(safe-area-inset-right, 0px)));
+    padding: calc(6px + env(safe-area-inset-top, 0px)) max(10px, env(safe-area-inset-right, 0px)) 6px max(10px, env(safe-area-inset-left, 0px));
+    background: var(--paper); border-bottom: 1px solid var(--rule);
+  }
+  .sheet-close { appearance: none; font: inherit; font-size: 16px; font-weight: 600; color: var(--slate); background: transparent; border: 0; min-height: 44px; padding: 0 10px; border-radius: 10px; cursor: pointer; }
+  .sheet-bar .sheet-name { font-family: var(--serif); font-size: 16px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  body.sheet-open { overflow: hidden; }
+
+  .entry-head h3 { font-size: 30px; }
+  .entry-head .aka { font-size: 15px; }
+  .vitals, .fam { font-size: 16px; }
+  .fam { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .fam dt { padding-top: 8px; }
+  .famlink, .btn-quiet { min-height: 44px; display: inline-flex; align-items: center; padding: 8px 15px; font-size: 15.5px; }
+  .portrait p { font-size: 19px; }
+  .moment p { font-size: 17.5px; }
+  .moment .src, .fineprint, .credit { font-size: 14px; }
+  .portrait .tag, .moment .tag, .eyebrow { font-size: 12.5px; }
+  ul.events li { font-size: 16.5px; grid-template-columns: 4.8em minmax(0,1fr); }
+  ul.events li .y small { font-size: 12.5px; }
+  .addr-row .when { font-size: 14px; }
+  .addr-row .where { font-size: 18px; }
+  .addr-row .where small { font-size: 14px; }
+  .addr-row a.map { min-height: 44px; display: inline-flex; align-items: center; padding: 8px 14px; font-size: 14.5px; }
+  .jump a { min-height: 44px; display: inline-flex; align-items: center; font-size: 16px; }
+  .walk { display: grid; }
+  .walk .famlink { justify-content: flex-start; }
+  .spell-why summary { min-height: 44px; display: flex; align-items: center; font-size: 15.5px; }
+  .spell-block .spelling, .spell-why p { font-size: 16px; }
+
+  .lifelines-scroll::before { content: "Swipe sideways to see the whole chart →"; position: sticky; left: 0; display: block; padding: 10px 14px 0; font-size: 13.5px; color: var(--muted); }
+  .ll-axis, .ll-row { grid-template-columns: 112px minmax(0, 1fr); }
+  .ll-track { height: 30px; }
+  .ll-bar { top: 9px; }
+  .ll-bar::before { content: ""; position: absolute; inset: -16px 0; }
+  .ll-cross { top: 5px; }
+
+  ol.stops li { font-size: 15.5px; }
+  ol.stops li .when { font-size: 13.5px; }
+  ol.stops li a { min-height: 44px; display: inline-flex; align-items: center; font-size: 15px; }
+  .doc-index li { font-size: 15.5px; padding-block: 7px; border-top: 1px solid var(--rule); }
+  .doc-index li:first-child { border-top: 0; }
+  .doc-index h4 { font-size: 12.5px; }
+  .to-index a { display: inline-flex; min-height: 44px; align-items: center; font-size: 15px; }
+  .transcript { font-size: 14px; }
+  table.manifest { font-size: 15px; }
+  table.manifest th { font-size: 12px; }
+  dl.glossary { font-size: 16px; }
+
+  .lightbox .close { min-height: 44px; padding: 10px 18px; font-size: 16px; }
+}
+
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 </style>
-
+</head>
+<body>
 <div class="wrap">
   <script>document.documentElement.lang = "en";</script>
   <a class="skip" href="#tree">Skip to the family tree</a>
@@ -2095,6 +2188,7 @@ function render(id) {
   jumps.push(`<a href="#cincinnati">Cincinnati timeline →</a>`);
 
   entry.innerHTML = `
+    <div class="sheet-bar"><button type="button" class="sheet-close" data-close>← Family tree</button><span class="sheet-name" aria-hidden="true">${esc(p.name)}</span></div>
     <header class="entry-head">
       <div class="chips">${chips.join("")}</div>
       <h3>${esc(p.name)}</h3>
@@ -2144,23 +2238,65 @@ function render(id) {
   entry.scrollTop = 0;
 }
 
+const PHONE = window.matchMedia("(max-width: 900px)");
+let sheetPushed = false, sheetOpener = null;
+function openSheet() {
+  if (!PHONE.matches || entry.classList.contains("is-open")) return;
+  const a = document.activeElement;
+  sheetOpener = a && a !== document.body && !entry.contains(a) ? a : null;
+  entry.classList.add("is-open"); document.body.classList.add("sheet-open");
+  entry.setAttribute("role", "dialog"); entry.setAttribute("aria-modal", "true");
+}
+function closeSheet(restore = true) {
+  if (!entry.classList.contains("is-open")) return;
+  entry.classList.remove("is-open"); document.body.classList.remove("sheet-open");
+  entry.removeAttribute("role"); entry.removeAttribute("aria-modal");
+  const back = sheetOpener && document.contains(sheetOpener) ? sheetOpener : document.querySelector('.person[aria-pressed="true"]');
+  sheetOpener = null; sheetPushed = false;
+  if (back && restore) { back.scrollIntoView({ block: "center" }); back.focus({ preventScroll: true }); }
+}
+function leaveSheet() {
+  if (sheetPushed) { try { history.back(); return; } catch (e) {} }
+  try { history.replaceState(null, "", "#tree"); } catch (e) {}
+  closeSheet();
+}
 function focusEntry(scrollPage) {
-  const narrow = window.matchMedia("(max-width: 900px)").matches;
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (PHONE.matches) openSheet();
+  else if (scrollPage) $("#tree").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
   entry.scrollTop = 0;
-  if (scrollPage) (narrow ? entry : $("#tree")).scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
   const h3 = entry.querySelector("h3");
   if (h3) { h3.id = "entryName"; h3.tabIndex = -1; h3.focus({ preventScroll: true }); }
 }
-function select(id, scroll) {
+function openPerson(id, scrollDesktop) {
+  const wasOpen = entry.classList.contains("is-open");
   render(id);
-  try { history.replaceState(null, "", "#" + id); } catch (e) {}
-  focusEntry(scroll && window.matchMedia("(max-width: 900px)").matches);
+  try {
+    if (PHONE.matches && !wasOpen) { history.pushState(null, "", "#" + id); sheetPushed = true; }
+    else history.replaceState(null, "", "#" + id);
+  } catch (e) {}
+  focusEntry(scrollDesktop);
 }
+function select(id, scroll) { openPerson(id, false); }
+document.addEventListener("keydown", e => {
+  if (!entry.classList.contains("is-open")) return;
+  const lb = document.querySelector(".lightbox");
+  if (lb && !lb.hidden) return;
+  if (e.key === "Escape") { e.preventDefault(); leaveSheet(); return; }
+  if (e.key === "Tab") {
+    const f = [...entry.querySelectorAll('button, a[href], summary, input:not([hidden])')].filter(x => x.offsetParent !== null || x === document.activeElement);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && (document.activeElement === first || !entry.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && (document.activeElement === last || !entry.contains(document.activeElement))) { e.preventDefault(); first.focus(); }
+  }
+});
+(PHONE.addEventListener ? PHONE.addEventListener("change", () => { if (!PHONE.matches) closeSheet(); }) : null);
 
 document.querySelectorAll(".person").forEach(b => b.addEventListener("click", () => select(b.dataset.id, true)));
 
 entry.addEventListener("click", e => {
+  if (e.target.closest("[data-close]")) { leaveSheet(); return; }
   const go = e.target.closest("[data-go]");
   if (go) {
     select(go.dataset.go, true);
@@ -2200,9 +2336,7 @@ function buildLifelines(el, { Y0, Y1, ticks, evs, rows: order, label, est = [] }
       ${rows}
     </div>`;
   el.querySelectorAll(".ll-bar").forEach(b => b.addEventListener("click", () => {
-    render(b.dataset.id);
-    try { history.replaceState(null, "", "#" + b.dataset.id); } catch (e) {}
-    focusEntry(true);
+    openPerson(b.dataset.id, true);
   }));
 }
 buildLifelines($("#llBavEl"), {
@@ -2254,7 +2388,17 @@ if (fromHash()) {
   render("lawrence");
   const h0 = entry.querySelector("h3"); if (h0) h0.id = "entryName";
 }
-window.addEventListener("hashchange", () => { if (fromHash()) focusEntry(true); });
+function onNav() {
+  if (fromHash()) { focusEntry(true); return; }
+  if (entry.classList.contains("is-open")) {
+    const t = document.getElementById((location.hash || "").slice(1));
+    const jump = t && t.id !== "tree";
+    sheetPushed = false; closeSheet(!jump);
+    if (jump) { t.scrollIntoView({ block: "start" }); if (!t.hasAttribute("tabindex")) t.tabIndex = -1; t.focus({ preventScroll: true }); }
+  }
+}
+window.addEventListener("hashchange", onNav);
+window.addEventListener("popstate", onNav);
 
 /* Say when a link opens a new tab */
 function markNewTab(root) {
@@ -2311,3 +2455,6 @@ new MutationObserver(() => markNewTab(entry)).observe(entry, { childList: true }
   });
 })();
 </script>
+
+</body>
+</html>
