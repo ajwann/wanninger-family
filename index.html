@@ -1,10 +1,8 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
 <title>The Wanninger Family</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<meta name="description" content="The Wanninger Family: a family history from Bavaria to Cincinnati, with records, lifelines and sources.">
-</head><body>
 <style>
 /* Layout: a parish-register ledger. Ivory paper, a generational tree on the left, the open "entry" for the chosen person on the right; reference chapters below. */
 :root {
@@ -12,7 +10,7 @@
   --paper: #FBFAF5;       /* raised sheet */
   --ink: #1E1D1A;
   --ink-2: #4B4A45;
-  --muted: #77756D;
+  --muted: #64625A;
   --rule: #DAD6CA;
   --slate: #34506B;       /* register ink blue: primary accent */
   --slate-tint: #E4E9EE;
@@ -107,6 +105,9 @@ section.chapter { padding-block: 56px 8px; display: grid; gap: 24px; scroll-marg
 .person[aria-pressed="true"] { background: var(--slate); border-color: var(--slate); color: var(--paper); }
 .person[aria-pressed="true"] .yr { color: color-mix(in srgb, var(--paper) 75%, transparent); }
 .person[aria-pressed="true"].direct .nm::after { background: var(--paper); }
+.spelling { font-size: 13.5px; line-height: 1.5; color: var(--ink-2); max-width: 62ch; }
+.spelling b { font-family: var(--mono); font-size: 11.5px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--slate); margin-right: 6px; }
+.spelling i { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--ink); }
 .descent { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
 .descent::before { content: ""; width: 1px; height: 18px; background: var(--slate); display: inline-block; }
 .tree-note { font-size: 13px; color: var(--muted); padding-top: 12px; border-top: 1px solid var(--rule); display: grid; gap: 8px; }
@@ -161,7 +162,12 @@ ul.events li.here .y::after { content: " ●"; font-size: 9px; vertical-align: 2
 .ll-bar { position: absolute; top: 5px; height: 12px; border-radius: 6px; background: var(--slate); opacity: .82; cursor: pointer; border: 0; padding: 0; }
 .ll-bar.open { background: repeating-linear-gradient(90deg, var(--slate) 0 6px, transparent 6px 10px); opacity: .7; }
 .ll-bar.other { background: var(--muted); opacity: .55; }
+.ll-bar.est { -webkit-mask-image: linear-gradient(90deg, transparent, #000 34px); mask-image: linear-gradient(90deg, transparent, #000 34px); }
 .ll-bar:hover, .ll-bar:focus-visible { opacity: 1; }
+.ll-block { display: grid; gap: 10px; }
+.ll-block + .ll-block { margin-top: 28px; }
+.ll-block h3 { font-size: 20px; }
+.ll-block > p { font-size: 15px; color: var(--ink-2); max-width: 66ch; }
 .ll-cross { position: absolute; top: 1px; width: 2px; height: 20px; background: var(--sage); }
 .ll-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--muted); padding: 10px 20px 4px; }
 .ll-legend i { display: inline-block; width: 18px; height: 8px; border-radius: 4px; vertical-align: 1px; margin-right: 6px; }
@@ -197,6 +203,10 @@ table.manifest td.hand { font-family: var(--serif); font-style: italic; font-siz
 .reasons li { display: grid; gap: 4px; padding: 14px 16px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--paper); }
 .reasons li b { font-family: var(--serif); font-size: 17px; font-weight: 500; }
 .reasons li span { font-size: 15px; color: var(--ink-2); }
+.parish-line { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; border-left: 2px solid var(--rule); }
+.parish-line li { position: relative; padding: 0 0 14px 20px; font-family: var(--serif); font-size: 17px; line-height: 1.55; max-width: 64ch; }
+.parish-line li::before { content: ""; position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--paper); border: 2px solid var(--slate); }
+.parish-line li b { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 500; letter-spacing: .04em; color: var(--slate); }
 .timeline { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
 .timeline li { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
 .timeline .y { font-family: var(--mono); color: var(--slate); font-size: 14px; font-variant-numeric: tabular-nums; }
@@ -239,6 +249,11 @@ figure.plate figcaption b { font-family: var(--serif); font-weight: 500; font-si
 .doc { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 24px; align-items: start; scroll-margin-top: 64px; }
 @media (max-width: 900px) { .doc { grid-template-columns: minmax(0, 1fr); } }
 .doc .imgs { display: grid; gap: 12px; min-width: 0; }
+.doc .imgs.pages { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+.doc .imgs.pages .frame { cursor: zoom-in; padding: 0; font: inherit; width: 100%; }
+.lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(20,20,18,.86); overflow: auto; padding: calc(16px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); cursor: zoom-out; }
+.lightbox img { display: block; margin: 0 auto; width: min(100%, 1000px); height: auto; background: #fff; border-radius: 6px; }
+.lightbox .close { position: sticky; top: 0; float: right; margin-bottom: 8px; background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 999px; padding: 6px 14px; font: inherit; font-size: 14px; cursor: pointer; }
 .doc .imgs .frame { display: block; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; background: #fff; }
 .doc .imgs img { display: block; width: 100%; height: auto; }
 .doc .txt { display: grid; gap: 12px; min-width: 0; }
@@ -250,17 +265,120 @@ figure.plate figcaption b { font-family: var(--serif); font-weight: 500; font-si
 .linked li { background: var(--paper); border: 1px solid var(--rule); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 4px; font-size: 14px; color: var(--ink-2); }
 .linked li b { font-family: var(--serif); font-weight: 500; font-size: 16px; color: var(--ink); }
 .linked li em { font-style: normal; font-size: 12.5px; color: var(--muted); }
+
+/* Person card: portrait, moment, family, actions */
+.entry-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.btn-quiet { appearance: none; font: inherit; font-size: 13px; font-weight: 600; color: var(--slate); background: transparent; border: 1px solid var(--rule); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.btn-quiet:hover, .btn-quiet:focus-visible { border-color: var(--slate); }
+.linkbox { font: inherit; font-family: var(--mono); font-size: 12px; width: 100%; padding: 6px 8px; border: 1px solid var(--rule); border-radius: 8px; background: var(--bg); color: var(--ink); }
+.portrait p { font-family: var(--serif); font-size: 18.5px; line-height: 1.55; color: var(--ink); max-width: 62ch; }
+.portrait .tag, .moment .tag { font-family: var(--sans); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; }
+.moment { background: var(--sage-tint); border-radius: 12px; padding: 14px 16px; display: grid; gap: 6px; }
+.moment .tag { color: var(--sage); }
+.moment p { font-family: var(--serif); font-size: 16.5px; line-height: 1.55; max-width: 62ch; }
+.moment .src { font-size: 12.5px; color: var(--muted); }
+.moment .src a { color: var(--sage); font-weight: 600; }
+.fam { display: grid; grid-template-columns: 7.5em minmax(0,1fr); gap: 8px 14px; font-size: 14.5px; margin: 0; }
+.fam dt { color: var(--muted); padding-top: 4px; }
+.fam dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; min-width: 0; }
+.famlink { appearance: none; font: inherit; font-size: 14px; color: var(--slate); background: var(--slate-tint); border: 1px solid transparent; border-radius: 999px; padding: 3px 11px; cursor: pointer; text-align: left; }
+.famlink:hover, .famlink:focus-visible { border-color: var(--slate); }
+.famtext { font-size: 14px; color: var(--ink-2); padding: 3px 0; }
+.famtext + .famtext::before, .famlink + .famtext::before { content: "· "; color: var(--muted); }
+.fam-note { font-size: 13px; color: var(--muted); grid-column: 1 / -1; }
+@media (max-width: 520px) { .fam { grid-template-columns: minmax(0,1fr); gap: 2px; } .fam dd { margin-bottom: 8px; } }
+.walk { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.walk .famlink { background: transparent; border-color: var(--rule); }
+ul.events li .y small { display: block; font-size: 11px; color: var(--muted); letter-spacing: 0; }
+abbr[title] { text-decoration: none; cursor: help; }
+
+/* Tree extras */
+.gen-theme { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--ink-2); margin-top: -4px; }
+.toggle { appearance: none; font: inherit; font-size: 13.5px; font-weight: 600; color: var(--slate); background: var(--paper); border: 1px solid var(--rule); border-radius: 999px; padding: 6px 14px; cursor: pointer; justify-self: start; }
+.toggle[aria-pressed="true"] { background: var(--slate); color: var(--paper); border-color: var(--slate); }
+
+/* Places */
+.journey-scroll { overflow-x: auto; border: 1px solid var(--rule); border-radius: 14px; background: var(--paper); }
+.journey-svg { display: block; min-width: 680px; width: 100%; height: auto; }
+.journey-svg .rail { stroke: var(--slate); stroke-width: 2.5; fill: none; }
+.journey-svg .rail.est { stroke-dasharray: 2 5; stroke-linecap: round; }
+.journey-svg .sea { stroke: var(--slate); stroke-width: 2; fill: none; stroke-dasharray: 8 6; }
+.journey-svg .stop { fill: var(--paper); stroke: var(--slate); stroke-width: 2.5; }
+.journey-svg .stop.home { fill: var(--slate); }
+.journey-svg .nm { font-family: var(--serif); font-size: 15px; fill: var(--ink); }
+.journey-svg .dt { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+.journey-svg .region { font-family: var(--sans); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; fill: var(--muted); font-weight: 600; }
+.journey-svg .bracket { stroke: var(--rule); stroke-width: 1.5; fill: none; }
+.journey-svg .sea-lbl { font-family: var(--serif); font-style: italic; font-size: 13px; fill: var(--slate); }
+ol.stops { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 10px; counter-reset: stop; }
+ol.stops li { background: var(--paper); border: 1px solid var(--rule); border-radius: var(--r); padding: 12px 14px; display: grid; gap: 3px; font-size: 14px; color: var(--ink-2); counter-increment: stop; }
+ol.stops li b { font-family: var(--serif); font-weight: 500; font-size: 17px; color: var(--ink); }
+ol.stops li b::before { content: counter(stop) ". "; color: var(--slate); font-family: var(--mono); font-size: 13px; }
+ol.stops li .when { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+ol.stops li a { font-size: 13px; font-weight: 600; color: var(--slate); text-decoration: none; justify-self: start; }
+.place-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; }
+.subhead { font-size: 20px; }
+
+/* Glossary */
+dl.glossary { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 10px 28px; margin: 0; }
+dl.glossary div { padding: 10px 0; border-top: 1px solid var(--rule); display: grid; gap: 2px; }
+dl.glossary dt { font-family: var(--serif); font-size: 17px; font-weight: 500; }
+dl.glossary dt i { font-style: italic; }
+dl.glossary dd { margin: 0; font-size: 14.5px; color: var(--ink-2); }
+
+/* Print: a clean record of the open entry and the chapters */
+@media print {
+  :root { --bg: #fff; --paper: #fff; --ink: #000; --ink-2: #222; --muted: #555; --rule: #bbb; color-scheme: light; }
+  body { background: #fff; }
+  body::before, nav.toc, .toggle, .entry-actions, .walk, .jump, .lightbox, .addr-row a.map, .fineprint { display: none !important; }
+  .tree-layout { grid-template-columns: minmax(0, 1fr); }
+  .entry { position: static; max-height: none; overflow: visible; break-before: page; }
+  section.chapter { padding-block: 24px 0; }
+  .doc, figure.plate, .moment, ol.stops li, dl.glossary div { break-inside: avoid; }
+  .journey-scroll { overflow: visible; }
+  a { color: inherit; }
+}
+
+.spell-block .spelling { font-size: 15px; max-width: 66ch; }
+.spell-why summary { cursor: pointer; font-size: 14px; color: var(--slate); margin-top: 6px; }
+.spell-why p { font-size: 14px; color: var(--ink-2); max-width: 66ch; margin: 8px 0 0; }
+.spell-why i, .spell-block i { font-family: var(--serif); font-style: italic; }
+@media print { .spell-why[open] summary, .spell-why summary { display: none; } .spell-why > p { display: block; } }
+/* Accessibility and navigation */
+.vh { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: max(16px, env(safe-area-inset-left, 0px)); top: calc(8px + env(safe-area-inset-top, 0px)); z-index: 20; background: var(--slate); color: var(--paper); padding: 8px 14px; border-radius: 999px; font-size: 14px; text-decoration: none; transform: translateY(-160%); }
+.skip:focus { transform: none; }
+nav.toc a[aria-current="true"] { color: var(--slate); box-shadow: inset 0 -2px 0 var(--slate); }
+@media (max-width: 760px) {
+  nav.toc ul { scrollbar-width: thin; padding-right: 28px; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); }
+  nav.toc ul.at-end { -webkit-mask-image: none; mask-image: none; }
+}
+.entry h3:focus { outline: none; }
+.entry h3:focus-visible { outline: 2px solid var(--slate); outline-offset: 4px; }
+.lightbox img { cursor: auto; }
+.doc-index { background: var(--paper); border: 1px solid var(--rule); border-radius: 14px; padding: 18px clamp(16px, 3vw, 24px); display: grid; gap: 14px; }
+.doc-index h3 { font-size: 17px; margin: 0; }
+.doc-index .groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 14px 28px; }
+.doc-index h4 { margin: 0 0 6px; font-family: var(--sans); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.doc-index ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.doc-index li { display: grid; grid-template-columns: 3.6em minmax(0, 1fr); gap: 8px; font-size: 14px; }
+.doc-index li span { font-family: var(--mono); font-size: 13px; color: var(--slate); font-variant-numeric: tabular-nums; }
+.doc-index a { color: var(--ink); }
+.to-index { font-size: 13px; }
+
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 </style>
 
 <div class="wrap">
+  <script>document.documentElement.lang = "en";</script>
+  <a class="skip" href="#tree">Skip to the family tree</a>
   <header class="hero">
     <div class="eyebrow">A family history · Upper Palatinate to Cincinnati</div>
     <h1>The <em>Wanninger</em> Family</h1>
-    <p class="lede">Four generations, from a smallholder’s cottage near Cham in Bavaria to the hillside streets of Price Hill: the line that leads to Lawrence W. Wanninger (1922–2020).</p>
+    <p class="lede">Twelve generations, from farmers in the Bavarian countryside near Cham in the 1640s to the hillside streets of Price Hill: the line that leads to Lawrence W. Wanninger (1922–2020).</p>
     <div class="hero-meta">
-      <span><b>13</b> people</span>
-      <span><b>30</b> recorded addresses</span>
+      <span><b id="nPeople">30</b> people</span>
+      <span><b id="nAddr">26</b> recorded addresses</span>
       <span>Crossed on the <b>Westernland</b>, arriving New York <b>11 June 1884</b></span>
     </div>
   </header>
@@ -272,10 +390,14 @@ figure.plate figcaption b { font-family: var(--serif); font-weight: 500; font-si
       <li><a href="#crossing">The crossing</a></li>
       <li><a href="#bavaria">Bavaria</a></li>
       <li><a href="#cincinnati">Cincinnati</a></li>
+      <li><a href="#places">Places</a></li>
       <li><a href="#documents">Documents</a></li>
+      <li><a href="#glossary">Glossary</a></li>
       <li><a href="#sources">Sources</a></li>
     </ul>
   </nav>
+
+  <main id="main">
 
   <section class="chapter" id="tree">
     <div class="chapter-head">
@@ -293,17 +415,101 @@ figure.plate figcaption b { font-family: var(--serif); font-weight: 500; font-si
     <div class="tree-layout">
       <div class="tree" id="treeEl">
         <div class="gen">
-          <div class="gen-label"><span class="roman">I</span><span class="desc">Born in Bavaria · emigrated as parents, 1884</span></div>
+          <div class="gen-label"><span class="roman">I</span><span class="desc">Unteraigen, near Cham · recorded 1640–1665</span></div>
+          <p class="gen-theme">Farmers through the Thirty Years’ War</p>
           <div class="couple">
-            <button class="person direct" data-id="johnSr"><span class="nm">John Wanninger</span><span class="yr">1836–1890</span></button>
+            <button class="person direct" data-id="georgU"><span class="nm">Georg Wäning</span><span class="yr"><abbr title="floruit: the years they appear in records">fl.</abbr> 1640–1665</span></button>
             <span class="amp">&amp;</span>
-            <button class="person direct" data-id="fanny"><span class="nm">Fanny (Mayer)</span><span class="yr">c.1833–1903</span></button>
+            <button class="person direct" data-id="magdalenaU"><span class="nm">Magdalena</span><span class="yr"><abbr title="floruit: the years they appear in records">fl.</abbr> 1640–1643</span></button>
           </div>
         </div>
         <div class="gen">
-          <div class="gen-label"><span class="roman">II</span><span class="desc">Their children · crossed as teenagers and boys, 1884</span></div>
+          <div class="descent">Son of Georg &amp; Magdalena</div>
+          <div class="gen-label"><span class="roman">II</span><span class="desc">Unteraigen, near Cham · married 1665</span></div>
+          <p class="gen-theme">Rebuilding at Unteraigen after the war</p>
+          <div class="couple">
+            <button class="person direct" data-id="johannU"><span class="nm">Johann Wäninger</span><span class="yr"><abbr title="born">b.</abbr> 1643</span></button>
+            <span class="amp">&amp;</span>
+            <button class="person direct" data-id="elisabethU"><span class="nm">Elisabeth (Stelzl)</span><span class="yr"><abbr title="married">m.</abbr> 1665</span></button>
+          </div>
+        </div>
+        <div class="gen">
+          <div class="descent">Son of Johann &amp; Elisabeth</div>
+          <div class="gen-label"><span class="roman">III</span><span class="desc">Penting, near Cham · married 1689 and 1699</span></div>
+          <p class="gen-theme">Married a widow of Penting and farmed there</p>
+          <div class="couple">
+            <button class="person direct" data-id="thomasP"><span class="nm">Thomas Wäninger</span><span class="yr"><abbr title="married">m.</abbr> 1689</span></button>
+            <span class="amp">&amp;</span>
+            <button class="person" data-id="annaP"><span class="nm">Anna (Veldtbauer)</span><span class="yr"><abbr title="married">m.</abbr> 1689</span></button>
+            <span class="amp">&amp;</span>
+            <button class="person" data-id="mariaK"><span class="nm">Maria (Knod)</span><span class="yr"><abbr title="married">m.</abbr> 1699</span></button>
+          </div>
+        </div>
+        <div class="gen">
+          <div class="descent">Son of Thomas, by Anna or by Maria</div>
+          <div class="gen-label"><span class="roman">IV</span><span class="desc">Penting, near Cham · married 1722</span></div>
+          <p class="gen-theme">Farming at Penting, as his father had</p>
+          <div class="couple">
+            <button class="person direct" data-id="georg"><span class="nm">Georg Waninger</span><span class="yr"><abbr title="born">b.</abbr> 1696 or 1701</span></button>
+            <span class="amp">&amp;</span>
+            <button class="person direct" data-id="dorothea"><span class="nm">Dorothea</span><span class="yr"><abbr title="married">m.</abbr> 1722</span></button>
+          </div>
+        </div>
+        <div class="gen">
+          <div class="descent">Son of Georg &amp; Dorothea</div>
+          <div class="gen-label"><span class="roman">V</span><span class="desc">Penting, near Cham · married 1747</span></div>
+          <p class="gen-theme">Half-farmers at Penting</p>
+          <div class="couple">
+            <button class="person direct" data-id="benedikt"><span class="nm">Benedikt Wanninger</span><span class="yr">1724–?</span></button>
+            <span class="amp">&amp;</span>
+            <button class="person direct" data-id="barbara"><span class="nm">Barbara (Häbl)</span><span class="yr"><abbr title="married">m.</abbr> 1747</span></button>
+          </div>
+        </div>
+        <div class="gen">
+          <div class="descent">Son of Benedikt &amp; Barbara</div>
+          <div class="gen-label"><span class="roman">VI</span><span class="desc">Untertraubenbach · married 1774</span></div>
+          <p class="gen-theme">Settling in Susanna’s village</p>
+          <div class="couple">
+            <button class="person direct" data-id="thomas"><span class="nm">Thomas Wanninger</span><span class="yr"><abbr title="married">m.</abbr> 1774</span></button>
+            <span class="amp">&amp;</span>
+            <button class="person direct" data-id="susanna"><span class="nm">Susanna (Greßlinger)</span><span class="yr"><abbr title="married">m.</abbr> 1774</span></button>
+          </div>
+        </div>
+        <div class="gen">
+          <div class="descent">Son of Thomas &amp; Susanna</div>
+          <div class="gen-label"><span class="roman">VII</span><span class="desc">Untertraubenbach · married 1801</span></div>
+          <p class="gen-theme">Cottagers through the Napoleonic years</p>
+          <div class="couple">
+            <button class="person direct" data-id="michael"><span class="nm">Michael Wanninger</span><span class="yr"><abbr title="married">m.</abbr> 1801</span></button>
+            <span class="amp">&amp;</span>
+            <button class="person direct" data-id="margaretha"><span class="nm">Margaretha (Winkel)</span><span class="yr"><abbr title="married">m.</abbr> 1801</span></button>
+          </div>
+        </div>
+        <div class="gen">
+          <div class="descent">Son of Michael &amp; Margaretha</div>
+          <div class="gen-label"><span class="roman">VIII</span><span class="desc">Untertraubenbach · married 1830</span></div>
+          <p class="gen-theme">A cottage at house no. 15</p>
+          <div class="couple">
+            <button class="person direct" data-id="leonhard"><span class="nm">Leonhard Wanninger</span><span class="yr">1807–?</span></button>
+            <span class="amp">&amp;</span>
+            <button class="person direct" data-id="theresia"><span class="nm">Theresia (Reil)</span><span class="yr"><abbr title="married">m.</abbr> 1830</span></button>
+          </div>
+        </div>
+        <div class="gen">
+          <div class="descent">Probably the son of Leonhard &amp; Theresia, linked by a family tree</div>
+          <div class="gen-label"><span class="roman">IX</span><span class="desc">Born in Bavaria · emigrated as parents, 1884</span></div>
+          <p class="gen-theme">Crossing with five children, near fifty</p>
+          <div class="couple">
+            <button class="person direct" data-id="johnSr"><span class="nm">John Wanninger</span><span class="yr">1836–1890</span></button>
+            <span class="amp">&amp;</span>
+            <button class="person direct" data-id="fanny"><span class="nm">Fanny (Mayer)</span><span class="yr"><abbr title="circa: about">c.</abbr>1833–1903</span></button>
+          </div>
+        </div>
+        <div class="gen">
+          <div class="gen-label"><span class="roman">X</span><span class="desc">Their children · crossed as teenagers and boys, 1884</span></div>
+          <p class="gen-theme">Growing up American in Cincinnati</p>
           <div class="people">
-            <button class="person tentative" data-id="eleonora"><span class="nm">Eleonora</span><span class="yr">c.1864–?</span></button>
+            <button class="person tentative" data-id="eleonora"><span class="nm">Eleonora</span><span class="yr"><abbr title="circa: about">c.</abbr>1864–?</span></button>
             <button class="person" data-id="george"><span class="nm">George T.</span><span class="yr">1868–1930</span></button>
             <button class="person" data-id="augusta"><span class="nm">Augusta</span><span class="yr">1869–1937</span></button>
             <button class="person direct" data-id="william"><span class="nm">William</span><span class="yr">1871–1945</span></button>
@@ -313,14 +519,16 @@ figure.plate figcaption b { font-family: var(--serif); font-weight: 500; font-si
         </div>
         <div class="gen">
           <div class="descent">Son of William &amp; Elizabeth (Zumbahlen)</div>
-          <div class="gen-label"><span class="roman">III</span><span class="desc">Born in Cincinnati</span></div>
+          <div class="gen-label"><span class="roman">XI</span><span class="desc">Born in Cincinnati</span></div>
+          <p class="gen-theme">A tinner raising four sons on Manss Avenue</p>
           <div class="people">
             <button class="person direct" data-id="clementSr"><span class="nm">Clement W. Wanninger</span><span class="yr">1894–1969</span></button>
           </div>
         </div>
         <div class="gen">
           <div class="descent">Sons of Clement &amp; Gertrude (Mayleben)</div>
-          <div class="gen-label"><span class="roman">IV</span><span class="desc">The brothers</span></div>
+          <div class="gen-label"><span class="roman">XII</span><span class="desc">The brothers</span></div>
+          <p class="gen-theme">Four brothers of the war generation</p>
           <div class="people">
             <button class="person direct" data-id="lawrence"><span class="nm">Lawrence W.</span><span class="yr">1922–2020</span></button>
             <button class="person" data-id="eugene"><span class="nm">Eugene</span><span class="yr">1924–2008</span></button>
@@ -329,12 +537,12 @@ figure.plate figcaption b { font-family: var(--serif); font-weight: 500; font-si
           </div>
         </div>
         <div class="tree-note">
-          <p>A dashed outline means the person’s place in the family rests on thin evidence. William’s other son, John F. (1897–1974), and the families of George and John Jr. are left out to keep the tree on Lawrence’s line.</p>
+          <p>The first eight generations come from the Schorndorf parish registers, each linked to the next by name in a record. A Georg Wäninger of Unteraigen whose wife was Barbara in 1669 and 1670 may be the first Georg married again, or a younger man of the same name. Thomas had two sons named Georg, in 1696 and 1701, so which one married in 1722, and so whether Anna or Maria was his mother, is not settled. Only the step from Leonhard to John Sr. rests on a family tree rather than a record. A dashed outline means the person’s place in the family rests on thin evidence. William’s other son, John F. (1897–1974), and the families of George and John Jr. are left out to keep the tree on Lawrence’s line.</p>
           <p>Only historical addresses of people who have died are shown, from records dated 1884 to 1955.</p>
         </div>
       </div>
 
-      <article class="entry" id="entry" aria-live="polite"></article>
+      <article class="entry" id="entry" aria-labelledby="entryName"></article>
     </div>
   </section>
 
@@ -344,11 +552,26 @@ figure.plate figcaption b { font-family: var(--serif); font-weight: 500; font-si
       <h2>Who lived through what</h2>
       <p>Each bar runs from birth to death. The green tick marks June 1884, when the Bavarian-born family landed in New York. Select a bar to open that person’s entry.</p>
     </div>
-    <div class="lifelines-scroll"><div class="lifelines" id="llEl"></div>
-      <div class="ll-legend">
-        <span><i style="background:var(--slate)"></i>Lifespan</span>
-        <span><i style="background:repeating-linear-gradient(90deg,var(--slate) 0 6px,transparent 6px 10px)"></i>End date unknown (bar ends at last record)</span>
-        <span><i style="background:var(--sage);width:3px;height:14px"></i>Arrival, 1884</span>
+    <div class="ll-block">
+      <h3>In Bavaria, 1600 to 1900</h3>
+      <p>The direct line, by generation, from the parish books near Cham. Few deaths have been found yet, so most of these bars end at the person’s last record, and a faded start means the year of birth is an estimate.</p>
+      <div class="lifelines-scroll"><div class="lifelines" id="llBavEl"></div>
+        <div class="ll-legend">
+          <span><i style="background:repeating-linear-gradient(90deg,var(--slate) 0 6px,transparent 6px 10px)"></i>Birth (or estimate) to last record</span>
+          <span><i style="background:linear-gradient(90deg,transparent,var(--slate))"></i>Year of birth estimated</span>
+          <span><i style="background:var(--slate)"></i>Birth to death</span>
+          <span><i style="background:var(--sage);width:3px;height:14px"></i>Arrival, 1884</span>
+        </div>
+      </div>
+    </div>
+    <div class="ll-block">
+      <h3>In Cincinnati, 1830 to today</h3>
+      <div class="lifelines-scroll"><div class="lifelines" id="llEl"></div>
+        <div class="ll-legend">
+          <span><i style="background:var(--slate)"></i>Lifespan</span>
+          <span><i style="background:repeating-linear-gradient(90deg,var(--slate) 0 6px,transparent 6px 10px)"></i>End date unknown (bar ends at last record)</span>
+          <span><i style="background:var(--sage);width:3px;height:14px"></i>Arrival, 1884</span>
+        </div>
       </div>
     </div>
   </section>
@@ -436,7 +659,7 @@ figure.plate figcaption b { font-family: var(--serif); font-weight: 500; font-si
             <li class="est"><span class="d">late May 1884</span><span><b>By rail west to Antwerp</b><span class="k est">Estimate</span><small>Probably through the Rhineland, one to two days.</small></span></li>
             <li class="est"><span class="d">c. 30 May–1 Jun 1884</span><span><b>Sail from Antwerp</b><span class="k est">Estimate</span><small>Worked back from the arrival: about 3,400 nautical miles at an average of 12 to 14 knots is 10 to 12 days. No departure record was found.</small></span></li>
             <li><span class="d">11 Jun 1884</span><span><b>Arrive New York, land at Castle Garden</b><span class="k exact">Exact</span><small>Manifest no. 80536, National Archives index. <a href="#doc-1884">See the record ↓</a></small></span></li>
-            <li class="est"><span class="d">c. 13–15 Jun 1884</span><span><b>By rail to Cincinnati</b><span class="k est">Estimate</span><small>A day or two by train. John Jr.’s 1893 naturalization says he came to the United States “about 13 June 1884”.</small></span></li>
+            <li class="est"><span class="d">c. 13–15 Jun 1884</span><span><b>By rail to Cincinnati</b><span class="k est">Estimate</span><small>A day or two by train. John Jr.’s 1893 naturalization says he came “on or about the 13 day of June 1884”; George’s says 11 June, the landing day. <a href="#doc-1893">See the record ↓</a></small></span></li>
           </ul>
         </div>
       </div>
@@ -445,15 +668,33 @@ figure.plate figcaption b { font-family: var(--serif); font-weight: 500; font-si
 
   <section class="chapter" id="bavaria">
     <div class="chapter-head">
-      <div class="eyebrow">Bavaria · 1830s to 1884</div>
-      <h2>A smallholder’s son near Cham, and why the family left</h2>
-      <p>John’s baptism, if the link holds, puts the family’s roots in the Upper Palatinate, in eastern Bavaria close to the Bohemian border.</p>
+      <div class="eyebrow">Bavaria · 1640 to 1884</div>
+      <h2>Eight generations near Cham, and why the family left</h2>
+      <p>The parish books place the family in one small corner of the Upper Palatinate, in eastern Bavaria close to the Bohemian border, from the 1640s to John’s generation.</p>
     </div>
     <div class="two">
       <div class="prose">
+        <h3>The line in the parish books <span class="chip doc" style="vertical-align:4px">Documented</span></h3>
+        <p>The registers of Schorndorf parish, which begin in 1639, trace the line through eight generations, each linked to the next by name in a record. In two and a half centuries the family moved only a few kilometres: from Unteraigen to Penting in 1689, and from Penting to Untertraubenbach about 1774. All nineteen entries are in <a href="#doc-1640">Documents</a>.</p>
+        <ol class="parish-line">
+          <li><b>1640–1643 · Unteraigen</b>Georg Wäning and Magdalena have Anna and Johann baptized, in the last decade of the Thirty Years’ War.</li>
+          <li><b>1665–1695 · Unteraigen</b>Johann marries Elisabeth Stelzl of Thierling and farms at Unteraigen. Their son Thomas is baptized in 1669.</li>
+          <li><b>1689–1713 · Penting</b>Thomas marries Anna Veldtbauer, a widow, and farms at Penting. After her death he marries Maria Knod. He has a son Georg in 1696 and a Johann Georg in 1701.</li>
+          <li><b>1722–1747 · Penting</b>One of those two Georgs, and it is not settled which, marries Dorothea, a widow, and farms at Penting. Their son Benedikt is baptized in 1724.</li>
+          <li><b>1747–1774 · Penting</b>Benedikt marries Barbara Häbl, a shoemaker’s daughter from the village. By 1774 they are half-farmers.</li>
+          <li><b>1774–1801 · Untertraubenbach</b>Their son Thomas marries Susanna Greßlinger of Untertraubenbach, and the family settles in her village.</li>
+          <li><b>1801–1830 · Untertraubenbach</b>Michael Wanninger and Margaretha Winkel marry as cottagers. Their son Leonhard is born in 1807.</li>
+          <li><b>1830–1836 · Untertraubenbach</b>Leonhard, a cottager, marries Theres Reil. Their son Johann Baptist is baptized at house no. 15 in 1836.</li>
+        </ol>
+        <p>Penting is a small church village now in the municipality of Schorndorf, about 3.5 km from Untertraubenbach; these books are those of the Untertraubenbach branch of Schorndorf parish, which covered both villages.</p>
+
         <h3>Where John probably came from <span class="chip likely" style="vertical-align:4px">Likely</span></h3>
-        <p>The parish register of Schorndorf records the baptism of Johann Baptist Wanninger on 2 February 1836 at Untertraubenbach, house no. 15. His father Leonhard was a <i>Söldner</i>, the holder of a <i>Sölde</i>: a cottage with a small piece of land, usually too little to feed a family without extra work. His mother was Theres Reil. An older brother, Michael, was born in 1831 and married at home in 1866. A family tree made by others links this Johann to the Cincinnati gardener of the same age, and the dates fit, but no record yet ties the two together.</p>
+        <p>The last step rests on a family tree rather than a record. Johann Baptist Wanninger was baptized on 2 February 1836 at Untertraubenbach, house no. 15. His father Leonhard was a <i>Söldner</i>, the holder of a <i>Sölde</i>: a cottage with a small piece of land, usually too little to feed a family without extra work. His mother was Theres Reil, and an older brother, Michael, was born in 1831 and married at home in 1866. A family tree made by others links this Johann to the Cincinnati gardener of the same age, and the dates fit, but no record yet ties the two together.</p>
         <p>The family’s children were not found in the baptism books of a dozen parishes around Cham or in Regensburg, so they were probably born somewhere else in Bavaria. George’s 1930 death certificate is the only family record that names Bavaria, and none names a town.</p>
+
+        <h3>Two and a half centuries on the land <span class="label-est">Interpretation</span></h3>
+        <p>The registers’ own words for the family show their land shrinking. Johann, Thomas and Georg are each called a farmer, <i>agricola</i>, between 1689 and 1747. Benedikt and Barbara are half-farmers in 1774, and from Michael’s wedding in 1801 the family are cottagers. Bavarian farms usually passed whole to one child, so the others had to marry into a holding, as Thomas and Georg both seem to have done by marrying widows, or make do with less. By the time John was born, his father held a cottage and a small piece of land.</p>
+        <p>The earlier generations also lived through harder times. Georg and Magdalena raised their children in the Thirty Years’ War. The country around Cham had passed to Bavaria in 1628, and Swedish armies, plague and soldiers quartered on farms emptied holdings across the region before peace came in 1648. Thomas farmed at Penting when Austria occupied Bavaria from 1704 and crushed a peasants’ rising in 1705. Leonhard was born in 1807, a year after Bavaria became a kingdom and a year before it abolished serfdom.</p>
 
         <h3>Daily life <span class="label-est">Typical for the region</span></h3>
         <p>Untertraubenbach sits in the Regen valley among small farming villages. In the decades John grew up, life followed the parish church and the farm year: rye, oats, potatoes and flax on small fields, a cow or a few goats, winter work spinning, weaving or cutting wood. Sons of cottagers like Leonhard often became farmhands, day labourers or craftsmen, because the family plot could not be split again. A trained gardener, as John was in Cincinnati, could find work on estates, in towns, or in market gardens supplying them.</p>
@@ -464,7 +705,7 @@ figure.plate figcaption b { font-family: var(--serif); font-weight: 500; font-si
       </div>
       <ul class="reasons">
         <li><b>A relative already in Cincinnati</b><span>Fanny’s brother August Mayer, a marble cutter, lived in Cincinnati and left her everything in his 1892 will. Most emigrants followed someone they knew, and this is the most likely reason they chose that city.</span></li>
-        <li><b>No land to inherit</b><span>A younger son of a cottager had little prospect of owning a farm. Contemporary reports put land hunger and low rural wages at the top of the reasons Germans left.</span></li>
+        <li><b>No land to inherit</b><span>The registers show the family’s holding shrinking, from farmers in the 1600s to cottagers by 1801. A younger son of a cottager had little prospect of owning a farm, and contemporary reports put land hunger and low rural wages at the top of the reasons Germans left.</span></li>
         <li><b>Falling farm prices</b><span>From the 1870s, cheap grain from America and Russia pushed prices down across Europe, squeezing small holders and the people who worked for them.</span></li>
         <li><b>Sons near military age</b><span>George was 16 and William 13. Leaving before the boys were called up for three years’ service was a common motive in the 1880s. This is a general pattern, not something recorded for this family.</span></li>
         <li><b>Part of the largest wave</b><span>German emigration surged after 1880 to its highest level ever. Almost three million Germans left between 1862 and 1890, most of them for the United States.</span></li>
@@ -482,13 +723,430 @@ figure.plate figcaption b { font-family: var(--serif); font-weight: 500; font-si
     <ol class="timeline" id="cityEl"></ol>
   </section>
 
+  <section class="chapter" id="places">
+    <div class="chapter-head">
+      <div class="eyebrow">Places · 1640 to the 1950s</div>
+      <h2>From Unteraigen to Price Hill</h2>
+      <p>Three villages a few kilometres apart near Cham held the family for almost 250 years. Then, in one summer, they went to Antwerp, across the Atlantic and on to Cincinnati.</p>
+    </div>
+
+    <div class="journey-scroll">
+      <svg class="journey-svg" viewBox="0 0 820 170" role="img" aria-labelledby="jTitle">
+        <title id="jTitle">Route of the family, not to scale: Unteraigen in the 1640s, Penting from 1689, Untertraubenbach from 1774, by rail to Antwerp in May 1884, by sea to New York on 11 June 1884, then Cincinnati’s West End and later Price Hill.</title>
+        <path class="rail" d="M40 80 H200"/>
+        <path class="rail est" d="M200 80 H330"/>
+        <path class="sea" d="M330 80 C 390 60, 420 100, 450 80 S 510 60, 570 80"/>
+        <path class="rail est" d="M570 80 H680"/>
+        <path class="rail" d="M680 80 H770"/>
+        <circle class="stop home" cx="40" cy="80" r="7"/><circle class="stop home" cx="120" cy="80" r="7"/><circle class="stop home" cx="200" cy="80" r="7"/>
+        <circle class="stop" cx="330" cy="80" r="6"/><circle class="stop" cx="570" cy="80" r="6"/>
+        <circle class="stop home" cx="680" cy="80" r="7"/><circle class="stop home" cx="770" cy="80" r="7"/>
+        <text class="nm" x="40" y="52" text-anchor="middle">Unteraigen</text><text class="dt" x="40" y="36" text-anchor="middle">1640s</text>
+        <text class="nm" x="120" y="112" text-anchor="middle">Penting</text><text class="dt" x="120" y="128" text-anchor="middle">1689</text>
+        <text class="nm" x="200" y="52" text-anchor="middle">Untertraubenbach</text><text class="dt" x="200" y="36" text-anchor="middle">1774</text>
+        <text class="nm" x="330" y="112" text-anchor="middle">Antwerp</text><text class="dt" x="330" y="128" text-anchor="middle">May 1884</text>
+        <text class="sea-lbl" x="450" y="52" text-anchor="middle">Westernland · about 11 days</text>
+        <text class="nm" x="570" y="112" text-anchor="middle">New York</text><text class="dt" x="570" y="128" text-anchor="middle">11 June 1884</text>
+        <text class="nm" x="680" y="52" text-anchor="middle">West End</text><text class="dt" x="680" y="36" text-anchor="middle">1884</text>
+        <text class="nm" x="770" y="112" text-anchor="middle">Price Hill</text><text class="dt" x="770" y="128" text-anchor="middle">by 1919</text>
+        <path class="bracket" d="M28 150 V156 H212 V150"/><text class="region" x="120" y="168" text-anchor="middle">Near Cham, Bavaria</text>
+        <path class="bracket" d="M668 150 V156 H782 V150"/><text class="region" x="725" y="168" text-anchor="middle">Cincinnati</text>
+      </svg>
+    </div>
+    <p class="fineprint">A sketch, not to scale. Dotted lines are legs by rail that no record describes; the dashed line is the sea crossing.</p>
+
+    <ol class="stops">
+      <li><b>Unteraigen</b><span class="when">1640s to 1689</span><span>Georg, Johann and the young Thomas farm here.</span><a href="https://www.google.com/maps/search/?api=1&query=Unteraigen%2C+93489+Schorndorf%2C+Germany" target="_blank" rel="noopener" aria-label="Map of Unteraigen, opens in a new tab">Map ↗</a></li>
+      <li><b>Penting</b><span class="when">1689 to about 1774</span><span>Thomas marries into Penting; three generations farm here.</span><a href="https://www.google.com/maps/search/?api=1&query=Penting%2C+93489+Schorndorf%2C+Germany" target="_blank" rel="noopener" aria-label="Map of Penting, opens in a new tab">Map ↗</a></li>
+      <li><b>Untertraubenbach</b><span class="when">1774 to 1884</span><span>Four generations of cottagers, ending with John and Fanny.</span><a href="https://www.google.com/maps/search/?api=1&query=Untertraubenbach%2C+93413+Cham%2C+Germany" target="_blank" rel="noopener" aria-label="Map of Untertraubenbach, opens in a new tab">Map ↗</a></li>
+      <li><b>Antwerp</b><span class="when">about 30 May 1884</span><span>The family boards the Red Star Line’s Westernland.</span><a href="https://www.google.com/maps/search/?api=1&query=Red+Star+Line+Museum%2C+Antwerp%2C+Belgium" target="_blank" rel="noopener" aria-label="Map of Antwerp, opens in a new tab">Map ↗</a></li>
+      <li><b>New York</b><span class="when">11 June 1884</span><span>Landed at Castle Garden, the immigration station of the day.</span><a href="https://www.google.com/maps/search/?api=1&query=Castle+Clinton+National+Monument%2C+New+York%2C+NY" target="_blank" rel="noopener" aria-label="Map of New York, opens in a new tab">Map ↗</a></li>
+      <li><b>Central Avenue, West End</b><span class="when">by 1890 to 1903</span><span>John dies at no. 839 in 1890; Fanny at no. 1927 in 1903.</span><a href="https://www.google.com/maps/search/?api=1&query=839+Central+Ave%2C+Cincinnati%2C+OH" target="_blank" rel="noopener" aria-label="Map of Central Avenue, West End, opens in a new tab">Map ↗</a></li>
+      <li><b>Manss Avenue, Price Hill</b><span class="when">by 1919 to the 1950s</span><span>William at no. 1266, then Clement and his sons next door at no. 1272.</span><a href="https://www.google.com/maps/search/?api=1&query=1266+Manss+Ave%2C+Cincinnati%2C+OH" target="_blank" rel="noopener" aria-label="Map of Manss Avenue, Price Hill, opens in a new tab">Map ↗</a></li>
+    </ol>
+
+    <h3 class="subhead">The places, then and now</h3>
+    <div class="place-gallery">
+      <figure class="plate">
+        <img src="img/place-untertraubenbach-urkataster.jpg" width="660" height="425" alt="Hand-coloured survey map of Untertraubenbach on the River Regen, about 1830, with the castle shaded red and numbered village plots" loading="lazy">
+        <figcaption><b>Untertraubenbach, about 1830</b><span>The village on Bavaria’s first land survey, made in the years Leonhard married. The castle is shaded red; around it are the numbered plots of the villagers.</span><span class="credit">Königreich Bayern, Urkataster · public domain · <a href="https://commons.wikimedia.org/wiki/File:Schloss_Untertraubenbach.PNG" target="_blank" rel="noopener">Wikimedia Commons ↗</a></span></figcaption>
+      </figure>
+      <figure class="plate">
+        <img src="img/place-untertraubenbach-church.jpg" width="1100" height="825" alt="The church tower of Untertraubenbach seen over trees across the River Regen" loading="lazy">
+        <figcaption><b>Untertraubenbach on the Regen</b><span>The village church tower over the river meadows, as it looks today. The family lived here from 1774 until they left in 1884.</span><span class="credit">Photo by Mboesch, 2015 · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Regen-regentalaue-untertraubenbach-kirche.JPG" target="_blank" rel="noopener">Wikimedia Commons ↗</a></span></figcaption>
+      </figure>
+      <figure class="plate">
+        <img src="img/place-cham-1910.jpg" width="1100" height="684" alt="Coloured postcard of the market square of Cham with its church tower, about 1910" loading="lazy">
+        <figcaption><b>Cham, the market town, about 1910</b><span>The market square of the district town, a short walk from Untertraubenbach, on a postcard from a generation after the family left.</span><span class="credit">Postcard, unknown photographer · public domain · <a href="https://commons.wikimedia.org/wiki/File:AK_-_Cham_-_Marktplatz_-_1910.jpg" target="_blank" rel="noopener">Wikimedia Commons ↗</a></span></figcaption>
+      </figure>
+      <figure class="plate">
+        <img src="img/place-otr-vine.jpg" width="1100" height="825" alt="A row of restored nineteenth-century brick buildings on Vine Street in Cincinnati" loading="lazy">
+        <figcaption><b>Over-the-Rhine, Cincinnati</b><span>The German quarter the family arrived into. William married at St. Francis Seraph here in 1894. Most of these buildings stood in their day.</span><span class="credit">Photo by Warren LeMay, 2017 · CC0 · <a href="https://commons.wikimedia.org/wiki/File:Vine_Street,_Over-the-Rhine,_Cincinnati,_OH_(27228447137).jpg" target="_blank" rel="noopener">Wikimedia Commons ↗</a></span></figcaption>
+      </figure>
+      <figure class="plate">
+        <img src="img/place-pricehill-incline-1906.jpg" width="900" height="1116" alt="Black-and-white photograph of the Price Hill incline railway climbing a wooded hillside, about 1906" loading="lazy">
+        <figcaption><b>The Price Hill incline, about 1906</b><span>The cable railway that carried people up the hill to Price Hill, where William, Clement and Lawrence later lived. It closed in 1943.</span><span class="credit">Detroit Publishing Co. · public domain · <a href="https://commons.wikimedia.org/wiki/File:Price_hill_incline_1906.jpg" target="_blank" rel="noopener">Wikimedia Commons ↗</a></span></figcaption>
+      </figure>
+    </div>
+
+  </section>
+
   <section class="chapter" id="documents">
     <div class="chapter-head">
       <div class="eyebrow">Documents</div>
       <h2>The records behind the dates</h2>
-      <p>These are the records that can be shown here: a family upload, two public court and government records, and the archives’ own index. Others can only be linked, because they sit behind a sign-in or their terms don’t allow copying. They are listed at the end.</p>
+      <p>These are the records that can be shown here: Bavarian parish registers shared under an open licence, public court and government records, the archives’ own index, and a church entry sent to the family. Others can only be linked, because they sit behind a sign-in or their terms don’t allow copying. They are listed at the end.</p>
     </div>
+    <nav class="doc-index" id="doc-index" aria-labelledby="docIndexH">
+      <h3 id="docIndexH">Find a record</h3>
+      <div class="groups">
+        <div><h4>Unteraigen and Penting, 1640–1724</h4><ol><li><span>1640</span><a href="#doc-1640">Baptism of Anna, daughter of Georg Wäning and Magdalena</a></li><li><span>1643</span><a href="#doc-1643">Baptism of Johann, son of Georg Wäning and Magdalena</a></li><li><span>1665</span><a href="#doc-1665">Marriage of Johann Wäninger and Elisabeth Stelzl</a></li><li><span>1669</span><a href="#doc-1669">Baptism of Thomas, son of Johann Wäninger and Elisabeth</a></li><li><span>1670</span><a href="#doc-1670">Baptism of Barbara Stelzl, with a Wäninger godmother</a></li><li><span>1689</span><a href="#doc-1689">Marriage of Thomas Wäninger, naming his parents</a></li><li><span>1695</span><a href="#doc-1695">Marriage of Barbara, daughter of Johann Wäninger</a></li><li><span>1696</span><a href="#doc-1696">Baptism of Georg, son of Thomas Wäninger</a></li><li><span>1699</span><a href="#doc-1699">Second marriage of Thomas Wäninger</a></li><li><span>1701</span><a href="#doc-1701">Baptism of Johann Georg, son of Thomas Wäninger</a></li><li><span>1713</span><a href="#doc-1713">Thomas Wäninger, witness at a Penting wedding</a></li><li><span>1722</span><a href="#doc-1722">Marriage of Georg Wanninger and Dorothea</a></li><li><span>1724</span><a href="#doc-1724">Baptism of Benedikt Wanninger</a></li></ol></div>
+        <div><h4>Penting and Untertraubenbach, 1747–1836</h4><ol><li><span>1747</span><a href="#doc-1747">Marriage of Benedikt Wanninger and Barbara Häbl</a></li><li><span>1774</span><a href="#doc-1774">Marriage of Thomas Wanninger and Susanna Greßlinger</a></li><li><span>1801</span><a href="#doc-1801">Marriage of Michael Wanninger and Margaretha Winkel</a></li><li><span>1807</span><a href="#doc-1807">Baptism of Leonhard Wanninger</a></li><li><span>1830</span><a href="#doc-1830">Marriage of Leonhard Wanninger and Theresia Reil</a></li><li><span>1836</span><a href="#doc-1836">Baptism of Johann Baptist Wanninger</a></li></ol></div>
+        <div><h4>The crossing and Cincinnati, 1884–1899</h4><ol><li><span>1884</span><a href="#doc-1884">Westernland passenger list, manifest no. 80536</a></li><li><span>1890</span><a href="#doc-1890">Naturalization record, Hamilton County Probate Court</a></li><li><span>1890</span><a href="#doc-1890m">Marriage license and return, Hamilton County Probate Court</a></li><li><span>1892</span><a href="#doc-1892">Marriage license and return, Hamilton County Probate Court</a></li><li><span>1893</span><a href="#doc-1893">Naturalization record, Hamilton County Probate Court</a></li><li><span>1894</span><a href="#doc-1894">Church marriage register, St. Francis Seraph</a></li><li><span>1895</span><a href="#doc-1895">Will of August Mayer, Hamilton County Probate Court</a></li><li><span>1899</span><a href="#doc-1899">Marriage license application, Hamilton County Probate Court</a></li></ol></div>
+        <div><h4>Leads, not yet tied to the line</h4><ol><li><span>1743</span><a href="#doc-1743">Leonhard Waninger, witness at a wedding</a></li><li><span>1781</span><a href="#doc-1781">Anna Wanninger, godmother</a></li></ol></div>
+      </div>
+    </nav>
     <div class="docs">
+      <article class="doc" id="doc-1640">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1640-baptism-anna.jpg" data-full="img/record-1640-baptism-anna.jpg" width="1000" height="783" alt="Two pages of a Latin baptism register for 1640, ruled into columns of four-line entries; Anna’s baptism is the fifth entry in the right-hand column of the right page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1640 · Johann’s older sister, a daughter of Lawrence’s 9× great-grandparents</div>
+          <h3>Baptism of Anna, daughter of Georg Wäning and Magdalena</h3>
+          <p>The fifth entry in the right-hand column of page 15, under the year 1640 and the month of December; the day is hard to read. The book sets each baptism out in four lines: P for the father, M for the mother, F for the child and P again for the godparent. Anna’s parents are Georg Wäning of Unteraigen and Magdalena, and her godparents were Johann Mayr of Zürling(?) and his wife Anna. This is the oldest Wanninger record found, from the second year of the oldest surviving book of the parish.</p>
+          <div class="transcript">Schorndorf001, image 10 · December 1640
+Pater  Georg Wäning de Undraign (Unteraigen)
+Mater  Magdalena
+Filia  Anna
+Patrinus  Joannes Mayr de Zürling(?) una cum uxore nomine Anna
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf001, image 10. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf001/?pg=10" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1643">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1643-baptism-johann.jpg" data-full="img/record-1643-baptism-johann.jpg" width="1000" height="783" alt="Two pages of a Latin baptism register for 1642 and 1643, ruled into columns of four-line entries; Johann’s baptism is the first entry at the top of the right page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1643 · Lawrence’s 8× great-grandfather, and his 9× great-grandparents</div>
+          <h3>Baptism of Johann, son of Georg Wäning and Magdalena</h3>
+          <p>The first entry on page 25, under the year 1643, headed the 9th of the month. It falls between entries for 13 January and 1 March, so it is probably February. Johann’s parents are Georg Wäning of Unteraigen and Magdalena, and his godfather was the same Johann Mayr of Zürling(?) who stood for his sister Anna in 1640; children were often named for a godparent. This is the Johann who married Elisabeth Stelzl in 1665 and was Thomas’s father.</p>
+          <div class="transcript">Schorndorf001, image 15 · the 9th, early 1643
+Pater  Georg Wäning de Undtraign (Unteraigen)
+Mater  Magdalena
+Filius  Joannes
+Patrinus  Joannes Mayr de Zürling(?)
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf001, image 15. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf001/?pg=15" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1665">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1665-marriage-johann.jpg" data-full="img/record-1665-marriage-johann.jpg" width="1000" height="783" alt="Two pages of a marriage register for 1665; the marriage of Johann Wäninger and Elisabeth Stelzl is the first entry on the right page, written in German" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1665 · Lawrence’s 8× great-grandparents, and his 9× great-grandparents</div>
+          <h3>Marriage of Johann Wäninger and Elisabeth Stelzl</h3>
+          <p>The first entry on page 117, headed 24 April, under the year 1665; it is written in German rather than Latin. Johann Wäninger, single, the legitimate son of Georg Wäninger and Magdalena his wife at Unteraigen, married Elisabeth, the legitimate daughter of Johann Stelzl and Katharina his wife, of Thierling. The witnesses were Johann Ebl(?) of Schorndorf and Christoph Freindl(?). The entry confirms what the parish’s typed index said, gives Elisabeth’s maiden name, and joins Johann’s baptism to the Johann of Thomas’s records.</p>
+          <div class="transcript">Schorndorf001, image 61 · 24 April 1665
+Sponsus  Johann Wäninger, ledig Standts, Georgen Wäningers und Magdalena seiner Hausfrauen ehelicher Sohn zu Undter Aigen
+Sponsa  Elisabetha, Johann Stelzl und Katharina seiner Hausfrauen eheliche Tochter von Thierling
+Testes  Johann Ebl(?) zu Schorndorf; Christoph Freindl(?)
+In German</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf001, image 61. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf001/?pg=61" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1669">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1669-baptism-thomas.jpg" data-full="img/record-1669-baptism-thomas.jpg" width="1000" height="755" alt="Two pages of a Latin baptism register for 1669, written as running lines; Thomas’s baptism is the first entry under April, low on the left page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1669 · Lawrence’s 7× great-grandfather</div>
+          <h3>Baptism of Thomas, son of Johann Wäninger and Elisabeth</h3>
+          <p>The first entry under April, low on the left page; the day in the margin reads 6 but is not certain. Thomas, the legitimate son of Johann Wäninger and Elisabeth, a married couple, was baptized, and his godfather was Thomas Steiner(?). This is the Thomas who married at Penting in 1689. Higher on the same page, in February, Barbara, wife of Georg Wäninger in Unteraigen, stood godmother to another child.</p>
+          <div class="transcript">Schorndorf002, image 9 · 6(?) April 1669
+Huic baptizatus est Thomas fil. legit. Joannis Wäninger et Elisabethae coniugum.
+Patrinus Thomas Steiner(?)
+Same page, February: Patrina Barbara, Georgi Wäningers in Undtraign uxor
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf002, image 9. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf002/?pg=9" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1670">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1670-baptism-barbara-stelzl.jpg" data-full="img/record-1670-baptism-barbara-stelzl.jpg" width="1000" height="755" alt="Two pages of a Latin baptism register for 1669 and 1670; the 10 January 1670 baptism of Barbara, daughter of Johann Stelzl, is low on the right page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1670 · Elisabeth’s sister, and a Wäninger godmother</div>
+          <h3>Baptism of Barbara Stelzl, with a Wäninger godmother</h3>
+          <p>The 10 January entry, under the heading for 1670, low on the right page. Barbara, the legitimate daughter of Johann Stelzl(?) and Katharina, a married couple of Thierling(?), was baptized; these are Elisabeth’s parents, so Barbara was very likely her younger sister. The godmother was Barbara, wife of Georg Wäninger in Unteraigen. In 1640 and 1643 Georg’s wife was Magdalena, so either Georg married again or this is a younger Georg of the same village, perhaps Johann’s brother. The record does not say which.</p>
+          <div class="transcript">Schorndorf002, image 10 · 10 January 1670 · Thierling(?)
+Huic baptizata est Barbara fil. legit. Joannis Stelzl(?) et Catharinae coniugum zu Tirling(?).
+Patrina Barbara, Georgii Wäninger in Undtaign uxor
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf002, image 10. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf002/?pg=10" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1689">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1689-marriage-thomas.jpg" data-full="img/record-1689-marriage-thomas.jpg" width="1000" height="736" alt="Two pages of a Latin marriage register for 1689, with the marriage of Thomas Wäninger and the widow Anna Veldtbauer low on the left page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1689 · Lawrence’s 7× great-grandfather and 8× great-grandparents</div>
+          <h3>Marriage of Thomas Wäninger, naming his parents</h3>
+          <p>The entry headed “Penting” and May, low on the left page, under the heading for 1689; the day is hard to read. Thomas, a young unmarried man, the legitimate son of Johann Wäninger, a farmer, and his wife Elisabeth, married Anna Veldtbauer, a widow of Penting. His parents’ village is written “Undriegn”, which reads best as Unteraigen; his sister’s 1695 entry below spells it out as “lower Aign”. Both witnesses, Johann Drasl(?) and Johann Weber, were farmers from the same village as Thomas. With his baptism in 1669, it is one of two records that name Thomas’s parents.</p>
+          <div class="transcript">Schorndorf008, image 81 · May 1689 · Penting
+Matrimonium coram facie Ecclesiae celebravit honestus juvenis Thomas,
+Joannis Wäningers agricolae de Undriegn (Unteraigen) et Elisabethae coniugum filius legitimus,
+cum honesta sponsa sua Anna Veldtbaurin, vidua de Penting
+Witnesses Joannes Drasl(?) and Joannes Weber, farmers de Undriegn
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf008, image 81. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf008/?pg=81" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1695">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1695-marriage-barbara.jpg" data-full="img/record-1695-marriage-barbara.jpg" width="1000" height="736" alt="Two pages of a Latin marriage register for 1694 to 1696, with the marriage of Barbara, daughter of Johann Wäninger, near the top of the right page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1695 · Thomas’s sister</div>
+          <h3>Marriage of Barbara, daughter of Johann Wäninger</h3>
+          <p>The second entry on the right page, headed with a village that reads as Wulting and the 12th of October; the year is 1695 from its place in the book. David Hungrab(?), a widower and farmer there, married Barbara, the legitimate daughter of Johann Wäninger, a farmer “de inferiore Aign”, Lower Aign, and his wife Elisabeth. That wording is what makes Unteraigen the best reading for Thomas’s “Undriegn”. The same parents named in both entries make Barbara Thomas’s sister.</p>
+          <div class="transcript">Schorndorf008, image 84 · 12 October 1695 · Wulting(?)
+Groom honestus viduus David Hungrab(?), agricola loci, a widower
+Bride Barbara, daughter of Joannes Wäninger, agricola de inferiore Aign (Unteraigen), and Elisabeth
+Witnesses Joannes Schiarr(?) of Wulting(?) and Wolfgang Mündinger(?) of Traubenbach
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf008, image 84. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf008/?pg=84" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1696">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1696-baptism-georg.jpg" data-full="img/record-1696-baptism-georg.jpg" width="1000" height="736" alt="Two pages of a Latin baptism register for 1696 and 1697, with the 3 August baptism of Georg, son of Thomas Wäninger, as the first entry on the left page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1696 · a son of Lawrence’s 7× great-grandfather</div>
+          <h3>Baptism of Georg, son of Thomas Wäninger</h3>
+          <p>The first entry on the left page, headed “Penting, 3 August”. Georg, the son of Thomas Wäninger, a farmer, and his wife Anna, was baptized with Georg Fürtl, a farmer of Rieth, as godfather. The year is not written on this page; the entries run on from 1696, and the right page starts 1697. The very next entry, at Rieth on 16 August, has Thomas Wäninger of Penting as godfather to a son of the same Georg Fürtl. This Georg is one of the two candidates for the Georg who married in 1722.</p>
+          <div class="transcript">Schorndorf008, image 25 · 3 August 1696 · Penting
+Baptizatus est Georgius, Thomae Wäninger agricolae et Annae coniugum filius
+Godfather Georgius Fürtl, agricola (farmer) de Rieth
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf008, image 25. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf008/?pg=25" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1699">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1699-marriage-thomas.jpg" data-full="img/record-1699-marriage-thomas.jpg" width="1000" height="736" alt="Two pages of a Latin marriage register for 1698 and 1699, with the marriage of the widower Thomas Wäninger and Maria Knod as the last entry on the left page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1699 · Lawrence’s 7× great-grandfather</div>
+          <h3>Second marriage of Thomas Wäninger</h3>
+          <p>The last entry on the left page, headed “Penting, 4 May”, under the heading for 1699. Thomas Wäninger, a farmer there and a widower, married Maria, the legitimate daughter of Johann Knod, a farmer, and his late wife Anna. Her home village is hard to read. The witnesses, Johann Haux(?) and Simon A(?), were farmers of Penting. The record shows that Thomas’s first wife, Anna, whom he married in 1689, had died by then.</p>
+          <div class="transcript">Schorndorf008, image 86 · 4 May 1699 · Penting
+Honestus viduus Thomas Wäninger, rusticus loci (farmer there), a widower
+married Maria, daughter of Joannes Knod, rusticus in Mamatsfeld(?), and his wife Anna, deceased
+Witnesses Joannes Haux(?) and Simon A(?), farmers of Penting
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf008, image 86. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf008/?pg=86" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1701">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1701-baptism-johann-georg.jpg" data-full="img/record-1701-baptism-johann-georg.jpg" width="1000" height="736" alt="Two pages of a Latin baptism register for 1700 and 1701, with the 21 March 1701 baptism of Johann Georg, son of Thomas Wäninger, in the middle of the right page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1701 · a son of Lawrence’s 7× great-grandfather</div>
+          <h3>Baptism of Johann Georg, son of Thomas Wäninger</h3>
+          <p>The entry headed “Penting, 21 March”, in the middle of the right page, under the heading for 1701. Johann Georg, the son of Thomas Wäninger, a farmer, and his wife Maria, was baptized with Georg Fürtl, the innkeeper at the Pfahl, as godfather. Both of Thomas’s Georgs had a godfather named Georg Fürtl. Reusing a name like this often meant the first child had died, which would make this Johann Georg the one who married in 1722, but no burial record has been found to confirm it.</p>
+          <div class="transcript">Schorndorf008, image 30 · 21 March 1701 · Penting
+Baptizatus est Joannes Georgius, Thomae Wäninger agricolae et Mariae coniugum filius
+Godfather Georgius Fürtl, Wirth (innkeeper) am Pfahl(?)
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf008, image 30. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf008/?pg=30" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1713">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1713-witness-thomas.jpg" data-full="img/record-1713-witness-thomas.jpg" width="1000" height="736" alt="Two pages of a Latin marriage register for 1713, with a wedding at the top of the right page that names Thomas Wäninger of Penting as a witness" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1713 · Lawrence’s 7× great-grandfather</div>
+          <h3>Thomas Wäninger, witness at a Penting wedding</h3>
+          <p>The first entry on the right page, headed Penting and late May 1713. The bride and groom are not Wanningers. A witness at the end of the entry is Thomas Wäninger, a farmer in Penting, so he was still living and farming there in 1713. It is the last record of him found so far. The day reads as the 27th or 29th.</p>
+          <div class="transcript">Schorndorf008, image 95 · late May 1713 · Penting
+Witness: Thomas Wäninger, col. (farmer) in Penting
+The couple’s names are hard to read and are not Wanningers
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf008, image 95. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf008/?pg=95" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1722">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1722-marriage-georg.jpg" data-full="img/record-1722-marriage-georg.jpg" width="1000" height="736" alt="Two pages of a Latin marriage register for 1721 and 1722, with the marriage of Georg Wäninger and the widow Dorothea in the middle of the right page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1722 · Lawrence’s 6× great-grandparents</div>
+          <h3>Marriage of Georg Wanninger and Dorothea</h3>
+          <p>The entry headed “Penting”, in the middle of the right page. Georg Wäninger, a farmer, married Dorothea, a widow. The surname after her name looks like Stainhirsch, which was probably her first husband’s. The witnesses, Georg Koch and Johann Aßum, were farmers, both in Penting. The month is written “8bris”, the old way of writing October, though the first figure is hard to read. The entry does not name either person’s parents. </p>
+          <div class="transcript">Schorndorf008, image 99 · 12 October(?) 1722 · Penting
+Copulatus est Georgius Wäninger, col. (farmer)
+cum Dorothea Stainhirsch(?), vidua (widow)
+Witnesses Georgius Koch(?) and Joannes Aßum(?), farmers, both in Penting
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf008, image 99. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf008/?pg=99" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1724">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1724-baptism-benedikt.jpg" data-full="img/record-1724-baptism-benedikt.jpg" width="1000" height="736" alt="Two pages of a Latin baptism register for 1724, with the 21 March baptism of Benedictus Fabianus Wäninger as the last entry on the left page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1724 · Lawrence’s 5× great-grandfather</div>
+          <h3>Baptism of Benedikt Wanninger</h3>
+          <p>The last entry on the left page, headed “Penting, 21 March”. Benedictus Fabianus, the legitimate son of Georg Wäninger, a farmer, and his wife Dorothea, was baptized with Fabian Feldbauer, a farmer there, as godfather. The godfather’s name explains Benedikt’s second name.</p>
+          <div class="transcript">Schorndorf008, image 63 · 21 March 1724 · Penting
+Bapt. Benedictus Fabianus
+son of Georgius Wäninger, col. (farmer), and Dorothea, his wife
+Godfather Fabianus Feldbauer, farmer there
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf008, image 63. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf008/?pg=63" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1747">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1747-marriage-benedikt.jpg" data-full="img/record-1747-marriage-benedikt.jpg" width="1000" height="791" alt="Two pages of a Latin marriage register for 1746 and 1747, with the 11 January 1747 marriage of Benedikt Waninger and Barbara at the top of the right page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1747 · Lawrence’s 5× great-grandparents</div>
+          <h3>Marriage of Benedikt Wanninger and Barbara Häbl</h3>
+          <p>The first entry of 1747, at the top of the right page. On 11 January Benedikt, son of Georg Waninger, a farmer in Penting, and Dorothea, married Barbara, daughter of Mathias Häbl, a shoemaker in Penting, and Maria. The abbreviation after Barbara’s parents seems to mark them as deceased. The witnesses, Johann Dendorffer and Thomas K., were farmers in Penting. This is the record that names Georg and Dorothea as Benedikt’s parents.</p>
+          <div class="transcript">Schorndorf009, image 87 · 11 January 1747
+Sponsus Benedictus · father Georgius Waninger, rusticus (farmer) in Penting · mother Dorothea
+Sponsa Barbara · father Mathias Häbl (best reading), sutor (shoemaker) in Penting · mother Maria
+Witnesses Joannes Dendorffer and Thomas K., farmers in Penting
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf009, image 87. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf009/?pg=87" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1774">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1774-marriage-thomas.jpg" data-full="img/record-1774-marriage-thomas.jpg" width="1000" height="791" alt="Two pages of a Latin marriage register for May 1774, with the marriage of Thomas Wanninger and Susanna Greßlinger as the second entry on the left page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1774 · Lawrence’s 4× great-grandparents</div>
+          <h3>Marriage of Thomas Wanninger and Susanna Greßlinger</h3>
+          <p>The second entry on the left page, with “Untertraubenbach” in the margin. Thomas is the son of Benedikt Wanninger, a half-farmer at Penting, and his wife Barbara, both still living. Susanna is the daughter of Georg Greßlinger, a cottager at Untertraubenbach, and his wife Magdalena. The day reads as the 17th or the 12th of May.</p>
+          <div class="transcript">Schorndorf009, image 96 · May 1774
+Thomas, son of Benedikt Wänninger, half-farmer (½ colonus) in Penting, and Barbara, both living
+Susanna, daughter of Georg Greßlinger, Söldner in Untertraubenbach, and Magdalena
+In Latin. The surname Greßlinger is a best reading</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf009, image 96. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf009/?pg=96" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1801">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1801-marriage-michael.jpg" data-full="img/record-1801-marriage-michael.jpg" width="1000" height="847" alt="Two pages of a Latin parish register from Untertraubenbach, 1801, with the marriage of Michael Wanninger and Margaretha Winkel on the right-hand page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1801 · Lawrence’s 3× great-grandparents</div>
+          <h3>Marriage of Michael Wanninger and Margaretha Winkel</h3>
+          <p>On 20 May 1801 Michael Wanninger, a young man newly settled as a cottager at Untertraubenbach, married Margaretha, daughter of the cottager Valentin Winkel. Michael’s parents are given as Thomas Wanninger, cottager there, and Susanna. It is the right-hand page, middle entry, with “Mich. Waninger” in the margin. Michael and Margaretha are the parents named for Leonhard below.</p>
+          <div class="transcript">Schorndorf010, image 135 · 20 May 1801 · Untertraubenbach
+Michael Wanninger, juvenis, new Söldner at Untertraubenbach
+son of Thomas Wanninger, Söldner there, and Susanna
+Margaretha, daughter of Valentin Winkel, Söldner there, and Elisabeth
+In Latin. Some names in the bride’s line are hard to read</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf010, image 135. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf010/?pg=135" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1807">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1807-baptism-leonhard.jpg" data-full="img/record-1807-baptism-leonhard.jpg" width="1000" height="847" alt="Two pages of a German baptism register from Untertraubenbach, 1807, with a row for Leonard Wäninger near the middle of the left page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1807 · Lawrence’s 2× great-grandfather</div>
+          <h3>Baptism of Leonhard Wanninger</h3>
+          <p>The row for “Leonard Wäninger”, a legitimate son, near the middle of the left page. His father is Michael Wäninger, a Catholic cottager at Traubenbach, and his mother Margaretha Winkler. On the right page the birth reads as the 29th and the baptism the 30th. The month looks like July in this book, while Leonhard’s 1830 marriage entry gives his birth as 29 June 1807.</p>
+          <div class="transcript">Schorndorf010, image 69 · 1807 · Traubenbach, Landgericht Cham
+Leonard Wäninger · father Michael Wäninger, Catholic, Söldner
+Mother Margaretha, daughter of Valentin Winkler
+Born the 29th, baptized the 30th; the month reads as July here</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf010, image 69. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf010/?pg=69" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1830">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1830-marriage-leonhard.jpg" data-full="img/record-1830-marriage-leonhard.jpg" width="1000" height="822" alt="Two pages of a Latin marriage register, with the 27 January 1830 marriage of Leonhard Wanninger and Theresia Reil at the bottom of the left page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1830 · John Sr.’s parents</div>
+          <h3>Marriage of Leonhard Wanninger and Theresia Reil</h3>
+          <p>On 27 January 1830 Leonhard, a new cottager in Traubenbach, married Theresia, daughter of Joseph Reil, cottager at Traubenbach no. 14. The entry names Leonhard as the son of Michael Wäninger and Margaretha, daughter of Valentin Winkel, and says he was born on 29 June 1807. It is the last entry on the left page and runs onto the next page.</p>
+          <div class="transcript">Schorndorf011, image 117 · 27 Jan 1830
+Leonhardus, new domuncularius in Traubenbach
+son of Michael Wäninger and Margaretha, daughter of Valentin Winkel
+born 29 June 1807
+Theresia, daughter of Joseph Reil, Traubenbach no. 14
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf011, image 117. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf011/?pg=117" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1836">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1836-baptism-johann-baptist.jpg" data-full="img/record-1836-baptism-johann-baptist.jpg" width="1000" height="822" alt="Two pages of a German baptism register for 1836, with the February entry for Johann Bapt. Wäninger in the middle of the left page" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1836 · Bavaria, John Sr.’s baptism <span class="chip likely" style="vertical-align:1px">Likely him</span></div>
+          <h3>Baptism of Johann Baptist Wanninger</h3>
+          <p>The first February entry of 1836: Johann Bapt. Wäninger, a legitimate son, born at Untertraubenbach no. 15 to Leonhard Wäninger, a cottager, and Theres Reil. The right page gives the birth and baptism as 2 February. A family tree made by others links him to the John Wanninger who died in Cincinnati in 1890, aged 54; the dates fit, but no record yet ties the two together.</p>
+          <div class="transcript">Schorndorf011, image 58 · February 1836
+Joh. Bapt. Wäninger · legitimate son
+Father Leonhard Wäninger, Söldner
+Untertraubenbach no. 15 · mother Theres Reil
+Born and baptized 2 February</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf011, image 58. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf011/?pg=58" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
       <article class="doc" id="doc-1884">
         <div class="imgs">
           <div class="frame"><img src="img/record-1884-aad-header.png" width="1540" height="178" alt="National Archives index row: manifest 80536, ship Westernland, from Antwerp, arrived 06/11/1884, New York" loading="lazy"></div>
@@ -502,6 +1160,7 @@ figure.plate figcaption b { font-family: var(--serif); font-weight: 500; font-si
 Indexed: Jos. · G. · Aug. · Wilh. · Joh. · Clem.
 Original list: Jos.(?) 44 gardener · Franz. 51 · Jg. 16 · Aug. 15 · Wilh. 13 · Joh. 12 · Clem. 9</div>
           <p class="doc-links">Screenshots of a U.S. National Archives database, a public domain record. Search it yourself: <a href="https://aad.archives.gov/aad/display-partial-records.jsp?dt=3279&amp;cat=GP44&amp;tf=F&amp;bc=%2Csl%2Cfd&amp;q=80536&amp;btnSearch=Search" target="_blank" rel="noopener">ship and date ↗</a> · <a href="https://aad.archives.gov/aad/display-partial-records.jsp?dt=3160&amp;sc=31072%2C31073%2C31074%2C31080%2C31109&amp;cat=GP44&amp;tf=F&amp;bc=%2Csl%2Cfd&amp;q=&amp;btnSearch=Search&amp;as_alq=&amp;as_anq=&amp;as_epq=&amp;as_woq=&amp;nfo_31072=V%2C8%2C1900&amp;op_31072=0&amp;txt_31072=80536&amp;nfo_31073=V%2C25%2C1900&amp;op_31073=0&amp;txt_31073=WONMINGER&amp;nfo_31074=V%2C25%2C1900&amp;op_31074=0&amp;txt_31074=&amp;nfo_31080=V%2C3%2C1900&amp;cl_31080=&amp;nfo_31109=V%2C3%2C1900&amp;cl_31109=" target="_blank" rel="noopener">the six passengers ↗</a>. The original list images (New York Passenger Lists, 1820–1891, images 645–646) need a free FamilySearch sign-in.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
         </div>
       </article>
 
@@ -519,6 +1178,7 @@ Elisabeth Zumbahlen, daughter of Clemens Zumbahlen and Helena Deye
 After three banns · Witnesses: Joannes Zumbahlen, Eleonora Wanninger
 P. Vincent Trost, O.S.F.</div>
           <p class="doc-links">Source: Archdiocese of Cincinnati archives, marriage register p. 124. The archdiocese named the church as St. Francis Seraph in its reply.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
         </div>
       </article>
 
@@ -537,19 +1197,181 @@ Clara Collas, 20 · 145 Peete St · born Cincinnati
 Father Robt Collas · mother Elizabeth Reuter
 Sworn 25 July 1899</div>
           <p class="doc-links">A public court record. To view the original, open the court’s <a href="https://probatect.org/ArchiveSearchForms/bukmarriages.aspx" target="_blank" rel="noopener">volume and page search ↗</a>, choose Marriage Record and enter volume 141, page 443.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
         </div>
       </article>
+      <article class="doc" id="doc-1890">
+        <div class="imgs pages">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/record-1890-naturalization-george-p1.jpg" width="1000" height="1568" alt="Printed naturalization record from the Hamilton County Probate Court, filled in by hand for George Wanninger, oath and certificate dated 20 October 1890" loading="lazy"></button>
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/record-1890-naturalization-george-p2.jpg" width="1000" height="1576" alt="Second page of George Wanninger’s naturalization: his declaration giving arrival on or about 11 June 1884, and the affidavit of Louis Launspach" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1890 · George becomes a citizen</div>
+          <h3>Naturalization record, Hamilton County Probate Court</h3>
+          <p>George, then 22, was admitted as a citizen in open court on 20 October 1890 before Judge Herman P. Goebel. He was admitted as someone who came to the United States under eighteen. His declaration gives the arrival date as about 11 June 1884, the day the Westernland landed. Louis Launspach of Cincinnati swore to his residence and character. The applicant’s lines carry a signature reading “Geo. Wanninger”.</p>
+          <div class="transcript">Naturalization Record Book vol. 11, p. 73
+George Wanninger · native of Germany · renounces the Emperor of Germany
+Came to the United States on or about 11 June 1884, under 18
+Sworn and admitted 20 Oct 1890 · Herman P. Goebel, Probate Judge
+Residence proved by the oath of Louis Launspach, citizen, Cincinnati
+Certificate issued 20 Oct 1890</div>
+          <p class="doc-links">A public court record, shown from the court’s own archive. To view the original, open the court’s <a href="https://probatect.org/ArchiveSearchForms/buknaturalizationsnew.aspx" target="_blank" rel="noopener">naturalization volume and page search ↗</a>, choose Record Books (1880–1906) and enter volume 11, page 73. Tap a page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1893">
+        <div class="imgs pages">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/record-1893-naturalization-john-jr-p1.jpg" width="1000" height="1592" alt="Printed naturalization record from the Hamilton County Probate Court, filled in by hand for John Wanninger, oath and certificate dated 26 October 1893" loading="lazy"></button>
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/record-1893-naturalization-john-jr-p2.jpg" width="1000" height="1589" alt="Second page of John Wanninger’s naturalization: his declaration giving arrival on or about 13 June 1884, and the affidavit of W. Wanninger of Cincinnati" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1893 · John Jr. becomes a citizen</div>
+          <h3>Naturalization record, Hamilton County Probate Court</h3>
+          <p>John Jr., 21, was admitted on 26 October 1893 before Judge Howard Ferris, also as someone who came under eighteen. His declaration gives the arrival as about 13 June 1884, two days after the ship docked. The witness who swore to his residence wrote his name as “W. Wanninger”, a citizen living in Cincinnati. That is probably his brother William, but the record gives only the initial. The applicant’s lines carry a signature reading “John Wanninger”.</p>
+          <div class="transcript">Naturalization Record Book vol. 14, p. 146
+John Wanninger · native of Germany · renounces the German Emperor
+Came to the United States on or about 13 June 1884, under 18
+Sworn and admitted 26 Oct 1893 · Howard Ferris, Probate Judge
+Chas. F. Dumont, Deputy Clerk
+Residence proved by the oath of W. Wanninger, citizen, Cincinnati
+Certificate issued 26 Oct 1893</div>
+          <p class="doc-links">A public court record, shown from the court’s own archive. To view the original, open the court’s <a href="https://probatect.org/ArchiveSearchForms/buknaturalizationsnew.aspx" target="_blank" rel="noopener">naturalization volume and page search ↗</a>, choose Record Books (1880–1906) and enter volume 14, page 146. Tap a page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1890m">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/record-1890-license-augusta.jpg" width="1000" height="879" alt="Printed Hamilton County marriage license no. 960, filled in by hand for Henry W. Jordan and Augusta Wanninger, November 1890" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1890 · Augusta’s wedding</div>
+          <h3>Marriage license and return, Hamilton County Probate Court</h3>
+          <p>Henry W. Jordan swore to the license on 19 November 1890, and the return shows a minister of the gospel, John E. Braun, married him to Augusta the next day. The 1890 form asks only that both are of age and not related, so it gives no parents or birthplace.</p>
+          <div class="transcript">Marriage Record vol. 113, license no. 960
+Henry W. Jordan and Augusta Wanninger
+Sworn 19 Nov 1890 · Herman P. Goebel, Probate Judge
+Married 20 Nov 1890 by John E. Braun, minister of the gospel</div>
+          <p class="doc-links">A public court record, shown from the court’s own archive. To view the original, open the court’s <a href="https://probatect.org/ArchiveSearchForms/bukmarriages.aspx" target="_blank" rel="noopener">marriage volume and page search ↗</a>, choose Marriage Record and enter volume 113, page 480. The license is the lower one on that page.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1892">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/record-1892-license-george.jpg" width="1000" height="831" alt="Printed Hamilton County marriage license no. 224, filled in by hand for Geo. Wanninger and Elizabeth Runge, June 1892" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1892 · George’s first wedding</div>
+          <h3>Marriage license and return, Hamilton County Probate Court</h3>
+          <p>George swore to the license on 23 June 1892 and married Elizabeth Runge the same day. The return names a minister of the gospel whose name reads as J. C. Kramer. The line for the man applying carries a signature reading “Geo. Wanninger”.</p>
+          <div class="transcript">Marriage Record vol. 119, license no. 224
+Geo. Wanninger and Elizabeth Runge
+Sworn 23 June 1892 · Howard Ferris, Probate Judge
+Married 23 June 1892 by a minister of the gospel, J. C. Kramer (reading uncertain)</div>
+          <p class="doc-links">A public court record, shown from the court’s own archive. To view the original, open the court’s <a href="https://probatect.org/ArchiveSearchForms/bukmarriages.aspx" target="_blank" rel="noopener">marriage volume and page search ↗</a>, choose Marriage Record and enter volume 119, page 112. The license is the lower one on that page.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1895">
+        <div class="imgs pages">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/record-1895-will-august-mayer-p1.jpg" width="1000" height="658" alt="Lower part of will record page 501: heading of the last will and testament of August Mayer, presented 9 September 1895" loading="lazy"></button>
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/record-1895-will-august-mayer-p2.jpg" width="1000" height="1590" alt="Will record page 502: the text of August Mayer’s will leaving everything to his sister Fanny Wanninger, and the witnesses’ testimony" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1895 · Fanny’s brother</div>
+          <h3>Will of August Mayer, Hamilton County Probate Court</h3>
+          <p>August Mayer of Cincinnati made his will on 1 November 1892, leaving everything to “my beloved sister Fanny Wanninger” and naming her executrix without bond. It was presented for probate on 9 September 1895. This is the court clerk’s copy in the will book, so the names in it are in the clerk’s hand, not signatures.</p>
+          <div class="transcript">Will Record vol. 64, pp. 501–502 · case no. 42868
+August Mayer of the City of Cincinnati
+All to “my beloved sister Fanny Wanninger”, executrix, no bond
+Dated 1 Nov 1892 · witnesses Alma O. and Gustav R. Wermer
+Presented 9 Sep 1895 · Howard Ferris, Probate Judge</div>
+          <p class="doc-links">A public court record, shown from the court’s own archive. To view the original, open the court’s <a href="https://probatect.org/ArchiveSearchForms/bukwills.aspx" target="_blank" rel="noopener">will volume and page search ↗</a> and enter volume 64, page 501 or 502. Tap a page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+    </div>
+
+    <h3 style="margin:40px 0 6px">Leads: other Wanningers of Penting</h3>
+    <p class="fineprint" style="margin:0 0 14px">These records name a Wanninger in or near Penting, where Thomas, Georg and Benedikt farmed. They may be relatives, but no record yet ties them to the line above.</p>
+    <div class="docs">
+
+      <article class="doc" id="doc-1743">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1743-witness-leonhard.jpg" data-full="img/record-1743-witness-leonhard.jpg" width="1000" height="791" alt="Two pages of a Latin marriage register for 1741 to 1743, with a 4 January 1743 wedding on the right page that names Leonardus Waninger as a witness" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1743 · a possible brother or cousin of Benedikt <span class="chip unproven" style="vertical-align:1px">Not proven</span></div>
+          <h3>Leonhard Waninger, witness at a wedding</h3>
+          <p>The 4 January 1743 entry on the lower right page. Sebastian, son of Georg Schauer of Radling, married Magdalena, daughter of Johann Dendorffer, a farmer. A witness is Leonardus Waninger, a farmer. His village is hard to read and may be Penting. Johann Dendorffer was also a witness at Benedikt’s own wedding in 1747, which suggests these families knew each other. The name Leonhard turns up again in the family two generations later.</p>
+          <div class="transcript">Schorndorf009, image 84 · 4 January 1743
+Groom Sebastian, son of Georg Schauer(?), farmer in Radling
+Bride Magdalena, daughter of Johann Dendorffer, farmer
+Witness Leonardus Waninger, farmer (village unclear, perhaps Penting)
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf009, image 84. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf009/?pg=84" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
+      <article class="doc" id="doc-1781">
+        <div class="imgs">
+          <button type="button" class="frame zoom" aria-label="Open this page full size" aria-haspopup="dialog"><img src="img/sm/record-1781-godmother-anna.jpg" data-full="img/record-1781-godmother-anna.jpg" width="1000" height="770" alt="Two pages of a Latin baptism register for 1781, with a 7 February baptism on the left page that names Anna Wanningerin of Penting as godmother" loading="lazy"></button>
+        </div>
+        <div class="txt">
+          <div class="eyebrow">1781 · a Wanninger farm still in Penting <span class="chip unproven" style="vertical-align:1px">Not proven</span></div>
+          <h3>Anna Wanninger, godmother</h3>
+          <p>The 7 February 1781 entry, low on the left page. Anna, daughter of Georg Ziller, a farmer in Radling, was baptized with “Anna Wanningerin”, wife of a farmer in Penting, as godmother. Her husband is not named. By then Benedikt was a half-farmer at Penting, so a Wanninger household was still farming there; Anna may be Benedikt’s daughter-in-law or another relative.</p>
+          <div class="transcript">Schorndorf003, image 113 · 7 February 1781 · Radling
+Child Anna, daughter of Georg Ziller(?), farmer in Radling
+Godmother Anna Wanningerin, wife of a farmer (coloni uxor) in Penting
+In Latin</div>
+          <p class="doc-links">Bischöfliches Zentralarchiv Regensburg, parish of Schorndorf, book Schorndorf003, image 113. Screenshot of the page in <a href="https://data.matricula-online.eu/de/deutschland/regensburg/schorndorf/Schorndorf003/?pg=113" target="_blank" rel="noopener">Matricula Online ↗</a>, shown unaltered under its <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank" rel="noopener">CC BY-NC-ND 2.0</a> licence, for non-commercial use. Tap the page to read it full size.</p>
+          <p class="to-index"><a href="#doc-index">↑ All records</a></p>
+        </div>
+      </article>
+
     </div>
 
     <h3 style="margin:40px 0 14px">Linked, not copied</h3>
     <ul class="linked">
       <li><b>Ohio death certificates</b><span>George 1930 (record 1:1:X8RF-NVY), Augusta 1937 (1:1:XZ27-GWB), William 1945, John Jr. 1950. Births, deaths and parents’ names.</span><em>FamilySearch, “Ohio, Deaths, 1908–1953” · free sign-in required</em></li>
-      <li><b>Naturalizations, will and older licenses</b><span>George 1890, John Jr. 1893, August Mayer’s will 1892, Augusta’s license 1890, George’s license 1892.</span><em>FamilySearch, “Ohio, Hamilton County Records, 1791–1994” · free sign-in required</em></li>
-      <li><b>Johann Baptist’s baptism, 1836</b><span>Schorndorf parish, book Schorndorf011, image 58.</span><em>Matricula, Diocese of Regensburg · free to view, but its terms don’t allow republishing</em></li>
       <li><b>Cincinnati city birth and death cards</b><span>John 1890, Franziska 1903, Clement’s birth 1894, August Mayer 1895.</span><em>University of Cincinnati Digital Resource Commons · free to view</em></li>
       <li><b>Find a Grave memorials</b><span>Lawrence (memorial 220197390), Eugene, Robert J., Clement E.; George (135760965).</span><em>Find a Grave · photos belong to their contributors</em></li>
       <li><b>City directories and the 1940 census</b><span>Every street address on this page from 1919 on, and Clement Sr.’s household in 1940.</span><em>Public Library of Cincinnati digital library · FamilySearch</em></li>
     </ul>
+  </section>
+
+
+  <section class="chapter" id="glossary">
+    <div class="chapter-head">
+      <div class="eyebrow">Glossary</div>
+      <h2>Words from the records</h2>
+      <p>The old registers are in Latin and German, and genealogy has shorthand of its own. These are the terms used on this page.</p>
+    </div>
+    <dl class="glossary">
+      <div><dt><i>agricola</i>, <i>colonus</i>, <i>rusticus</i></dt><dd>Latin for a farmer. In these books it means a man with a full farm.</dd></div>
+      <div><dt>½ <i>colonus</i>, half-farmer</dt><dd>A farmer with about half a full holding, as Benedikt was at Penting in 1774.</dd></div>
+      <div><dt><i>Söldner</i>, <i>domuncularius</i></dt><dd>A cottager: the holder of a <i>Sölde</i>, a small house with little or no land, who usually also worked for others or at a trade.</dd></div>
+      <div><dt><i>juvenis</i></dt><dd>A young, unmarried man.</dd></div>
+      <div><dt><i>vidua</i>, <i>viduus</i></dt><dd>A widow; a widower.</dd></div>
+      <div><dt><i>patrinus</i>, <i>patrina</i></dt><dd>Godfather; godmother.</dd></div>
+      <div><dt><i>uxor</i>, <i>coniuges</i></dt><dd>Wife; a married couple.</dd></div>
+      <div><dt><i>filius legitimus</i>, <i>filia legitima</i></dt><dd>Legitimate son; legitimate daughter: born to a married couple.</dd></div>
+      <div><dt><i>ledig Standts</i></dt><dd>German, “of single status”: unmarried. From Johann’s 1665 wedding.</dd></div>
+      <div><dt><i>8bris</i></dt><dd>October, written as the eighth month of the old Roman year.</dd></div>
+      <div><dt>fl.</dt><dd><i>Floruit</i>, “flourished”: the years someone appears in records, when birth and death are unknown.</dd></div>
+      <div><dt>b., m., c.</dt><dd>Born; married; <i>circa</i>, about.</dd></div>
+      <div><dt>(?)</dt><dd>A reading of the handwriting that is uncertain.</dd></div>
+      <div><dt>3× great-grandfather</dt><dd>The number of “greats”: Lawrence’s 3× great-grandfather is his great-great-great-grandfather.</dd></div>
+      <div><dt>Manifest</dt><dd>A ship’s passenger list, made at the port of departure and handed in on arrival.</dd></div>
+      <div><dt>Naturalization</dt><dd>Becoming a citizen. Children who arrived under eighteen could be admitted on simpler terms.</dd></div>
+      <div><dt>Upper Palatinate, <i>Oberpfalz</i></dt><dd>The region of eastern Bavaria around Cham and Regensburg.</dd></div>
+      <div><dt>Parish register, <i>Matrikel</i></dt><dd>The church’s books of baptisms, marriages and burials, the only records of ordinary villagers before the 1800s.</dd></div>
+    </dl>
   </section>
 
   <section class="chapter" id="sources">
@@ -560,10 +1382,10 @@ Sworn 25 July 1899</div>
     </div>
     <ul class="sources">
       <li>Passenger manifest no. 80536, Westernland, Antwerp to New York, arrived 11 June 1884 (National Archives Castle Garden index and the original list image on FamilySearch).</li>
-      <li>Schorndorf parish register (Diocese of Regensburg, on Matricula): baptism of Johann Bapt. Wanninger, 2 Feb 1836; marriage of Michael Wanninger, 1866.</li>
+      <li>Schorndorf parish register (Diocese of Regensburg, on Matricula): baptisms of Anna, 1640, and Johann, 1643, children of Georg Wäning and Magdalena (Schorndorf001, images 10 and 15); marriage of Johann Wäninger and Elisabeth Stelzl, 1665 (Schorndorf001, image 61); baptism of their son Thomas, 1669, and of Barbara Stelzl, 1670 (Schorndorf002, images 9 and 10); marriages of Thomas Wäninger, 1689 and 1699, and of his sister Barbara, 1695 (Schorndorf008, images 81, 86 and 84); baptisms of his sons Georg, 1696, and Johann Georg, 1701 (Schorndorf008, images 25 and 30); Thomas as a witness, 1713 (Schorndorf008, image 95); marriage of Georg Wäninger and Dorothea, 1722 (Schorndorf008, image 99); baptism of their son Benedikt, 1724 (Schorndorf008, image 63); marriage of Benedikt Waninger and Barbara Häbl, 1747 (Schorndorf009, image 87); marriage of Thomas Wanninger and Susanna Greßlinger, 1774 (Schorndorf009, image 96); marriage of Michael Wanninger and Margaretha Winkel, 1801 (Schorndorf010, image 135); baptism of their son Leonhard, 1807 (Schorndorf010, image 69); marriage of Leonhard and Theresia Reil, 1830 (Schorndorf011, image 117); baptism of Johann Bapt. Wanninger, 2 Feb 1836 (Schorndorf011, image 58); marriage of his brother Michael, 1866.</li>
       <li>Ohio death certificates, 1908–1953: George (1930), Augusta Jordan (1937), William (1945), John Jr. (1950).</li>
       <li>University of Cincinnati city birth and death records: John (1890), Franziska (1903), Clement’s birth (1894), August Mayer (1895).</li>
-      <li>Hamilton County Probate Court: naturalizations of George (1890) and John Jr. (1893); marriage license of John Jr. and Clara Collas (1899); will of August Mayer (1892, probated 1895).</li>
+      <li>Hamilton County Probate Court: naturalizations of George (1890, Record Book vol. 11, p. 73) and John Jr. (1893, vol. 14, p. 146), read in the court’s online archive; marriage licenses of Augusta and Henry W. Jordan (1890, vol. 113, no. 960), George and Elizabeth Runge (1892, vol. 119, no. 224) and John Jr. and Clara Collas (1899); will of August Mayer (1892, probated 1895, Will Record vol. 64, pp. 501–502).</li>
       <li>Archdiocese of Cincinnati archives: marriage of William Wanninger and Elisabeth Zumbahlen, 9 Jan 1894, with Eleonora Wanninger as witness.</li>
       <li>Williams’ Cincinnati directories, 1919–1955 (Public Library of Cincinnati digital library).</li>
       <li>1940 U.S. census, Cincinnati Ward 25; Find a Grave memorials for Lawrence, Eugene, Robert J. and Clement E.; Lawrence’s 2020 obituary.</li>
@@ -571,6 +1393,8 @@ Sworn 25 July 1899</div>
       <li>Background: <a href="https://en.wikipedia.org/wiki/SS_Westernland_(1883)" target="_blank" rel="noopener">SS Westernland (1883)</a>, <a href="https://en.wikipedia.org/wiki/History_of_Over-the-Rhine" target="_blank" rel="noopener">History of Over-the-Rhine</a>, <a href="https://en.wikipedia.org/wiki/West_End,_Cincinnati" target="_blank" rel="noopener">West End, Cincinnati</a>, <a href="https://en.wikipedia.org/wiki/Price_Hill,_Cincinnati" target="_blank" rel="noopener">Price Hill, Cincinnati</a>, the 1893 British report on German emigration (German History in Documents and Images), and Cincinnati Magazine’s history of the 1917–18 anti-German campaign.</li>
     </ul>
   </section>
+
+  </main>
 
   <footer>
     Map links search today’s Google Maps for the address as written in the old record. Some Cincinnati streets were renumbered or renamed, and many old buildings, especially in the West End, have been demolished, so a pin shows where that number is today, which may not be the original house.
@@ -582,6 +1406,159 @@ const MAPS = a => "https://www.google.com/maps/search/?api=1&query=" + encodeURI
 const CIN = ", Cincinnati, OH";
 
 const PEOPLE = {
+  georgU: {
+    name: "Georg Wäning", aka: "“Georg Wäning” of Unteraigen; “Georg Wäninger” in 1665", range: "fl. 1640–1665",
+    born: 1610, last: 1665, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Born", "Not found; probably about 1600 to 1615, before the parish books begin in 1639"], ["Married", "Magdalena, before 1640; the wedding is not in the surviving books"], ["Children", "Anna, baptized December 1640; Johann, baptized early 1643"], ["Recorded", "1640 and 1643 at his children’s baptisms; 1665 at Johann’s wedding"], ["Died", "Not found"]],
+    facts: [["Father of Anna, baptized December 1640, with his wife Magdalena", "Schorndorf parish baptisms, Schorndorf001, image 10"], ["Father of Johann, baptized early 1643", "Schorndorf001, image 15"], ["Named as Johann’s father, “Georgen Wäningers … zu Undter Aigen”, at Johann’s wedding in 1665", "Schorndorf001, image 61"], ["A Georg Wäninger of Unteraigen had a wife named Barbara in 1669 and 1670. He may be this Georg, married again, or a younger man of the same name", "Schorndorf002, images 9 and 10"]],
+    addresses: [{ when: "1640–1665", a: "Unteraigen", q: "Unteraigen, 93489 Schorndorf, Germany", note: "Named as his home in 1640, 1643 and 1665" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Georg is the earliest Wanninger of this line found so far, and he raised his children in the middle of the Thirty Years’ War. Swedish armies crossed into Bavaria from 1632, and the fighting, the soldiers quartered on farms and the plague that came with them emptied farms across the region. That he kept a farm at Unteraigen through it, and that his son Johann was farming there a generation later, is the earliest thing the records tell about the family."
+  },
+  magdalenaU: {
+    name: "Magdalena Wäning", aka: "Georg’s wife; maiden name not recorded", range: "fl. 1640–1643",
+    born: 1615, last: 1665, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Born", "Not found"], ["Married", "Georg Wäning, before 1640"], ["Children", "Anna, baptized December 1640; Johann, baptized early 1643"], ["Recorded", "1640 and 1643 at her children’s baptisms; named as Johann’s mother at his 1665 wedding"], ["Died", "Not found"]],
+    facts: [["Named as Anna’s mother in 1640 and Johann’s mother in 1643", "Schorndorf parish baptisms, Schorndorf001, images 10 and 15"], ["Named as Johann’s mother at his wedding in 1665", "Schorndorf001, image 61"]],
+    addresses: [{ when: "1640–1643", a: "Unteraigen", q: "Unteraigen, 93489 Schorndorf, Germany", note: "Home with Georg" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Magdalena bore at least two children in the war years, when passing soldiers, high prices and disease made every birth and every harvest uncertain. Her maiden name is not in any record found so far."
+  },
+  johannU: {
+    name: "Johann Wäninger", aka: "“Joannes Wäning”, later “Joannes Wäninger”, farmer (agricola) of Unteraigen", range: "b. 1643",
+    born: 1643, last: 1695, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Born", "Early 1643, probably February; baptized on the 9th of the month, Schorndorf parish"], ["Parents", "Georg Wäning of Unteraigen and Magdalena"], ["Married", "Elisabeth Stelzl of Thierling, 24 April 1665"], ["Recorded", "April 1669 at Thomas’s baptism; May 1689 at Thomas’s wedding; 12 October 1695 at his daughter Barbara’s wedding"], ["Occupation", "Farmer at Unteraigen"], ["Died", "Not found"]],
+    facts: [["Baptized in early 1643, son of Georg Wäning of Unteraigen and Magdalena; godfather Johann Mayr of Zürling(?)", "Schorndorf parish baptisms, Schorndorf001, image 15"], ["Married Elisabeth, daughter of Johann Stelzl and Katharina of Thierling, on 24 April 1665, as a single man", "Schorndorf parish marriages, Schorndorf001, image 61"], ["Father of Thomas, baptized in April 1669", "Schorndorf002, image 9"], ["Named as Thomas’s father, a farmer “de Undriegn”, at Thomas’s 1689 wedding", "Schorndorf008, image 81"], ["Named as Barbara’s father, a farmer “de inferiore Aign”, at her 1695 wedding", "Schorndorf008, image 84"]],
+    addresses: [{ when: "1643–1695", a: "Unteraigen", q: "Unteraigen, 93489 Schorndorf, Germany", note: "Hamlet south of Schorndorf village; his father’s home before him" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Johann was born in 1643, in the last years of the Thirty Years’ War, which ended in 1648 and had left farms around Cham burned and abandoned. Farmers of his generation rebuilt and resettled the land. He married Elisabeth Stelzl of Thierling in 1665 and farmed at Unteraigen, his father’s village, for at least the next thirty years. His children moved a few kilometres to marry: Thomas into a widow’s farm at Penting, and Barbara to a widower in a neighbouring village."
+  },
+  elisabethU: {
+    name: "Elisabeth Wäninger", aka: "née Stelzl, of Thierling; Johann’s wife", range: "m. 1665",
+    born: 1645, last: 1695, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Born", "Not found; probably in the 1640s, at Thierling"], ["Parents", "Johann Stelzl and Katharina, of Thierling"], ["Married", "Johann Wäninger, 24 April 1665"], ["Recorded", "1669 at her son Thomas’s baptism; 1689 at his wedding; 1695 at her daughter Barbara’s wedding"], ["Died", "Not found"]],
+    facts: [["Married Johann Wäninger in 1665; the entry names her parents, Johann Stelzl and Katharina, of Thierling", "Schorndorf parish marriages, Schorndorf001, image 61"], ["Named as Thomas’s mother at his baptism in 1669", "Schorndorf002, image 9"], ["Named as Thomas’s mother in 1689 and as Barbara’s mother in 1695", "Schorndorf008, images 81 and 84"], ["A Barbara, daughter of Johann Stelzl and Katharina of Thierling(?), was baptized in January 1670 with a Wäninger wife as godmother; very likely Elisabeth’s younger sister", "Schorndorf002, image 10"]],
+    addresses: [{ when: "before 1665", a: "Thierling", q: "Thierling, Landkreis Cham, Germany", note: "Her parents’ village, as her wedding gives it" }, { when: "1665–1695", a: "Unteraigen", q: "Unteraigen, 93489 Schorndorf, Germany", note: "Home with Johann" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Elisabeth came from Thierling, in the same parish, where her parents were still raising children: a sister, it seems, was baptized there in 1670, the year after Elisabeth’s own son Thomas, with a Wäninger wife as godmother, a sign the two families stayed close. A farmer’s wife then ran the house, the dairy and the garden and worked the fields at harvest. She raised at least two children, Thomas and Barbara, at Unteraigen."
+  },
+  thomasP: {
+    name: "Thomas Wäninger", aka: "“Thomas Wäninger”, farmer (agricola, rusticus, colonus) in Penting", range: "m. 1689",
+    born: 1669, last: 1713, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Born", "April 1669, Schorndorf parish; baptized on the 6th(?)"], ["Parents", "Johann Wäninger, a farmer of Unteraigen, and Elisabeth (Stelzl)"], ["Married", "Anna Veldtbauer, a widow of Penting, May 1689; then, as a widower, Maria Knod, 4 May 1699, Penting"], ["Recorded", "1696 and 1701 at his sons’ baptisms; 1696 as a godfather; 1713 as a witness"], ["Occupation", "Farmer in Penting"], ["Died", "Not found; living in May 1713"]],
+    facts: [["Married Anna Veldtbauer, a widow of Penting, in 1689, as a young unmarried man; the record names his parents, Johann and Elisabeth Wäninger of Unteraigen", "Schorndorf parish marriages, Schorndorf008, image 81"], ["Father of Georg, baptized 3 August 1696, with his wife Anna", "Schorndorf parish baptisms, Schorndorf008, image 25"], ["Married Maria, daughter of Johann Knod, as a widower in 1699", "Schorndorf008, image 86"], ["Father of Johann Georg, baptized 21 March 1701, with his wife Maria", "Schorndorf008, image 30"], ["Stood godfather to a son of Georg Fürtl of Rieth in 1696, and witnessed a Penting wedding in 1713", "Schorndorf008, images 25 and 95"], ["Baptized in April 1669, son of Johann Wäninger and Elisabeth; godfather Thomas Steiner(?)", "Schorndorf parish baptisms, Schorndorf002, image 9"]],
+    addresses: [{ when: "before 1689", a: "Unteraigen", q: "Unteraigen, 93489 Schorndorf, Germany", note: "His parents’ village, now a hamlet in Schorndorf" }, { when: "1689–1713", a: "Penting", q: "Penting, 93489 Schorndorf, Germany", note: "Farming village near Cham, now part of Schorndorf" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Thomas grew up the son of a farmer at Unteraigen. In 1689, as a young unmarried man, he married Anna Veldtbauer, a widow in Penting, which probably brought him her late husband’s farm; his son Georg would come into a holding the same way in 1722. That is a likely reading, not something the record says. He farmed at Penting a generation after the Thirty Years’ War, which had hit the country around Cham hard. He lost his first wife, Anna, by 1699 and married again, as farmers usually did, since a farm needed a wife to run the house and dairy. His later years fell in the War of the Spanish Succession, when Austria occupied Bavaria from 1704 and crushed a peasants’ rising in 1705."
+  },
+  annaP: {
+    name: "Anna Wäninger", aka: "“Anna Veldtbaurin”, a widow of Penting, Thomas’s first wife", range: "m. 1689",
+    born: 1660, last: 1699, line: false, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Married", "Thomas Wäninger, May 1689, Penting, as a widow; Veldtbauer was probably her first husband’s name"], ["Recorded", "3 August 1696 at her son Georg’s baptism"], ["Died", "By May 1699, when Thomas married again as a widower"]],
+    facts: [["Married Thomas as a widow of Penting in 1689", "Schorndorf parish marriages, Schorndorf008, image 81"], ["Named as Georg’s mother at his 1696 baptism", "Schorndorf parish baptisms, Schorndorf008, image 25"], ["Thomas is called a widower when he remarried in May 1699", "Schorndorf008, image 86"]],
+    addresses: [{ when: "1689–1699", a: "Penting", q: "Penting, 93489 Schorndorf, Germany", note: "Home with Thomas" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Anna is Lawrence’s 7× great-grandmother only if the Georg born in 1696 is the one who married in 1722. She was already a widow in Penting when she married Thomas in 1689, and she had died by May 1699, within three years of Georg’s birth."
+  },
+  mariaK: {
+    name: "Maria Wäninger", aka: "née Knod, Thomas’s second wife", range: "m. 1699",
+    born: 1675, last: 1701, line: false, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Parents", "Johann Knod, a farmer, and Anna, who had died by 1699"], ["Married", "Thomas Wäninger, a widower, 4 May 1699, Penting"], ["Recorded", "21 March 1701 at her son Johann Georg’s baptism"], ["Died", "Not found"]],
+    facts: [["Married Thomas as his second wife in 1699", "Schorndorf parish marriages, Schorndorf008, image 86"], ["Named as Johann Georg’s mother at his 1701 baptism", "Schorndorf008, image 30"]],
+    addresses: [{ when: "1699–1701", a: "Penting", q: "Penting, 93489 Schorndorf, Germany", note: "Home with Thomas" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Maria is Lawrence’s 7× great-grandmother if, as the reused name suggests, the Johann Georg born in 1701 is the Georg who married in 1722. She married a widower with a young family, and her son was born two years later."
+  },
+  georg: {
+    name: "Georg Waninger", aka: "“Georgius Wäninger”, farmer (colonus, rusticus) in Penting", range: "m. 1722",
+    born: 1696, last: 1747, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Born", "Baptized either 3 August 1696, son of Thomas and Anna, or 21 March 1701, as Johann Georg, son of Thomas and Maria; both at Penting"], ["Parents", "Thomas Wäninger, a farmer in Penting, and Anna or Maria"], ["Married", "Dorothea, a widow, 12 October(?) 1722, Penting"], ["Recorded", "21 March 1724 at Benedikt’s baptism; 11 January 1747 at Benedikt’s wedding"], ["Occupation", "Farmer in Penting"], ["Died", "Not found"]],
+    facts: [["Married Dorothea, a widow, at Penting; the entry names neither person’s parents", "Schorndorf parish marriages, Schorndorf008, image 99"], ["Named as Benedikt’s father at his baptism in 1724 and his wedding in 1747", "Schorndorf008, image 63; Schorndorf009, image 87"], ["Thomas Wäninger of Penting had a son Georg baptized in 1696 and a son Johann Georg in 1701. No other Wäninger household has turned up in Penting in those years, so Thomas is very likely Georg’s father either way; which son married in 1722 is not settled", "Schorndorf008, images 25 and 30"], ["A Leonhard Waninger, a farmer, witnessed a wedding in the parish in 1743; he may be a relative, but nothing yet links him", "Schorndorf009, image 84"]],
+    addresses: [{ when: "1722–1747", a: "Penting", q: "Penting, 93489 Schorndorf, Germany", note: "Farming village near Cham, now part of Schorndorf" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Georg was a son of Thomas Wäninger, a farmer at Penting, and was baptized there. He married a widow in 1722, a common way for a man to come into a farm, since a widow often held her late husband’s holding and needed a man to work it. That is a likely reading here, not something the record says. As a farmer he held land at Penting, a step above the half-farm his son Benedikt later worked. Born in 1696 or 1701, he lived through the War of the Spanish Succession, when Austria occupied Bavaria for ten years and crushed a peasants’ rising in 1705, and the War of the Austrian Succession, when Cham was burned in 1742. Farms in this region usually passed whole to one child, so Georg’s other children would have married into other holdings or worked for others."
+  },
+  dorothea: {
+    name: "Dorothea Waninger", aka: "A widow, written “Stainhirsch(?)” at her second marriage", range: "m. 1722",
+    born: 1695, last: 1747, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Married", "Georg Wäninger, farmer, 12 October(?) 1722, Penting, as a widow"], ["Recorded", "1724 at Benedikt’s baptism; 1747 at his wedding"], ["Died", "Not found"]],
+    facts: [["Married Georg as a widow; the surname written with her name looks like Stainhirsch, probably her first husband’s", "Schorndorf parish marriages, Schorndorf008, image 99"], ["Named as Benedikt’s mother in 1724 and 1747", "Schorndorf008, image 63; Schorndorf009, image 87"], ["Her maiden name and her first marriage have not been found", "Schorndorf008"]],
+    addresses: [{ when: "1722–1747", a: "Penting", q: "Penting, 93489 Schorndorf, Germany", note: "Home with Georg" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Dorothea had already been married and widowed before she married Georg in 1722, and she had Benedikt about eighteen months later. A farmer’s wife in the early 1700s ran the household, the livestock and the garden, and raised children through two long wars that sent armies across Bavaria. The occupation years after 1704 brought heavy taxes and the billeting of soldiers on farms."
+  },
+  benedikt: {
+    name: "Benedikt Wanninger", aka: "“Benedictus Waninger”, later half-farmer at Penting", range: "1724–?",
+    born: 1724, last: 1774, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Born", "Baptized 21 March 1724, Penting, as Benedictus Fabianus; godfather Fabian Feldbauer, a farmer there"], ["Parents", "Georg Waninger, a farmer in Penting, and Dorothea"], ["Married", "Barbara Häbl, 11 January 1747"], ["Recorded", "May 1774, living, at his son Thomas’s wedding"], ["Occupation", "Half-farmer (½ colonus) at Penting by 1774"], ["Died", "Not found"]],
+    facts: [["Married Barbara, a shoemaker’s daughter from Penting, in 1747; both families lived in Penting", "Schorndorf parish marriages, Schorndorf009, image 87"], ["Named as Thomas’s father in the 1774 marriage register, with Barbara, both then living", "Schorndorf parish marriages, Schorndorf009, image 96"], ["A half-farmer held about half a full farm, well above the cottagers his descendants would be", "The register’s own word, ½ colonus"], ["This Penting is the village in today’s municipality of Schorndorf, about 3.5 km from Untertraubenbach. The books are those of the Untertraubenbach branch of Schorndorf parish, and Untertraubenbach’s church still serves Penting", "Matricula Online, Schorndorf parish description; Wikipedia, Penting (Schorndorf)"]],
+    addresses: [{ when: "1724–1774", a: "Penting", q: "Penting, 93489 Schorndorf, Germany", note: "Born here; a half-farmer here by 1774" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Benedikt is known from two weddings, his own in 1747 and his son’s in 1774. He was baptized in Penting in 1724, so the 1770 famine and the end of the old Wittelsbach line in 1777 fell in his later years. As a half-farmer he worked land of his own under a lord, owed dues and labour, and had more standing than a cottager. His son Thomas married into Untertraubenbach as a cottager, a step down in land that was common for younger sons, since a farm passed whole to one heir."
+  },
+  barbara: {
+    name: "Barbara Wanninger", aka: "née Häbl (best reading)", range: "m. 1747",
+    born: 1725, last: 1774, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Parents", "Mathias Häbl, a shoemaker in Penting, and Maria, both apparently dead by 1747"], ["Married", "Benedikt Waninger, 11 January 1747"], ["Recorded", "May 1774, living, at her son Thomas’s wedding"], ["Died", "Not found"]],
+    facts: [["Daughter of a shoemaker in Penting; her parents seem to be marked as deceased in her wedding entry", "Schorndorf parish marriages, Schorndorf009, image 87"], ["Named as Thomas’s mother, “Barbara uxor”, in the 1774 marriage register", "Schorndorf009, image 96"]],
+    addresses: [{ when: "1747–1774", a: "Penting", q: "Penting, 93489 Schorndorf, Germany", note: "Her home village and her married home" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Barbara was a craftsman’s daughter who married a farmer’s son from her own village, probably having lost both parents by then. On a half-farm the farmer’s wife ran the house, the dairy, the poultry and the garden, and worked the fields at harvest. Her years would have taken in the famine of 1770 to 1772, when grain prices across Bavaria rose far beyond what poor families could pay."
+  },
+  thomas: {
+    name: "Thomas Wanninger", aka: "“Thomas Wänninger”, cottager at Untertraubenbach", range: "married 1774",
+    born: 1748, last: 1801, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Born", "Not found; probably about the late 1740s, from his marriage"], ["Parents", "Benedikt Wanninger, half-farmer at Penting, and Barbara"], ["Married", "Susanna Greßlinger, May 1774, Untertraubenbach"], ["Recorded", "20 May 1801, as a cottager at Untertraubenbach, at his son Michael’s wedding"], ["Died", "Not found"]],
+    facts: [["Married Susanna, daughter of Georg Greßlinger, a cottager at Untertraubenbach", "Schorndorf parish marriages, Schorndorf009, image 96"], ["Named as Michael’s father, a cottager there, in 1801", "Schorndorf010, image 135"]],
+    addresses: [{ when: "1774–1801", a: "Untertraubenbach", q: "Untertraubenbach, 93413 Cham, Germany", note: "Village near Cham, Upper Palatinate" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Thomas left his father’s half-farm at Penting and married into Untertraubenbach, about 3.5 km away, where he lived as a Söldner, a cottager with a small house and a little land who also worked for larger farmers. His married life ran through the war over the Bavarian succession, the French Revolutionary Wars that brought French and Austrian armies through Bavaria in 1800, and the start of Montgelas’s reforms. He was still named as a cottager at Untertraubenbach when his son Michael married there in 1801."
+  },
+  susanna: {
+    name: "Susanna Wanninger", aka: "née Greßlinger (best reading)", range: "married 1774",
+    born: 1750, last: 1801, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Parents", "Georg Greßlinger, cottager at Untertraubenbach, and Magdalena"], ["Married", "Thomas Wanninger, May 1774, Untertraubenbach"], ["Recorded", "1801, as Michael’s mother"], ["Died", "Not found"]],
+    facts: [["Her father was a cottager in Untertraubenbach and still living in 1774", "Schorndorf parish marriages, Schorndorf009, image 96"], ["Named as Michael’s mother in 1801", "Schorndorf010, image 135"]],
+    addresses: [{ when: "1774–1801", a: "Untertraubenbach", q: "Untertraubenbach, 93413 Cham, Germany", note: "Her home village" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Susanna was born in Untertraubenbach and married there, so it was very likely through her family that the Wanningers came to the village where they then stayed for three generations. Her years with young children fell in the hard 1770s and the wars at the end of the century."
+  },
+  michael: {
+    name: "Michael Wanninger", aka: "“Mich. Waninger”, cottager at Untertraubenbach", range: "married 1801",
+    born: 1775, last: 1830, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Born", "Not found; probably about 1775, from his marriage"], ["Parents", "Thomas Wanninger, cottager at Untertraubenbach, and Susanna"], ["Married", "Margaretha Winkel, 20 May 1801, Untertraubenbach"], ["Recorded", "1807 at Leonhard’s baptism; 1830 at Leonhard’s wedding"], ["Died", "Not found"]],
+    facts: [["Described at his marriage as a young man and a new cottager at Untertraubenbach", "Schorndorf parish marriages, Schorndorf010, image 135"], ["Named as a Catholic cottager at Traubenbach at Leonhard’s baptism", "Schorndorf010, image 69"], ["Named as Leonhard’s father at his 1830 marriage", "Schorndorf011, image 117"]],
+    addresses: [{ when: "1801–1830", a: "Untertraubenbach", q: "Untertraubenbach, 93413 Cham, Germany", note: "Village near Cham" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Michael married in 1801, as the Napoleonic wars were redrawing Bavaria. In his first decade as a cottager Bavaria became a kingdom, closed its monasteries, abolished serfdom in 1808, and saw battle around Regensburg in 1809. Then came the famine after the cold summer of 1816. A cottager with a little land had small reserves for years like that, and since a holding usually passed to one heir, the other children had to find land or work elsewhere."
+  },
+  margaretha: {
+    name: "Margaretha Wanninger", aka: "née Winkel, also written Winkler", range: "married 1801",
+    born: 1778, last: 1830, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Parents", "Valentin Winkel, cottager at Untertraubenbach, and Elisabeth"], ["Married", "Michael Wanninger, 20 May 1801, Untertraubenbach"], ["Recorded", "1807 and 1830, as Leonhard’s mother"], ["Died", "Not found"]],
+    facts: [["Daughter of a cottager in the same village", "Schorndorf parish marriages, Schorndorf010, image 135"], ["Named “Margaretha, daughter of Valentin Winkler” at Leonhard’s baptism", "Schorndorf010, image 69"]],
+    addresses: [{ when: "1801–1830", a: "Untertraubenbach", q: "Untertraubenbach, 93413 Cham, Germany", note: "Her home village" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Like her mother-in-law, Margaretha married within her own village, joining two cottager families of Untertraubenbach. She raised her children through the war years and the famine of 1816 to 1817, and lived to see her son Leonhard marry in 1830."
+  },
+  leonhard: {
+    name: "Leonhard Wanninger", aka: "“Leonard Wäninger”, cottager at Untertraubenbach", range: "1807–?",
+    born: 1807, last: 1836, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Born", "29 June or July 1807, Traubenbach; baptized the next day"], ["Parents", "Michael Wanninger and Margaretha Winkel"], ["Married", "Theresia Reil, 27 January 1830"], ["Recorded", "1836, cottager at Untertraubenbach no. 15"], ["Died", "Not found"]],
+    facts: [["Baptism register gives the 29th and 30th; the month reads as July there, but his marriage entry says 29 June", "Schorndorf010, image 69; Schorndorf011, image 117"], ["A new cottager in Traubenbach when he married", "Schorndorf011, image 117"], ["Father of Johann Baptist, born 2 February 1836, and of Michael, born 1831", "Schorndorf011, image 58"]],
+    addresses: [{ when: "1836", a: "Untertraubenbach no. 15", q: "Untertraubenbach, 93413 Cham, Germany", note: "House number of the time · the map shows the village" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Leonhard was born the year before Bavaria abolished serfdom, and grew up through the famine of 1816 to 1817. He married in 1830 under King Ludwig I and set up as a cottager in the village where his family had lived for two generations. The feudal dues he owed were only lifted in 1848, and his small holding could not be divided again among several sons. That is the squeeze that would later push his son John across the Atlantic."
+  },
+  theresia: {
+    name: "Theresia Wanninger", aka: "née Reil · “Theres Reil”", range: "married 1830",
+    born: 1808, last: 1836, line: true, conf: ["likely", "Documented in Bavaria"],
+    vitals: [["Parents", "Joseph Reil, cottager at Traubenbach no. 14"], ["Married", "Leonhard Wanninger, 27 January 1830"], ["Recorded", "1836, as Johann Baptist’s mother"], ["Died", "Not found"]],
+    facts: [["Daughter of a cottager at Traubenbach no. 14", "Schorndorf011, image 117"], ["Named as the mother at Johann Baptist’s baptism in 1836", "Schorndorf011, image 58"]],
+    addresses: [{ when: "1830", a: "Traubenbach no. 14", q: "Untertraubenbach, 93413 Cham, Germany", note: "Her father’s house · the map shows the village" }, { when: "1836", a: "Untertraubenbach no. 15", q: "Untertraubenbach, 93413 Cham, Germany", note: "Home with Leonhard" }],
+    places: ["bavaria"], crossed: false, bavarian: true,
+    impact: "Theresia, like the Wanninger wives before her, was a cottager’s daughter from the same small cluster of villages, which shows how closely these families were tied together. If the family tree is right, her son John would leave for America with his own family at 48, long after she was gone from the records."
+  },
   johnSr: {
     name: "John Wanninger", aka: "Johann Baptist Wanninger · “Jos.(?) Wonninger” on the 1884 manifest",
     born: 1836, died: 1890, line: true, conf: ["likely", "Bavarian origin likely"],
@@ -595,7 +1572,7 @@ const PEOPLE = {
     name: "Fanny Wanninger", aka: "Franziska, née Mayer (also written Meier, Meyer, Maier)",
     born: 1833, died: 1903, line: true, conf: ["doc", "Documented"],
     vitals: [["Born", "About 25 April 1833, Bavaria (worked out from her age at death)"], ["Married", "John Wanninger"], ["Arrived", "11 June 1884, New York, on the Westernland, aged 51"], ["Widowed", "2 May 1890"], ["Died", "13 April 1903, Cincinnati, at 1927 Central Ave"], ["Buried", "St. Mary’s Cemetery, St. Bernard"]],
-    facts: [["Her brother August Mayer, a marble cutter in Cincinnati, named her sole heir and executrix", "Will dated 1 Nov 1892, probated 9 Sep 1895"], ["August was killed in a railroad accident on 28 August 1895, aged 68", "University of Cincinnati death record; coroner’s record"], ["Every child’s record gives her maiden name as Mayer, Meier or Meyer", "Ohio death certificates; 1894 church marriage; 1899 marriage license"]],
+    facts: [["Her brother August Mayer, a marble cutter in Cincinnati, named her sole heir and executrix", "Will dated 1 Nov 1892, probated 9 Sep 1895 (Will Record vol. 64, p. 502)"], ["August was killed in a railroad accident on 28 August 1895, aged 68", "University of Cincinnati death record; coroner’s record"], ["Every child’s record gives her maiden name as Mayer, Meier or Meyer", "Ohio death certificates; 1894 church marriage; 1899 marriage license"]],
     addresses: [{ when: "1903", a: "1927 Central Ave", note: "Home at her death · upper Central Avenue" }],
     places: ["bavaria", "westend"], crossed: true, bavarian: true,
     impact: "Fanny crossed the Atlantic at 51 with five children and was a widow six years later. Her brother August was very likely the reason the family chose Cincinnati, and his death in 1895 took away her last sibling there. She lived through the hard depression that began with the Panic of 1893. In 1899 her son John was living at 1935 Central Avenue, a few doors from where she died, which suggests she stayed close to him in her last years. She died in 1903, before the anti-German campaign of the First World War touched the city she had moved to."
@@ -604,7 +1581,7 @@ const PEOPLE = {
     name: "Eleonora Wanninger", aka: "Possibly the daughter born about 1864",
     born: 1864, died: null, last: 1894, tentative: true, conf: ["unproven", "Unproven"],
     vitals: [["Born", "About 1864, if she is the daughter a family tree lists"], ["Recorded", "9 January 1894, witness at William’s wedding, St. Francis Seraph"], ["Died", "Not found"]],
-    facts: [["Signed as witness, with Joannes Zumbahlen, at William’s church wedding", "Archdiocese of Cincinnati marriage register, 1894"], ["Not on the Westernland manifest with the rest of the family", "Manifest no. 80536"]],
+    facts: [["Named as a witness, with Joannes Zumbahlen, at William’s church wedding", "Archdiocese of Cincinnati marriage register, 1894"], ["Not on the Westernland manifest with the rest of the family", "Manifest no. 80536"]],
     addresses: [],
     places: ["westend"], crossed: false, bavarian: true,
     impact: "Eleonora is known from a single signature. If she is the eldest daughter, she was about 20 in 1884 and may have crossed before or after the others, perhaps to work as a servant, which was the most common path for young German women in American cities. Her absence from the manifest and from the death records found so far leaves her story open."
@@ -624,7 +1601,7 @@ const PEOPLE = {
   augusta: {
     name: "Augusta Wanninger Jordan", aka: "“Aug. Wonninger, 15” on the manifest",
     born: 1869, died: 1937, conf: ["doc", "Documented"],
-    vitals: [["Born", "2 June 1869, Germany"], ["Arrived", "11 June 1884, aged 15"], ["Married", "Henry W. Jordan, license 1890"], ["Died", "5 January 1937, Cincinnati, a widow"], ["Buried", "Wesleyan Cemetery"]],
+    vitals: [["Born", "2 June 1869, Germany"], ["Arrived", "11 June 1884, aged 15"], ["Married", "Henry W. Jordan, 20 November 1890"], ["Died", "5 January 1937, Cincinnati, a widow"], ["Buried", "Wesleyan Cemetery"]],
     facts: [["Her death certificate names her parents as John Wanninger and Francis Meier, both of Germany", "Ohio death certificate, 1937"], ["Indexed as a boy on the 1884 passenger list", "National Archives index"]],
     addresses: [{ when: "1937", a: "1401 Chase Ave", note: "Home at her death · Northside" }],
     places: ["westend", "northside"], crossed: true, bavarian: true,
@@ -647,7 +1624,7 @@ const PEOPLE = {
   johnJr: {
     name: "John Wanninger Jr.", aka: "“Joh. Wonninger, 12” on the manifest",
     born: 1872, died: 1950, conf: ["doc", "Documented"],
-    vitals: [["Born", "2 February 1872, Germany"], ["Arrived", "11 June 1884, aged 12"], ["Naturalized", "26 October 1893; William signed as witness"], ["Married", "Clara Collas, 25 July 1899"], ["Work", "Conductor (1899), then clerk and salesman, later insurance and real estate"], ["Died", "8 May 1950, North College Hill"], ["Buried", "Arlington Memorial Park, Mount Healthy"]],
+    vitals: [["Born", "2 February 1872, Germany"], ["Arrived", "11 June 1884, aged 12"], ["Naturalized", "26 October 1893. His witness wrote “W. Wanninger”, probably his brother William"], ["Married", "Clara Collas, 25 July 1899"], ["Work", "Conductor (1899), then clerk and salesman, later insurance and real estate"], ["Died", "8 May 1950, North College Hill"], ["Buried", "Arlington Memorial Park, Mount Healthy"]],
     facts: [["His 1899 marriage license gives his parents as John Wanninger and Fannie Meyer", "Hamilton County marriage records"], ["Applied for Social Security in 1938, giving his birthplace only as Germany", "Social Security application index"], ["Bought property in North College Hill with Clara by 1916", "Newspaper deed notice, 1916"]],
     addresses: [
       { when: "1899", a: "1935 Central Ave", note: "Marriage license · a few doors from his mother", q: "1935 Central Ave" + CIN },
@@ -729,6 +1706,26 @@ const PEOPLE = {
 };
 
 const WORLD = [
+  [1618, "The Thirty Years’ War begins in Bohemia, just over the forested border from Cham."],
+  [1628, "Bavaria’s ruler, Maximilian I, is given the Upper Palatinate, the region around Cham, and its largely Lutheran people are made Catholic again."],
+  [1633, "Swedish forces take Regensburg, and the war sweeps across eastern Bavaria."],
+  [1648, "The Peace of Westphalia ends the Thirty Years’ War, which had ravaged the country around Cham; Bavaria keeps the Upper Palatinate."],
+  [1683, "Bavarian troops help relieve the Ottoman siege of Vienna under Elector Max Emanuel."],
+  [1702, "Bavaria enters the War of the Spanish Succession on the side of France."],
+  [1704, "After defeat at Blenheim, Bavaria is occupied by Austria for ten years; a peasants’ rising against the occupiers in 1705 is crushed."],
+  [1742, "In the War of the Austrian Succession, Austrian irregular troops take and burn the town of Cham."],
+  [1770, "Two years of failed harvests bring famine across central Europe, Bavaria included."],
+  [1777, "The Bavarian line of the Wittelsbach dynasty dies out; Karl Theodor of the Palatinate inherits Bavaria."],
+  [1778, "The War of the Bavarian Succession, fought over who should rule Bavaria, plays out mostly in neighbouring Bohemia."],
+  [1799, "Max IV Joseph becomes elector; with his minister Montgelas he begins to remake the Bavarian state."],
+  [1803, "Bavaria closes its monasteries and takes over their lands and churches."],
+  [1806, "Bavaria becomes a kingdom, allied with Napoleon."],
+  [1808, "Bavaria’s first constitution abolishes serfdom and makes all subjects equal before the law."],
+  [1809, "Napoleon defeats the Austrians around Regensburg in April; the city is stormed and part of it burns."],
+  [1816, "The “year without a summer” ruins harvests and brings famine in 1816–17."],
+  [1818, "A new constitution gives Bavaria a parliament."],
+  [1825, "Ludwig I becomes king."],
+  [1835, "Germany’s first railway opens in Bavaria, between Nuremberg and Fürth."],
   [1848, "Revolutions across the German states. Bavaria abolishes the remaining feudal dues owed by peasants."],
   [1866, "Bavaria sides with Austria in the war against Prussia and loses."],
   [1868, "Bavaria eases the laws that let towns stop poor people from marrying or settling."],
@@ -779,10 +1776,27 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 
 
 /* Source for each birth, marriage and death */
-const R = { m1884: "doc-1884", m1894: "doc-1894", m1899: "doc-1899" };
+const R = { b1640: "doc-1640", b1643: "doc-1643", m1665: "doc-1665", b1669: "doc-1669", g1670: "doc-1670", m1689: "doc-1689", m1695: "doc-1695", b1696: "doc-1696", m1699: "doc-1699", b1701: "doc-1701", w1713: "doc-1713", m1722: "doc-1722", b1724: "doc-1724", m1747: "doc-1747", m1774: "doc-1774", b1807: "doc-1807", m1801: "doc-1801", m1830: "doc-1830", m1884: "doc-1884", m1894: "doc-1894", m1899: "doc-1899", n1890: "doc-1890", n1893: "doc-1893", b1836: "doc-1836", l1890: "doc-1890m", l1892: "doc-1892", w1895: "doc-1895" };
 const CITES = {
+  georgU: { Married: ["Named with Magdalena as Anna’s parents, Dec 1640 (Matricula, Schorndorf001, image 10)", R.b1640], Children: ["Schorndorf parish baptisms, 1640 and 1643 (Matricula, Schorndorf001, images 10 and 15)", R.b1640], Recorded: ["Baptisms of 1640 and 1643; Johann’s wedding, 24 Apr 1665 (Schorndorf001, images 10, 15 and 61)", R.m1665] },
+  magdalenaU: { Married: ["Named with Georg as Anna’s parents, Dec 1640 (Matricula, Schorndorf001, image 10)", R.b1640], Children: ["Schorndorf parish baptisms, 1640 and 1643 (Matricula, Schorndorf001, images 10 and 15)", R.b1643], Recorded: ["Baptisms of 1640 and 1643; Johann’s wedding, 24 Apr 1665 (Schorndorf001, images 10, 15 and 61)", R.m1665] },
+  johannU: { Born: ["Schorndorf parish baptisms, early 1643 (Matricula, Schorndorf001, image 15)", R.b1643], Parents: ["Schorndorf parish baptisms, early 1643 (Matricula, Schorndorf001, image 15)", R.b1643], Married: ["Schorndorf parish marriages, 24 Apr 1665 (Matricula, Schorndorf001, image 61)", R.m1665], Recorded: ["Thomas’s baptism, Apr 1669 (Schorndorf002, image 9); marriages of May 1689 and 12 Oct 1695 (Schorndorf008, images 81 and 84)", R.m1689] },
+  elisabethU: { Parents: ["Schorndorf parish marriages, 24 Apr 1665 (Matricula, Schorndorf001, image 61)", R.m1665], Married: ["Schorndorf parish marriages, 24 Apr 1665 (Matricula, Schorndorf001, image 61)", R.m1665], Recorded: ["Thomas’s baptism, Apr 1669 (Schorndorf002, image 9); marriages of May 1689 and 12 Oct 1695 (Schorndorf008, images 81 and 84)", R.b1669] },
+  thomasP: { Born: ["Schorndorf parish baptisms, Apr 1669 (Matricula, Schorndorf002, image 9)", R.b1669], Parents: ["Schorndorf parish baptisms, Apr 1669 (Schorndorf002, image 9); marriages, May 1689 (Schorndorf008, image 81)", R.b1669], Married: ["Schorndorf parish marriages, May 1689 and 4 May 1699 (Matricula, Schorndorf008, images 81 and 86)", R.m1689], Recorded: ["Baptisms of 1696 and 1701 (Schorndorf008, images 25 and 30); wedding witness 1713 (image 95)", R.w1713], Died: ["Last recorded as a witness, late May 1713 (Schorndorf008, image 95)", R.w1713] },
+  annaP: { Married: ["Schorndorf parish marriages, May 1689 (Matricula, Schorndorf008, image 81)", R.m1689], Recorded: ["Schorndorf parish baptisms, 3 Aug 1696 (Matricula, Schorndorf008, image 25)", R.b1696], Died: ["Thomas remarries as a widower, 4 May 1699 (Schorndorf008, image 86)", R.m1699] },
+  mariaK: { Married: ["Schorndorf parish marriages, 4 May 1699 (Matricula, Schorndorf008, image 86)", R.m1699], Recorded: ["Schorndorf parish baptisms, 21 Mar 1701 (Schorndorf008, image 30)", R.b1701] },
+  georg: { Born: ["Schorndorf parish baptisms, 3 Aug 1696 or 21 Mar 1701 (Matricula, Schorndorf008, images 25 and 30)", R.b1696], Married: ["Schorndorf parish marriages, 12 Oct(?) 1722 (Matricula, Schorndorf008, image 99)", R.m1722], Recorded: ["Benedikt’s baptism, 21 Mar 1724 (Schorndorf008, image 63), and wedding, 11 Jan 1747 (Schorndorf009, image 87)", R.b1724] },
+  dorothea: { Married: ["Schorndorf parish marriages, 12 Oct(?) 1722 (Matricula, Schorndorf008, image 99)", R.m1722], Recorded: ["Benedikt’s baptism, 21 Mar 1724 (Schorndorf008, image 63), and wedding, 11 Jan 1747 (Schorndorf009, image 87)", R.b1724] },
+  benedikt: { Born: ["Schorndorf parish baptisms, 21 Mar 1724 (Matricula, Schorndorf008, image 63)", R.b1724], Married: ["Schorndorf parish marriages, 11 Jan 1747 (Matricula, Schorndorf009, image 87)", R.m1747], Recorded: ["Schorndorf parish marriages, May 1774 (Matricula, Schorndorf009, image 96)", R.m1774] },
+  barbara: { Married: ["Schorndorf parish marriages, 11 Jan 1747 (Matricula, Schorndorf009, image 87)", R.m1747], Recorded: ["Schorndorf parish marriages, May 1774 (Matricula, Schorndorf009, image 96)", R.m1774] },
+  thomas: { Married: ["Schorndorf parish marriages, May 1774 (Matricula, Schorndorf009, image 96)", R.m1774], Recorded: ["Michael’s marriage, 1801 (Schorndorf010, image 135)", R.m1801] },
+  susanna: { Married: ["Schorndorf parish marriages, May 1774 (Matricula, Schorndorf009, image 96)", R.m1774], Recorded: ["Michael’s marriage, 1801 (Schorndorf010, image 135)", R.m1801] },
+  michael: { Married: ["Schorndorf parish marriages, 20 May 1801 (Matricula, Schorndorf010, image 135)", R.m1801], Recorded: ["Leonhard’s baptism 1807 and marriage 1830", R.b1807] },
+  margaretha: { Married: ["Schorndorf parish marriages, 20 May 1801 (Matricula, Schorndorf010, image 135)", R.m1801], Recorded: ["Leonhard’s baptism 1807 and marriage 1830", R.b1807] },
+  leonhard: { Born: ["Schorndorf parish baptisms, 1807 (Matricula, Schorndorf010, image 69); his marriage entry gives 29 June 1807", R.b1807], Married: ["Schorndorf parish marriages, 27 Jan 1830 (Matricula, Schorndorf011, image 117)", R.m1830], Recorded: ["Johann Baptist’s baptism, 1836 (Schorndorf011, image 58)", R.b1836] },
+  theresia: { Married: ["Schorndorf parish marriages, 27 Jan 1830 (Matricula, Schorndorf011, image 117)", R.m1830], Recorded: ["Johann Baptist’s baptism, 1836 (Schorndorf011, image 58)", R.b1836] },
   johnSr: {
-    Born: ["Schorndorf parish baptisms, 2 Feb 1836 (Matricula, Schorndorf011, image 58). The link to the Cincinnati John rests on a family tree; his age of 54 at death fits"],
+    Born: ["Schorndorf parish baptisms, 2 Feb 1836 (Matricula, Schorndorf011, image 58). The link to the Cincinnati John rests on a family tree; his age of 54 at death fits", R.b1836],
     Married: ["No marriage record found. The children’s records name John Wanninger and Fanny Mayer as their parents, for example William’s 1894 church wedding", R.m1894],
     Arrived: ["Manifest no. 80536", R.m1884],
     Died: ["City of Cincinnati death record, 2 May 1890 (University of Cincinnati city cards); death notice in the Cincinnati Volksblatt, 1890 (county genealogical society index)"],
@@ -801,13 +1815,14 @@ const CITES = {
   george: {
     Born: ["Ohio death certificate, 1930 (FamilySearch record 1:1:X8RF-NVY). The only family record that says Bavaria"],
     Arrived: ["Manifest no. 80536", R.m1884],
-    Married: ["1892: Hamilton County marriage record, book 119 (FamilySearch); the archdiocese confirmed a Protestant officiant. 1909: Ohio county marriages index, 25 Jan 1909"],
+    Naturalized: ["Hamilton County Probate Court, naturalization record book vol. 11, p. 73", R.n1890],
+    Married: ["1892: Hamilton County Probate Court, Marriage Record vol. 119, license no. 224, married 23 June 1892 by a minister of the gospel. 1909: Ohio county marriages index, 25 Jan 1909", R.l1892],
     Died: ["Ohio death certificate, 1930 (FamilySearch record 1:1:X8RF-NVY)"],
   },
   augusta: {
     Born: ["Ohio death certificate, 1937 (FamilySearch record 1:1:XZ27-GWB)"],
     Arrived: ["Manifest no. 80536, indexed as “Aug.”", R.m1884],
-    Married: ["Hamilton County marriage license, 1890, vol. 113, no. 960 (FamilySearch)"],
+    Married: ["Hamilton County Probate Court, Marriage Record vol. 113, license no. 960; married 20 Nov 1890", R.l1890],
     Died: ["Ohio death certificate, 1937 (FamilySearch record 1:1:XZ27-GWB)"],
   },
   william: {
@@ -819,6 +1834,7 @@ const CITES = {
   johnJr: {
     Born: ["Ohio death certificate, 1950, state file 31215 (FamilySearch); his 1938 Social Security application agrees"],
     Arrived: ["Manifest no. 80536", R.m1884],
+    Naturalized: ["Hamilton County Probate Court, naturalization record book vol. 14, p. 146", R.n1893],
     Married: ["Hamilton County Probate Court, Marriage Record vol. 141, p. 443", R.m1899],
     Died: ["Ohio death certificate, 1950, state file 31215 (FamilySearch)"],
   },
@@ -860,11 +1876,192 @@ function chip(conf) {
   return `<span class="chip ${cls}">${esc(conf[1])}</span>`;
 }
 
+
+/* A short portrait and one moment from the records for each person.
+   [portrait, moment, source]: source is a document id on this page, or a plain source line. */
+const PORTRAIT = {
+  georgU: ["The earliest Wanninger the records name. Georg was raising a family at Unteraigen, a hamlet near Cham, while the Thirty Years’ War was still being fought across Bavaria, and his son Johann carried the family on into the peace.",
+    "In December 1640 Georg and Magdalena had their daughter Anna baptized. Her godfather, Johann Mayr of Zürling(?), stood godfather to their son Johann too, in 1643.", "doc-1640"],
+  magdalenaU: ["Magdalena is known only by her first name, as the mother of Anna in 1640 and of Johann in 1643. She bore her children in the war years, when soldiers, hunger and disease passed through the district again and again.",
+    "At Johann’s wedding in 1665 the priest wrote of him as the son of “Georgen Wäningers und Magdalena seiner Hausfrauen”: Georg Wäninger and Magdalena, his wife.", "doc-1665"],
+  johannU: ["Born as the war was ending, Johann farmed at Unteraigen, his father’s village. He married Elisabeth Stelzl from nearby Thierling and was named at the weddings of his son Thomas in 1689 and his daughter Barbara in 1695.",
+    "On 24 April 1665 Johann, “ledig Standts”, single, married Elisabeth Stelzl. The priest wrote the entry in German, not the usual Latin.", "doc-1665"],
+  elisabethU: ["Elisabeth grew up at Thierling, in the same parish, and married into the Wäninger household at Unteraigen in 1665. Her family and her husband’s stayed close: a Wäninger wife stood godmother to her little sister.",
+    "On 10 January 1670 Barbara, daughter of Johann Stelzl and Katharina and very likely Elisabeth’s younger sister, was baptized. Her godmother was Barbara, the wife of Georg Wäninger of Unteraigen.", "doc-1670"],
+  thomasP: ["Thomas left Unteraigen to marry a widow at Penting, and farmed there for at least twenty-four years. He was widowed, married again, and had a son named Georg by each wife; one of them carried the line on.",
+    "In May 1689, at about twenty, Thomas married Anna Veldtbauer, a widow of Penting. Both witnesses were farmers from Unteraigen, the village he grew up in.", "doc-1689"],
+  annaP: ["Anna was already a widow at Penting when she married the young Thomas in 1689, and her household there was very probably how he came to farm in Penting. She had died by 1699.",
+    "On 3 August 1696 Anna and Thomas had their son Georg baptized at Penting, with Georg Fürtl, a farmer of Rieth, as godfather.", "doc-1696"],
+  mariaK: ["Maria was a farmer’s daughter whose mother had died by the time she married the widowed Thomas in 1699. Two years later she had a son, Johann Georg, who may be the Georg of the next generation.",
+    "Johann Georg was baptized at Penting on 21 March 1701. His godfather was Georg Fürtl, the innkeeper at the Pfahl(?), the same name as the godfather of Anna’s son Georg five years before.", "doc-1701"],
+  georg: ["Georg farmed at Penting, as his father Thomas had. He married Dorothea, a widow, in 1722, and their son Benedikt was born seventeen months later.",
+    "Benedikt was baptized on 21 March 1724 as Benedictus Fabianus, his second name taken from his godfather, Fabian Feldbauer, a farmer in Penting.", "doc-1724"],
+  dorothea: ["Dorothea had been married before; the name written beside hers in 1722, Stainhirsch(?), was probably her first husband’s. With Georg she raised Benedikt, and she was named as his mother again at his wedding in 1747.",
+    "In October(?) 1722 the priest recorded her as “vidua”, a widow, marrying Georg Wäninger, a farmer. Two farmers of Penting stood as witnesses.", "doc-1722"],
+  benedikt: ["Benedikt spent his life in Penting, married a shoemaker’s daughter from the same village, and by 1774 held a half-farm there. He is the last of the line known to have held that much land; his son and grandsons were cottagers.",
+    "When his son Thomas married in May 1774, the register calls Benedikt and Barbara both still living.", "doc-1774"],
+  barbara: ["Barbara was the daughter of Mathias Häbl, a shoemaker in Penting, and seems to have lost both parents before she married Benedikt in 1747. She was the mother of Thomas, the first of the family to live at Untertraubenbach.",
+    "At her wedding on 11 January 1747 an abbreviation after her parents’ names seems to mark them as dead. Two farmers of Penting were the witnesses.", "doc-1747"],
+  thomas: ["Thomas married Susanna Greßlinger in her village, Untertraubenbach, in 1774, and by 1801 he was a cottager there. With him the family went from a half-farm to a cottage with little land, a step that shaped the next hundred years.",
+    "His wedding entry of May 1774 has “Untertraubenbach” in the margin and names his parents, Benedikt, a half-farmer, and Barbara, both still living.", "doc-1774"],
+  susanna: ["Susanna was the daughter of Georg Greßlinger, a cottager at Untertraubenbach. Her marriage to Thomas in 1774 very likely brought the Wanningers to the village they would leave for America 110 years later.",
+    "When she married in May 1774 the register named her parents: Georg Greßlinger, cottager, and Magdalena.", "doc-1774"],
+  michael: ["Michael grew up in Untertraubenbach and settled there as a cottager when he married in 1801, a few years before Bavaria became a kingdom. His bride was a cottager’s daughter from the same village.",
+    "On 20 May 1801 the register calls him “juvenis”, a young man, and a new Söldner, a cottager just set up in Untertraubenbach.", "doc-1801"],
+  margaretha: ["Margaretha was the daughter of Valentin Winkel, a cottager in the same village, and married Michael in 1801. Her son Leonhard was born in 1807, in the middle of the Napoleonic wars.",
+    "At Leonhard’s baptism in 1807 the priest wrote her as “Margaretha, daughter of Valentin Winkler”, naming her by her father.", "doc-1807"],
+  leonhard: ["Leonhard married at twenty-two, a new cottager like his father before him. In 1836 the family lived at house no. 15 in Untertraubenbach, and his wife’s father at no. 14.",
+    "On 2 February 1836 his son Johann Baptist, very likely John Sr., was born and baptized at Untertraubenbach no. 15.", "doc-1836"],
+  theresia: ["Theresia, called Theres, was the daughter of Joseph Reil, a cottager at Traubenbach no. 14. She married Leonhard in 1830 and was the mother of the boy who very likely became John Sr.",
+    "On 27 January 1830 she married Leonhard, a new cottager; the entry gives her father’s house as Traubenbach no. 14.", "doc-1830"],
+  johnSr: ["John was a gardener in his late forties when he took his wife and five children across the Atlantic in 1884. He lived six years in Cincinnati and died in 1890, before any of his sons had become a citizen.",
+    "On 11 June 1884 the Westernland landed him in New York, listed as a gardener, with Fanny and five children aged 9 to 16.", "doc-1884"],
+  fanny: ["Fanny was 51 when she crossed with her husband and children, and was widowed six years later. She lived on in Cincinnati, where her brother August also lived, until 1903.",
+    "August Mayer, a marble cutter, made his will in 1892 leaving everything to “my beloved sister Fanny Wanninger”. He was killed in a railroad accident in 1895.", "doc-1895"],
+  eleonora: ["Eleonora is the family’s mystery. She is not on the 1884 passenger list, but she was in Cincinnati by 1894; a family tree makes her the eldest daughter, born about 1864.",
+    "On 9 January 1894, at St. Francis Seraph, she and Joannes Zumbahlen were the witnesses at William’s marriage to Elisabeth Zumbahlen.", "doc-1894"],
+  george: ["George crossed at sixteen and was the first of the brothers to become an American citizen. He worked for years as a sheet metal worker, married twice, and lost a young son and his first wife.",
+    "On 20 October 1890, five months after his father’s death, George was admitted as a citizen; the record carries a signature reading “Geo. Wanninger”.", "doc-1890"],
+  augusta: ["Augusta crossed at fifteen, married Henry W. Jordan in 1890 and spent her life in Cincinnati. She died a widow in January 1937, weeks before the great Ohio River flood reached its crest.",
+    "On 20 November 1890 a minister, John E. Braun, married her to Henry W. Jordan, the day after Henry swore to the license.", "doc-1890m"],
+  william: ["William crossed at thirteen and worked as a shoemaker for decades, later as an orderly at General Hospital. He married Elizabeth Zumbahlen in 1894, and their son Clement carried the line on in Price Hill.",
+    "In 1929, a shoemaker living at 1266 Manss Ave, William stood witness for a newer Wanninger immigrant’s citizenship petition, forty-five years after his own arrival.", "Federal naturalization petition, 1929"],
+  johnJr: ["John Jr. crossed at twelve, became a citizen at twenty-one and worked as a conductor, a clerk and a salesman before going into insurance and real estate. He and Clara made their home in North College Hill.",
+    "When he became a citizen on 26 October 1893, the witness who swore to his residence wrote his name as “W. Wanninger”, very probably his brother William.", "doc-1893"],
+  clement1875: ["Clement was nine, the youngest of the family, when the Westernland landed. After that his trail goes cold; he may be the “Clement, shopman” of the 1926–27 directory.",
+    "On the passenger list he is “Clem. Wonninger, 9”, the last name on the family’s lines.", "doc-1884"],
+  clementSr: ["Clement was born on Walnut Street in 1894, the first of the line born in America. He worked as a tinner and later a shopman, and raised four sons with Gertrude at 1272 Manss Ave, next door to the house where his parents had lived.",
+    "The 1940 census finds him at 45, at home with Gertrude and their four boys, Lawrence, Eugene, Robert and Clement Jr.", "1940 U.S. census"],
+  lawrence: ["Lawrence grew up on Manss Avenue, served in the Army in the Second World War, and married Mary Louise Liegibel in 1946; they were married for 67 years. He lived to 98, the longest life on this page.",
+    "In 1942, aged nineteen, he was a clerk at Interstate Dispatch, living with his family at 1272 Manss Ave.", "Cincinnati directory, 1942"],
+  eugene: ["Eugene was the second of Clement and Gertrude’s four sons, born in 1924 and raised on Manss Avenue. He lived until 2008 and is buried at Gate of Heaven Cemetery.",
+    "The 1940 census lists him at home with his parents and three brothers.", "1940 U.S. census"],
+  robert: ["Robert J. was the third son, born in 1925. The city directories place him on Virginia Avenue in 1949 and 1955, and he died in 2005.",
+    "The 1940 census lists him at home with his parents and three brothers.", "1940 U.S. census"],
+  clementE: ["Clement E., the youngest, was born in 1933, eleven years after Lawrence, and carried his father’s first name. He died in 2006.",
+    "The 1940 census lists him as Clement Jr., aged about 7.", "1940 U.S. census"]
+};
+
+/* Each person’s family. An item is a person id on this page, {id, label}, or plain text for someone not on the page. */
+const FAM = {
+  georgU: { spouses: ["magdalenaU"], children: ["Anna, baptized Dec. 1640", "johannU"] },
+  magdalenaU: { parents: ["Not recorded"], spouses: ["georgU"], children: ["Anna, baptized Dec. 1640", "johannU"] },
+  johannU: { parents: ["georgU", "magdalenaU"], spouses: ["elisabethU"], children: ["thomasP", "Barbara, married 1695"] },
+  elisabethU: { parents: ["Johann Stelzl and Katharina, of Thierling"], spouses: ["johannU"], children: ["thomasP", "Barbara, married 1695"], note: "A Barbara Stelzl baptized in 1670 was very likely her younger sister." },
+  thomasP: { parents: ["johannU", "elisabethU"], spouses: ["annaP", "mariaK"], children: [{ id: "georg", label: "Georg, bapt. 1696 (Anna’s)" }, { id: "georg", label: "Johann Georg, bapt. 1701 (Maria’s)" }], note: "One of the two Georgs married Dorothea in 1722; the page follows him as Georg." },
+  annaP: { parents: ["Not recorded; Veldtbauer was probably her first husband’s name"], spouses: ["thomasP"], children: [{ id: "georg", label: "Georg, bapt. 1696" }] },
+  mariaK: { parents: ["Johann Knod, a farmer, and Anna"], spouses: ["thomasP"], children: [{ id: "georg", label: "Johann Georg, bapt. 1701" }] },
+  georg: { parents: ["thomasP", { id: "annaP", label: "Anna" }, { id: "mariaK", label: "Maria" }], spouses: ["dorothea"], children: ["benedikt"], note: "His mother was Anna or Maria, depending on which of Thomas’s two Georgs he was." },
+  dorothea: { parents: ["Not found; Stainhirsch(?) was probably her first husband’s name"], spouses: ["georg"], children: ["benedikt"] },
+  benedikt: { parents: ["georg", "dorothea"], spouses: ["barbara"], children: ["thomas"] },
+  barbara: { parents: ["Mathias Häbl, a shoemaker in Penting, and Maria"], spouses: ["benedikt"], children: ["thomas"] },
+  thomas: { parents: ["benedikt", "barbara"], spouses: ["susanna"], children: ["michael"] },
+  susanna: { parents: ["Georg Greßlinger, a cottager at Untertraubenbach, and Magdalena"], spouses: ["thomas"], children: ["michael"] },
+  michael: { parents: ["thomas", "susanna"], spouses: ["margaretha"], children: ["leonhard"] },
+  margaretha: { parents: ["Valentin Winkel, a cottager at Untertraubenbach, and Elisabeth"], spouses: ["michael"], children: ["leonhard"] },
+  leonhard: { parents: ["michael", "margaretha"], spouses: ["theresia"], children: ["Michael, born 1831", { id: "johnSr", label: "Johann Baptist, born 1836: probably John Sr." }] },
+  theresia: { parents: ["Joseph Reil, a cottager at Traubenbach no. 14"], spouses: ["leonhard"], children: ["Michael, born 1831", { id: "johnSr", label: "Johann Baptist, born 1836: probably John Sr." }] },
+  johnSr: { parents: ["leonhard", "theresia"], spouses: ["fanny"], children: ["eleonora", "george", "augusta", "william", "johnJr", "clement1875"], note: "Leonhard and Theresia are his parents if he is the Johann Baptist baptized in 1836. Eleonora’s place in the family is unproven." },
+  fanny: { parents: ["Not found; born Mayer, also written Meier or Meyer"], spouses: ["johnSr"], children: ["eleonora", "george", "augusta", "william", "johnJr", "clement1875"], note: "Her brother August Mayer, a marble cutter, lived in Cincinnati." },
+  eleonora: { parents: ["johnSr", "fanny"], note: "Possibly their daughter; not yet proven." },
+  george: { parents: ["johnSr", "fanny"], spouses: ["Elizabeth Runge, m. 1892, d. 1906", "Dora, m. 1909"], children: ["Johann Eduard, 1894–1896", "Wilhelm, born 1899"] },
+  augusta: { parents: ["johnSr", "fanny"], spouses: ["Henry W. Jordan, m. 1890"] },
+  william: { parents: ["johnSr", "fanny"], spouses: ["Elizabeth Zumbahlen, 1867–1947, daughter of Clemens Zumbahlen and Helena Deye"], children: ["clementSr", "John F., 1897–1974"] },
+  johnJr: { parents: ["johnSr", "fanny"], spouses: ["Clara Collas, m. 1899"] },
+  clement1875: { parents: ["johnSr", "fanny"] },
+  clementSr: { parents: ["william", "Elizabeth Zumbahlen"], spouses: ["Gertrude Mayleben, 1895–1983, born in Covington, Kentucky"], children: ["lawrence", "eugene", "robert", "clementE"] },
+  lawrence: { parents: ["clementSr", "Gertrude Mayleben"], spouses: ["Mary Louise Liegibel, 1923–2013, m. 1946"], note: "Later generations are left off this page to keep living people private." },
+  eugene: { parents: ["clementSr", "Gertrude Mayleben"] },
+  robert: { parents: ["clementSr", "Gertrude Mayleben"] },
+  clementE: { parents: ["clementSr", "Gertrude Mayleben"] }
+};
+
+/* Ages beside history. Births that are estimated read “about”; for the first couple and the wives whose birth is only guessed, no age is shown. */
+const AGE_EST = ["elisabethU", "georg", "barbara", "thomas", "susanna", "michael", "margaretha", "theresia", "johnSr", "fanny", "eleonora", "clement1875"];
+const NO_AGE = ["georgU", "magdalenaU", "annaP", "mariaK", "dorothea"];
+function ageAt(id, y) {
+  if (NO_AGE.includes(id)) return "";
+  const a = y - PEOPLE[id].born;
+  if (a < 0) return "";
+  if (a === 0) return "<small>born</small>";
+  return `<small>${AGE_EST.includes(id) ? "about " : "age "}${a}</small>`;
+}
+function famItem(x) {
+  const id = typeof x === "string" ? (PEOPLE[x] ? x : null) : x.id;
+  if (id) return `<button type="button" class="famlink" data-go="${id}">${esc(typeof x === "string" ? PEOPLE[id].name : x.label)}</button>`;
+  return `<span class="famtext">${esc(x)}</span>`;
+}
+function familyBlock(id) {
+  const f = FAM[id] || {};
+  const rows = [];
+  if (f.parents) rows.push(["Parents", f.parents]);
+  if (f.spouses) rows.push([f.spouses.length > 1 ? "Married" : "Married", f.spouses]);
+  const p0 = (f.parents || []).map(x => typeof x === "string" ? x : x.id).find(x => PEOPLE[x]);
+  if (p0 && FAM[p0] && FAM[p0].children) {
+    const sibs = FAM[p0].children.filter(x => (typeof x === "string" ? x : x.id) !== id);
+    if (sibs.length) rows.push(["Brothers and sisters", sibs]);
+  }
+  if (f.children) rows.push(["Children", f.children]);
+  if (!rows.length && !f.note) return "";
+  return `<div class="block">
+      <h4>Family</h4>
+      <dl class="fam">${rows.map(([k, xs]) => `<dt>${k}</dt><dd>${xs.map(famItem).join("")}</dd>`).join("")}${f.note ? `<p class="fam-note">${esc(f.note)}</p>` : ""}</dl>
+    </div>`;
+}
+const GEN_EL = [...document.querySelectorAll("#treeEl .gen")];
+const LINE = GEN_EL.map(g => { const b = g.querySelector(".person.direct"); return b ? b.dataset.id : null; });
+const ROMAN = GEN_EL.map(g => g.querySelector(".roman").textContent);
+function genOf(id) { return GEN_EL.findIndex(g => g.querySelector(`.person[data-id="${id}"]`)); }
+function walkBlock(id) {
+  const i = genOf(id);
+  if (i < 0) return "";
+  const out = [];
+  if (i > 0 && LINE[i - 1]) out.push(`<button type="button" class="famlink" data-go="${LINE[i - 1]}">↑ ${ROMAN[i - 1]} · ${esc(PEOPLE[LINE[i - 1]].name)}</button>`);
+  if (i < LINE.length - 1 && LINE[i + 1]) out.push(`<button type="button" class="famlink" data-go="${LINE[i + 1]}">↓ ${ROMAN[i + 1]} · ${esc(PEOPLE[LINE[i + 1]].name)}</button>`);
+  return out.length ? `<nav class="walk" aria-label="Walk Lawrence’s line">${out.join("")}</nav>` : "";
+}
+
+
+/* How each person's surname was written in their records */
+const SPELL = {
+ "georgU": "<i>Wäning</i> in the 1640 and 1643 baptisms; <i>Wäninger</i>, with the ending <i>-er</i>, at his son Johann’s wedding in 1665.",
+ "johannU": "<i>Wäninger</i> in every record of his own, from his wedding in 1665 to his daughter’s in 1695. At his baptism in 1643 the priest wrote his father’s name as <i>Wäning</i>.",
+ "thomasP": "<i>Wäninger</i> in every record, from his baptism in 1669 to 1713.",
+ "georg": "<i>Wäninger</i> at his wedding in 1722 and his son’s baptism in 1724; <i>Waninger</i>, without the umlaut, at that son’s wedding in 1747.",
+ "benedikt": "<i>Waninger</i> in the entry for his wedding in 1747; <i>Wänninger</i>, with the umlaut back and a double <i>n</i>, at his son’s wedding in 1774.",
+ "thomas": "<i>Wänninger</i> at his wedding in 1774; <i>Wanninger</i>, today’s spelling, at his son Michael’s wedding in 1801.",
+ "michael": "<i>Wanninger</i> at his wedding in 1801, but <i>Wäninger</i> again at his son Leonhard’s baptism in 1807 and wedding in 1830.",
+ "leonhard": "<i>Wäninger</i> at his baptism in 1807, his wedding in 1830 and his son’s baptism in 1836.",
+ "johnSr": "<i>Wäninger</i> at the 1836 baptism thought to be John’s; <i>Wonninger</i> on the 1884 passenger list, indexed as <i>Wonminger</i>; <i>Wanninger</i> in Cincinnati from 1890.",
+ "fanny": "<i>Wonninger</i> on the 1884 passenger list; <i>Wanninger</i> in Cincinnati, as in her brother August’s will of 1892. At William’s wedding in 1894 the Latin register names her <i>Francisca Meier</i>, by her maiden name.",
+ "eleonora": "<i>Wanninger</i> in the only record found for her, as a witness at William’s wedding in 1894.",
+ "george": "<i>Wonninger</i> on the 1884 passenger list, then <i>Wanninger</i> in every Cincinnati record, from the naturalizations, marriage licenses and church book of the 1890s on.",
+ "augusta": "<i>Wonninger</i> on the 1884 passenger list, then <i>Wanninger</i> in every Cincinnati record, from the naturalizations, marriage licenses and church book of the 1890s on.",
+ "william": "<i>Wonninger</i> on the 1884 passenger list, then <i>Wanninger</i> in every Cincinnati record, from the naturalizations, marriage licenses and church book of the 1890s on.",
+ "johnJr": "<i>Wonninger</i> on the 1884 passenger list, then <i>Wanninger</i> in every Cincinnati record, from the naturalizations, marriage licenses and church book of the 1890s on.",
+ "clement1875": "<i>Wonninger</i> on the 1884 passenger list, then <i>Wanninger</i> in every Cincinnati record, from the naturalizations, marriage licenses and church book of the 1890s on.",
+ "clementSr": "<i>Wanninger</i>, the spelling the family has kept in America ever since.",
+ "lawrence": "<i>Wanninger</i>, the spelling the family has kept in America ever since.",
+ "eugene": "<i>Wanninger</i>, the spelling the family has kept in America ever since.",
+ "robert": "<i>Wanninger</i>, the spelling the family has kept in America ever since.",
+ "clementE": "<i>Wanninger</i>, the spelling the family has kept in America ever since."
+};
+const SPELL_WHY = "Each spelling here is as the record writes it. Until the 1800s a name was written by the priest or clerk as he heard it, not by the family, and German spelling was not yet fixed. The older entries are in Latin, which adds endings such as <i>Wäningers</i>, “of Wäninger”, without changing the name itself. In Bavarian surnames the ending <i>-er</i> often meant “the one from” a place or farm, so <i>Wäning</i> and <i>Wäninger</i> are very likely the same name. The umlaut and the single or double <i>n</i> came and went from one writer to the next rather than settling once: the 1801 entry has <i>Wanninger</i>, but the next three go back to <i>Wäninger</i>. In America, where English has no umlaut, <i>Wanninger</i> is the spelling in every record from the 1890s on. From Benedikt on, the tree’s buttons use <i>Wanninger</i> whatever the record says.";
+function spellingBlock(id) {
+  if (!SPELL[id]) return "";
+  return `<div class="block spell-block">
+      <h4>How the name was written</h4>
+      <p class="spelling">${SPELL[id]}</p>
+      <details class="spell-why"><summary>Why the spelling changes</summary><p><span class="label-est">Background</span> ${SPELL_WHY}</p></details>
+    </div>`;
+}
+
 function render(id) {
   const p = PEOPLE[id];
   if (!p) return;
   const end = p.died || p.last || p.born + 30;
-  const range = `${p.born}${p.died ? "–" + p.died : "–?"}`;
+  const range = p.range || `${p.born}${p.died ? "–" + p.died : "–?"}`;
+  const pt = PORTRAIT[id];
   const chips = [chip(p.conf)];
   if (p.line) chips.push(`<span class="chip line">● Lawrence’s direct line</span>`);
   if (p.crossed) chips.push(`<span class="chip doc">Westernland, 1884</span>`);
@@ -877,19 +2074,19 @@ function render(id) {
         <div class="addr-row">
           <span class="when">${esc(a.when)}</span>
           <span class="where">${esc(a.a)}<small>${esc(a.note)}</small></span>
-          <a class="map" href="${MAPS(a.q || a.a + CIN)}" target="_blank" rel="noopener" aria-label="Open ${esc(a.a)} in Google Maps">Map ↗</a>
+          <a class="map" href="${MAPS(a.q || a.a + CIN)}" target="_blank" rel="noopener" aria-label="Map of ${esc(a.a)}, opens in a new tab">Map ↗</a>
         </div>`).join("")}</div>
        <p class="fineprint">Numbers may have changed since; see the note at the foot of the page.</p>`
     : `<p class="empty">No address has been found for this person yet.</p>`;
 
   const world = WORLD.filter(([y]) => y >= p.born && y <= end)
-    .map(([y, t]) => `<li><span class="y">${y}</span><span>${esc(t)}</span></li>`).join("");
+    .map(([y, t]) => `<li><span class="y">${y}${ageAt(id, y)}</span><span>${esc(t)}</span></li>`).join("");
 
   const places = p.places;
   const city = CITY.filter(([y, pl]) => y >= p.born && y <= end && (pl.includes("all") ? !(places.length === 1 && places[0] === "bavaria") : pl.some(x => places.includes(x))))
     .map(([y, pl, title, t, hit]) => {
       const here = hit && (hit === "all" || hit === "arrival" ? p.crossed || hit === "all" : places.includes(hit));
-      return `<li class="${here ? "here" : ""}"><span class="y">${y}</span><span><b>${esc(title)}.</b> ${esc(t)}</span></li>`;
+      return `<li class="${here ? "here" : ""}"><span class="y">${y}${ageAt(id, y)}</span><span><b>${esc(title)}.</b> ${esc(t)}</span></li>`;
     }).join("");
 
   const jumps = [];
@@ -903,7 +2100,22 @@ function render(id) {
       <h3>${esc(p.name)}</h3>
       <div class="aka">${esc(p.aka)} · <span class="mono">${range}</span></div>
       <dl class="vitals">${vit}</dl>
+      <div class="entry-actions">
+        <button type="button" class="btn-quiet" data-copy="${id}">Copy link to ${esc(p.name.split(" ")[0])}</button>
+        <input class="linkbox" type="text" readonly hidden aria-label="Link to this entry">
+      </div>
     </header>
+    ${pt ? `<div class="block portrait">
+      <span class="tag">Their life in brief · from the records, with some interpretation</span>
+      <p>${esc(pt[0])}</p>
+    </div>
+    <div class="moment">
+      <span class="tag">A moment from the records</span>
+      <p>${esc(pt[1])}</p>
+      <span class="src">${pt[2].startsWith("doc-") ? `<a href="#${pt[2]}">See the record ↓</a>` : esc(pt[2])}</span>
+    </div>` : ""}
+    ${familyBlock(id)}
+    ${spellingBlock(id)}
     <div class="block">
       <h4>Known addresses</h4>
       ${addr}
@@ -925,52 +2137,88 @@ function render(id) {
       <ul class="events">${city || `<li><span class="y">—</span><span>No city changes recorded for these years.</span></li>`}</ul>
       <p class="fineprint">● marks a change that reached a place where this person lived.</p>
     </div>
+    ${walkBlock(id)}
     <div class="jump">${jumps.join("")}</div>`;
 
   document.querySelectorAll(".person").forEach(b => b.setAttribute("aria-pressed", b.dataset.id === id ? "true" : "false"));
   entry.scrollTop = 0;
 }
 
+function focusEntry(scrollPage) {
+  const narrow = window.matchMedia("(max-width: 900px)").matches;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  entry.scrollTop = 0;
+  if (scrollPage) (narrow ? entry : $("#tree")).scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  const h3 = entry.querySelector("h3");
+  if (h3) { h3.id = "entryName"; h3.tabIndex = -1; h3.focus({ preventScroll: true }); }
+}
 function select(id, scroll) {
   render(id);
   try { history.replaceState(null, "", "#" + id); } catch (e) {}
-  if (scroll && window.matchMedia("(max-width: 900px)").matches) {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    entry.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-  }
+  focusEntry(scroll && window.matchMedia("(max-width: 900px)").matches);
 }
 
 document.querySelectorAll(".person").forEach(b => b.addEventListener("click", () => select(b.dataset.id, true)));
 
+entry.addEventListener("click", e => {
+  const go = e.target.closest("[data-go]");
+  if (go) {
+    select(go.dataset.go, true);
+    const btn = document.querySelector(`.person[data-id="${go.dataset.go}"]`);
+    if (btn && !window.matchMedia("(max-width: 900px)").matches) btn.scrollIntoView({ block: "nearest" });
+    return;
+  }
+  const cp = e.target.closest("[data-copy]");
+  if (cp) {
+    const url = location.href.split("#")[0] + "#" + cp.dataset.copy;
+    const box = entry.querySelector(".linkbox");
+    const fallback = () => { box.hidden = false; box.value = url; box.focus(); box.select(); cp.textContent = "Copy the link below"; };
+    try {
+      navigator.clipboard.writeText(url).then(() => { cp.textContent = "Link copied"; }, fallback);
+    } catch (err) { fallback(); }
+  }
+});
+
+
 /* Lifelines */
-(function buildLifelines() {
-  const el = $("#llEl");
-  const Y0 = 1830, Y1 = 2022;
+function buildLifelines(el, { Y0, Y1, ticks, evs, rows: order, label, est = [] }) {
   const pct = y => ((y - Y0) / (Y1 - Y0) * 100).toFixed(2) + "%";
-  const ticks = [1840, 1860, 1880, 1900, 1920, 1940, 1960, 1980, 2000, 2020]
-    .map(y => `<div class="ll-tick" style="left:${pct(y)}"><span>${y}</span></div>`).join("");
-  const evs = [[1871, "Empire"], [1884, "Crossing"], [1917, "War with Germany", true], [1929, "Crash"], [1941, "WWII", true], [1959, "West End cleared"]];
+  const tickHtml = ticks.map(y => `<div class="ll-tick" style="left:${pct(y)}"><span>${y}</span></div>`).join("");
   const evHtml = evs.map(([y, l, alt]) => `<div class="ll-ev ${alt ? "alt" : ""}" style="left:${pct(y)}"><span>${l}</span></div>`).join("");
-  const order = ["fanny", "johnSr", "eleonora", "george", "augusta", "william", "johnJr", "clement1875", "clementSr", "lawrence", "eugene", "robert", "clementE"];
   const rows = order.map(id => {
     const p = PEOPLE[id];
     const end = p.died || p.last;
-    const short = p.name.replace("Wanninger ", "").replace(" Wanninger", "").replace("Theodore ", "").replace(" Sr.", "");
-    const cls = p.died ? "" : "open";
+    const short = label ? label[id] : p.name.replace("Wanninger ", "").replace(" Wanninger", "").replace("Theodore ", "").replace(" Sr.", "");
+    const cls = (p.died ? "" : "open") + (est.includes(id) ? " est" : "");
     const cross = p.crossed ? `<span class="ll-cross" style="left:${pct(1884.45)}" aria-hidden="true"></span>` : "";
+    const span = p.died ? `${p.born} to ${p.died}` : `${est.includes(id) ? "about " : ""}${p.born} to last record ${end}`;
     return `<div class="ll-row"><div class="ll-name">${esc(short)}</div><div class="ll-track">
-      <button class="ll-bar ${cls}" style="left:${pct(p.born)};width:calc(${pct(end)} - ${pct(p.born)})" data-id="${id}" aria-label="${esc(p.name)}, ${p.born} to ${p.died || "unknown"}"></button>${cross}</div></div>`;
+      <button class="ll-bar ${cls}" style="left:${pct(p.born)};width:calc(${pct(end)} - ${pct(p.born)})" data-id="${id}" aria-label="${esc(p.name)}, ${span}"></button>${cross}</div></div>`;
   }).join("");
   el.innerHTML = `<div class="lifelines-clip">
-      <div class="ll-axis"><div></div><div class="ll-track">${ticks}${evHtml}</div></div>
+      <div class="ll-axis"><div></div><div class="ll-track">${tickHtml}${evHtml}</div></div>
       ${rows}
     </div>`;
   el.querySelectorAll(".ll-bar").forEach(b => b.addEventListener("click", () => {
-    select(b.dataset.id, false);
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    $("#tree").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+    render(b.dataset.id);
+    try { history.replaceState(null, "", "#" + b.dataset.id); } catch (e) {}
+    focusEntry(true);
   }));
-})();
+}
+buildLifelines($("#llBavEl"), {
+  Y0: 1600, Y1: 1915,
+  ticks: [1600, 1625, 1650, 1675, 1700, 1725, 1750, 1775, 1800, 1825, 1850, 1875],
+  evs: [[1618, "War begins"], [1648, "Peace", true], [1704, "Occupation"], [1806, "Kingdom"], [1848, "Dues end", true], [1884, "Crossing"]],
+  rows: ["georgU", "magdalenaU", "johannU", "elisabethU", "thomasP", "georg", "dorothea", "benedikt", "barbara", "thomas", "susanna", "michael", "margaretha", "leonhard", "theresia", "johnSr", "fanny"],
+  label: { georgU: "I · Georg", magdalenaU: "I · Magdalena", johannU: "II · Johann", elisabethU: "II · Elisabeth", thomasP: "III · Thomas", georg: "IV · Georg", dorothea: "IV · Dorothea", benedikt: "V · Benedikt", barbara: "V · Barbara", thomas: "VI · Thomas", susanna: "VI · Susanna", michael: "VII · Michael", margaretha: "VII · Margaretha", leonhard: "VIII · Leonhard", theresia: "VIII · Theresia", johnSr: "IX · John Sr.", fanny: "IX · Fanny" },
+  est: ["georgU", "magdalenaU", "elisabethU", "georg", "dorothea", "barbara", "thomas", "susanna", "michael", "margaretha", "theresia"]
+});
+buildLifelines($("#llEl"), {
+  Y0: 1830, Y1: 2022,
+  ticks: [1840, 1860, 1880, 1900, 1920, 1940, 1960, 1980, 2000, 2020],
+  evs: [[1871, "Empire"], [1884, "Crossing"], [1917, "War with Germany", true], [1929, "Crash"], [1941, "WWII", true], [1959, "West End cleared"]],
+  rows: ["fanny", "johnSr", "eleonora", "george", "augusta", "william", "johnJr", "clement1875", "clementSr", "lawrence", "eugene", "robert", "clementE"]
+});
 
 /* City timeline */
 (function buildCity() {
@@ -987,13 +2235,79 @@ document.querySelectorAll(".person").forEach(b => b.addEventListener("click", ()
     <li><span class="y">${y}</span><span class="t"><b>${esc(title)}</b><span>${esc(t)}</span>${touched[y] ? `<em>${esc(touched[y])}</em>` : ""}</span></li>`).join("");
 })();
 
+/* Header counts, worked out from the data so they stay current */
+(() => {
+  const ids = Object.keys(PEOPLE);
+  const addr = new Set(ids.flatMap(id => PEOPLE[id].addresses.map(a => a.a)));
+  $("#nPeople").textContent = ids.length;
+  $("#nAddr").textContent = addr.size;
+})();
+
 function fromHash() {
   const h = (location.hash || "").slice(1);
   if (PEOPLE[h]) { render(h); return true; }
   return false;
 }
-if (!fromHash()) render("lawrence");
-window.addEventListener("hashchange", fromHash);
-</script>
+if (fromHash()) {
+  requestAnimationFrame(() => setTimeout(() => focusEntry(true), 60));
+} else {
+  render("lawrence");
+  const h0 = entry.querySelector("h3"); if (h0) h0.id = "entryName";
+}
+window.addEventListener("hashchange", () => { if (fromHash()) focusEntry(true); });
 
-</body></html>
+/* Say when a link opens a new tab */
+function markNewTab(root) {
+  root.querySelectorAll('a[target="_blank"]').forEach(a => {
+    const lbl = a.getAttribute("aria-label");
+    if (lbl) { if (!/new tab/.test(lbl)) a.setAttribute("aria-label", lbl + ", opens in a new tab"); return; }
+    if (!a.querySelector(".vh")) a.insertAdjacentHTML("beforeend", '<span class="vh"> (opens in a new tab)</span>');
+  });
+}
+markNewTab(document);
+new MutationObserver(() => markNewTab(entry)).observe(entry, { childList: true });
+
+/* Section menu: show where you are, and that it scrolls on phones */
+(() => {
+  const ul = document.querySelector("nav.toc ul");
+  const links = [...ul.querySelectorAll("a[href^='#']")];
+  const secs = links.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+  const edge = () => ul.classList.toggle("at-end", ul.scrollLeft + ul.clientWidth >= ul.scrollWidth - 4);
+  ul.addEventListener("scroll", edge, { passive: true }); window.addEventListener("resize", edge); edge();
+  if (!("IntersectionObserver" in window)) return;
+  const seen = new Map();
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => seen.set(e.target.id, e.isIntersecting ? e.boundingClientRect.top : null));
+    const cur = secs.find(s => seen.get(s.id) != null);
+    links.forEach(a => {
+      const on = cur && a.getAttribute("href") === "#" + cur.id;
+      if (on) { a.setAttribute("aria-current", "true"); ul.scrollTo({ left: Math.max(0, a.offsetLeft - 24), behavior: "auto" }); }
+      else a.removeAttribute("aria-current");
+    });
+  }, { rootMargin: "-60px 0px -55% 0px" });
+  secs.forEach(s => io.observe(s));
+})();
+
+/* Full-size view for record pages */
+(() => {
+  const box = document.createElement("div");
+  box.className = "lightbox"; box.hidden = true;
+  box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true"); box.setAttribute("aria-label", "Record page, full size");
+  box.innerHTML = '<button type="button" class="close">Close</button><img alt="">';
+  document.body.appendChild(box);
+  const big = box.querySelector("img");
+  const closeBtn = box.querySelector(".close");
+  let opener = null;
+  const shut = () => { box.hidden = true; big.removeAttribute("src"); document.body.style.overflow = ""; if (opener) { opener.focus(); opener = null; } };
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".zoom");
+    if (b) { const im = b.querySelector("img"); opener = b; big.src = im.dataset.full || im.src; big.alt = im.alt; box.hidden = false; box.scrollTop = 0; document.body.style.overflow = "hidden"; closeBtn.focus(); return; }
+    if (!box.hidden && (e.target === box || e.target === closeBtn)) shut();
+  });
+  document.addEventListener("keydown", e => {
+    if (box.hidden) return;
+    if (e.key === "Escape") shut();
+    else if (e.key === "Tab") { e.preventDefault(); closeBtn.focus(); }
+  });
+})();
+</script>
